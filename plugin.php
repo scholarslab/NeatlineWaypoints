@@ -17,5 +17,5 @@ if (!defined('NL_ITEM_TRAY_DIR')) {
 }
 
 require_once NL_ITEM_TRAY_DIR . '/NeatlineItemTrayPlugin.php';
-$simile = new NeatlineSimilePlugin();
+$simile = new NeatlineItemTrayPlugin();
 $simile->setUp();
