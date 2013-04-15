@@ -15,7 +15,21 @@ Neatline.module('ItemTray', function(
 
 
   ItemTray.View = Neatline.Shared.Widget.View.extend({
-    // TODO
+
+
+    className: 'item-tray',
+
+
+    /**
+     * Render a list of records.
+     *
+     * @param {Object} records: The records collection.
+     */
+    ingest: function(records) {
+      console.log(records);
+    },
+
+
   });
 
 

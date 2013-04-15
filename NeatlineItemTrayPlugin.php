@@ -39,7 +39,7 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlinePublicStatic($args)
     {
-        // TODO
+        queue_js_file('payloads/tray');
     }
 
 
@@ -50,7 +50,7 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlineEditorStatic($args)
     {
-        // TODO
+        queue_js_file('payloads/tray');
     }
 
 
