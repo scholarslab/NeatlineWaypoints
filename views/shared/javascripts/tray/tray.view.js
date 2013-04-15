@@ -17,7 +17,23 @@ Neatline.module('ItemTray', function(
   ItemTray.View = Neatline.Shared.Widget.View.extend({
 
 
-    className: 'item-tray',
+    id: 'item-tray',
+
+
+    /**
+     * Compile the records template.
+     */
+    init: function() {
+
+      // Initialize parent.
+      ItemTray.View.__super__.init.apply(this);
+
+      // Compile template.
+      this.template = _.template(
+        $('#item-tray-records-template').html()
+      );
+
+    },
 
 
     /**
@@ -26,7 +42,7 @@ Neatline.module('ItemTray', function(
      * @param {Object} records: The records collection.
      */
     ingest: function(records) {
-      console.log(records);
+      this.$el.html(this.template({ records: records }));
     },
 
 

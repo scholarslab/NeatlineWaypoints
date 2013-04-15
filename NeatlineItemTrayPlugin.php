@@ -21,6 +21,7 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
 
 
     protected $_hooks = array(
+        'neatline_public_underscore',
         'neatline_public_static',
         'neatline_editor_static'
     );
@@ -37,9 +38,24 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      *
      * @param array $args Array of arguments, with `exhibit`.
      */
+    public function hookNeatlinePublicUnderscore($args)
+    {
+        if ($args['exhibit']->hasWidget('ItemTray')) {
+            echo get_view()->partial('tray/underscore/records.php');
+        }
+    }
+
+
+    /**
+     * Queue public payloads.
+     *
+     * @param array $args Array of arguments, with `exhibit`.
+     */
     public function hookNeatlinePublicStatic($args)
     {
-        queue_js_file('payloads/tray');
+        if ($args['exhibit']->hasWidget('ItemTray')) {
+            queue_js_file('payloads/tray');
+        }
     }
 
 
@@ -50,7 +66,9 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlineEditorStatic($args)
     {
-        queue_js_file('payloads/tray');
+        if ($args['exhibit']->hasWidget('ItemTray')) {
+            queue_js_file('payloads/tray');
+        }
     }
 
 
