@@ -19,6 +19,12 @@ Neatline.module('ItemTray', function(
 
     id: 'item-tray',
 
+    events: {
+      'mouseenter a': 'onShow',
+      'mouseleave a': 'onHide',
+      'click a': 'onSelect'
+    },
+
 
     /**
      * Compile the records template.
@@ -44,6 +50,50 @@ Neatline.module('ItemTray', function(
     ingest: function(records) {
       this.$el.html(this.template({ records: records }));
     },
+
+
+    /**
+     * Show presenter on hover.
+     *
+     * @param {Object} e: The DOM event.
+     */
+    onShow: function(e) {
+      Neatline.execute('PRESENTER:show', this.getModel(e));
+    },
+
+
+    /**
+     * Hide presenter on unhover.
+     *
+     * @param {Object} e: The DOM event.
+     */
+    onHide: function(e) {
+      Neatline.execute('PRESENTER:hide', this.getModel(e));
+    },
+
+
+    /**
+     * Select when a record is clicked.
+     *
+     * @param {Object} e: The DOM event.
+     */
+    onSelect: function(e) {
+      var model = this.getModel(e);
+      Neatline.execute('PRESENTER:select', model);
+      Neatline.execute('MAP:focusById', model.id);
+    },
+
+
+    /**
+     * Get the model for a DOM event.
+     *
+     * @param {Object} e: The DOM event.
+     */
+    getModel: function(e) {
+      return ItemTray.__collection.get(
+        parseInt($(e.currentTarget).attr('data-id'), 10)
+      );
+    }
 
 
   });
