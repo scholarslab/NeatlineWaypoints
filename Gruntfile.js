@@ -21,7 +21,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-symbolic-link');
 
   var cfg = grunt.file.readJSON('./config.json');
-  var nlCfg = grunt.file.readJSON('../Neatline/config.json');
 
   grunt.initConfig({
 
@@ -44,10 +43,30 @@ module.exports = function(grunt) {
       }
     },
 
+    clean: {
+      payloads: [
+        cfg.payloads.shared.js
+      ]
+    },
+
     concat: {
       tray: {
         src: cfg.src.shared+'/*.js',
         dest: cfg.payloads.shared.js+'/tray.js'
+      }
+    },
+
+    uglify: {
+      tray: {
+        src: '<%= concat.tray.src %>',
+        dest: cfg.payloads.shared.js+'/tray.js'
+      }
+    },
+
+    watch: {
+      payload: {
+        files: '<%= concat.tray.src %>',
+        tasks: 'concat'
       }
     }
 
