@@ -76,8 +76,14 @@ module.exports = function(grunt) {
 
     watch: {
       payload: {
-        files: '<%= concat.tray.src %>',
-        tasks: 'concat'
+        files: [
+          '<%= concat.tray.src %>',
+          cfg.stylus.shared+'/*.styl'
+        ],
+        tasks: [
+          'concat',
+          'stylus'
+        ]
       }
     }
 

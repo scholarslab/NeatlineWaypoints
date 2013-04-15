@@ -17,7 +17,9 @@
 
   <ul>
     <% records.each(function(r) { %>
-      <li data-id="<%= r.id %>"><%= r.get('title') %></li>
+      <a class="title" data-id="<%= r.id %>">
+        <%= r.get('title') %>
+      </a>
     <% }); %>
   </ul>
 
