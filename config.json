@@ -4,9 +4,14 @@
     "shared": "./views/shared/javascripts/tray"
   },
 
+  "stylus": {
+    "shared": "./views/shared/css/stylus"
+  },
+
   "payloads": {
     "shared": {
-      "js":   "./views/shared/javascripts/payloads"
+      "js":   "./views/shared/javascripts/payloads",
+      "css":  "./views/shared/css/payloads"
     }
   }
 

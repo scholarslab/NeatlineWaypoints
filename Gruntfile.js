@@ -15,6 +15,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -45,7 +46,8 @@ module.exports = function(grunt) {
 
     clean: {
       payloads: [
-        cfg.payloads.shared.js
+        cfg.payloads.shared.js,
+        cfg.payloads.shared.css
       ]
     },
 
@@ -60,6 +62,15 @@ module.exports = function(grunt) {
       tray: {
         src: '<%= concat.tray.src %>',
         dest: cfg.payloads.shared.js+'/tray.js'
+      }
+    },
+
+    stylus: {
+      compile: {
+        files: {
+          './views/shared/css/payloads/tray.css':
+            cfg.stylus.shared+'/*.styl'
+        }
       }
     },
 
