@@ -12,13 +12,16 @@
 
 module.exports = function(grunt) {
 
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-symbolic-link');
 
-  var cfg = grunt.file.readJSON('../Neatline/config.json');
+  var cfg = grunt.file.readJSON('./config.json');
+  var nlCfg = grunt.file.readJSON('../Neatline/config.json');
 
   grunt.initConfig({
 
@@ -38,6 +41,13 @@ module.exports = function(grunt) {
           keepalive: true,
           port: 1337
         }
+      }
+    },
+
+    concat: {
+      tray: {
+        src: cfg.src.shared+'/*.js',
+        dest: cfg.payloads.shared.js+'/tray.js'
       }
     }
 

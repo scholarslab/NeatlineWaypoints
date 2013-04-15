@@ -1,0 +1,13 @@
+{
+
+  "src": {
+    "shared": "./views/shared/javascripts/tray"
+  },
+
+  "payloads": {
+    "shared": {
+      "js":   "./views/shared/javascripts/payloads"
+    }
+  }
+
+}
