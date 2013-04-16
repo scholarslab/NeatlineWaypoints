@@ -80,10 +80,7 @@ module.exports = function(grunt) {
           '<%= concat.tray.src %>',
           cfg.stylus.shared+'/*.styl'
         ],
-        tasks: [
-          'concat',
-          'stylus'
-        ]
+        tasks: ['concat', 'stylus']
       }
     }
 

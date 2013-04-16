@@ -1,0 +1,10 @@
+<phpunit bootstrap="bootstrap.php"
+         convertErrorsToExceptions="true"
+         convertWarningsToExceptions="true"
+         verbose="true">
+    <testsuite name="Neatline Item Tray Tests">
+        <directory>unit</directory>
+        <directory>integration</directory>
+        <directory>fixtures</directory>
+    </testsuite>
+</phpunit>

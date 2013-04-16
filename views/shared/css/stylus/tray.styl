@@ -17,9 +17,11 @@
   padding 1em
   font-size 1.4em
   opacity 0.85
+  max-width 300px
 
   ul
     margin 0
+    padding 0
 
   a.title
     display list-item
@@ -27,9 +29,13 @@
     cursor pointer
     line-height 1.4em
 
+    &:hover
+      text-decoration none
+
 
 #neatline
   #item-tray
     position absolute
+    z-index 999
     right 2em
     top 2em
