@@ -10,7 +10,7 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-describe('Public Stub', function() {
+describe('Editor Stub', function() {
   it('test', function() {
     expect(true).toBeTruthy();
   });
