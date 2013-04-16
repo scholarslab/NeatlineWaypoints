@@ -13,7 +13,7 @@
 describe('Public Stub', function() {
 
   beforeEach(function() {
-    _t.loadNeatline();
+    _tray.loadNeatline();
   });
 
   it('test', function() {

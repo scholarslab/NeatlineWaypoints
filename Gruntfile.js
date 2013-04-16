@@ -107,7 +107,8 @@ module.exports = function(grunt) {
           './Neatline/'+nlCfg.jasmine+'/helpers/*.js',
           './Neatline/'+nlCfg.jasmine+'/assertions/*.js',
           './Neatline/'+nlCfg.vendor.js.jasmine_jquery,
-          './Neatline/'+nlCfg.vendor.js.sinon
+          './Neatline/'+nlCfg.vendor.js.sinon,
+          cfg.jasmine+'/helpers/*.js'
         ]
       },
 

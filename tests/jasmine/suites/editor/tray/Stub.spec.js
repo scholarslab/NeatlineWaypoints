@@ -13,7 +13,7 @@
 describe('Editor Stub', function() {
 
   beforeEach(function() {
-    _t.loadEditor();
+    _tray.loadEditor();
   });
 
   it('test', function() {
