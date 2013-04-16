@@ -13,7 +13,7 @@
 describe('Editor Stub', function() {
 
   beforeEach(function() {
-    _t.loadNeatline();
+    _t.loadEditor();
   });
 
   it('test', function() {

@@ -14,9 +14,9 @@
 
 // Define path variables.
 define('NL_ITEM_TRAY_DIR', dirname(dirname(dirname(__FILE__))));
+define('OMEKA_DIR', dirname(dirname(NL_ITEM_TRAY_DIR)));
 define('NL_DIR', dirname((NL_ITEM_TRAY_DIR)) . '/Neatline');
 define('NL_TEST_DIR', NL_DIR . '/tests/phpunit');
-define('OMEKA_DIR', dirname(dirname(NL_ITEM_TRAY_DIR)));
 
 // Bootstrap Omeka, load plugin managers.
 require_once OMEKA_DIR . '/application/tests/bootstrap.php';

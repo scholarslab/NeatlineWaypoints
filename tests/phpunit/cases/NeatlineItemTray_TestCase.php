@@ -33,6 +33,21 @@ class NeatlineItemTray_TestCase extends Neatline_AbstractTestCase
         $pluginHelper->setUp('Neatline');
         $pluginHelper->setUp('NeatlineItemTray');
 
+        // Register script paths.
+        get_view()->setScriptPath(NL_ITEM_TRAY_DIR . '/views/shared');
+        get_view()->addScriptPath(NL_DIR . '/views/shared');
+
+    }
+
+
+    /**
+     * Get the Jasmine fixtures directory.
+     *
+     * @return string The directory.
+     */
+    protected function getFixturesPath()
+    {
+        return NL_ITEM_TRAY_DIR . '/tests/jasmine/fixtures/';
     }
 
 

@@ -58,7 +58,7 @@ Neatline.module('ItemTray', function(
      * @param {Object} e: The DOM event.
      */
     onShow: function(e) {
-      Neatline.execute('PRESENTER:show', this.getModel(e));
+      Neatline.vent.trigger('show', this.getModel(e));
     },
 
 
@@ -68,7 +68,7 @@ Neatline.module('ItemTray', function(
      * @param {Object} e: The DOM event.
      */
     onHide: function(e) {
-      Neatline.execute('PRESENTER:hide', this.getModel(e));
+      Neatline.vent.trigger('hide', this.getModel(e));
     },
 
 
@@ -79,8 +79,8 @@ Neatline.module('ItemTray', function(
      */
     onSelect: function(e) {
       var model = this.getModel(e);
-      Neatline.execute('PRESENTER:select', model);
       Neatline.execute('MAP:focusById', model.id);
+      Neatline.vent.trigger('select', model);
     },
 
 
