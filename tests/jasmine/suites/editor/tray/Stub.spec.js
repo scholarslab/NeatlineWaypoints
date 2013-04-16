@@ -11,7 +11,13 @@
  */
 
 describe('Editor Stub', function() {
+
+  beforeEach(function() {
+    _t.loadNeatline();
+  });
+
   it('test', function() {
     expect(true).toBeTruthy();
   });
+
 });

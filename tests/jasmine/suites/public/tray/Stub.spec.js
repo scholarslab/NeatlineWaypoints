@@ -11,7 +11,13 @@
  */
 
 describe('Public Stub', function() {
+
+  beforeEach(function() {
+    _t.loadNeatline();
+  });
+
   it('test', function() {
     expect(true).toBeTruthy();
   });
+
 });
