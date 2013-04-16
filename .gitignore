@@ -3,6 +3,7 @@ node_modules
 components
 .grunt
 
+Neatline
 _SpecRunner.html
 
 views/shared/javascripts/payloads

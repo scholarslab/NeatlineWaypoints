@@ -21,6 +21,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-symbolic-link');
 
+  var nlCfg = grunt.file.readJSON('../Neatline/config.json');
   var cfg = grunt.file.readJSON('./config.json');
 
   grunt.initConfig({
@@ -82,10 +83,24 @@ module.exports = function(grunt) {
         ],
         tasks: ['concat', 'stylus']
       }
+    },
+
+    jasmine: {
+      neatline: {
+        src: [
+          './Neatline/'+nlCfg.payloads.shared.js+'/neatline.js',
+          cfg.payloads.shared.js+'/tray.js'
+        ],
+        options: {
+          specs: cfg.jasmine+'/suites/public/**/*.spec.js'
+        }
+      }
     }
 
   });
 
   grunt.registerTask('build', ['symlink']);
+  grunt.registerTask('compile', ['concat', 'stylus']);
+  grunt.registerTask('compile:min', ['uglify', 'stylus']);
 
 };
