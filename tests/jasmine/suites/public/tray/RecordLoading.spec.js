@@ -15,6 +15,7 @@ describe('Record Loading', function() {
 
   beforeEach(function() {
     _tray.loadNeatline();
+    _tray.respondItemTray200(_tray.json.RecordLoading.records.regular);
   });
 
 
@@ -25,7 +26,6 @@ describe('Record Loading', function() {
     // records that arrive in the initial query.
     // --------------------------------------------------------------------
 
-    _tray.respondItemTray200(_tray.json.RecordLoading.records.regular);
     var rows = _tray.getItemTrayRows();
 
     // Show list titles.
@@ -36,7 +36,24 @@ describe('Record Loading', function() {
   });
 
 
-  it('should reload records when the exhibit is refreshed');
+  it('should reload records when the exhibit is refreshed', function() {
+
+    // --------------------------------------------------------------------
+    // When the exhibit is refreshed, the item tray should query for new
+    // records and update the list.
+    // --------------------------------------------------------------------
+
+    Neatline.vent.trigger('refresh');
+
+    _tray.respondItemTray200(_tray.json.RecordLoading.records.changed);
+    var rows = _tray.getItemTrayRows();
+
+    // Show list updated titles.
+    expect($(rows[0])).toHaveText('title3');
+    expect($(rows[1])).toHaveText('title2');
+    expect($(rows[2])).toHaveText('title1');
+
+  });
 
 
 });

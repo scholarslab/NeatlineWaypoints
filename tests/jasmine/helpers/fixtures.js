@@ -26,6 +26,10 @@ var _tray = (function(_tray) {
           regular:  readFixtures('RecordLoading.records.regular.json'),
           changed:  readFixtures('RecordLoading.records.changed.json')
         }
+      },
+
+      OutgoingEvents: {
+        records:    readFixtures('OutgoingEvents.records.json')
       }
 
     };

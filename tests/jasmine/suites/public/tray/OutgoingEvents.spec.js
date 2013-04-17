@@ -13,14 +13,38 @@
 describe('Outgoing Events', function() {
 
 
+  var model, row, vent;
+
+
   beforeEach(function() {
+
     _tray.loadNeatline();
+    _tray.respondItemTray200(_tray.json.OutgoingEvents.records);
+
+    model = _tray.getItemTrayModels()[0];
+    row = _tray.getItemTrayRows()[0];
+
+    vent = spyOn(Neatline.vent, 'trigger');
+
   });
 
 
-  it('should publish `highlight` on record hover');
-  it('should publish `unhighlight` on record unhover');
-  it('should publish `select` on record click');
+  it('should publish `highlight` on record hover', function() {
+    $(row).trigger('mouseenter')
+    expect(vent).toHaveBeenCalledWith('highlight', model);
+  });
+
+
+  it('should publish `unhighlight` on record hover', function() {
+    $(row).trigger('mouseleave')
+    expect(vent).toHaveBeenCalledWith('unhighlight', model);
+  });
+
+
+  it('should publish `select` on record click', function() {
+    $(row).trigger('click')
+    expect(vent).toHaveBeenCalledWith('select', model);
+  });
 
 
 });

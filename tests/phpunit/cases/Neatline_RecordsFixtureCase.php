@@ -27,7 +27,8 @@ class Neatline_RecordsFixtureCase extends NeatlineItemTray_TestCase
         parent::setUp();
         $this->exhibit = $this->__exhibit();
         $this->request->setQuery(array(
-          'exhibit_id' => $this->exhibit->id
+            'exhibit_id' => $this->exhibit->id,
+            'order' => 'weight'
         ));
     }
 

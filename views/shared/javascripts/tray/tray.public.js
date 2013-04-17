@@ -29,6 +29,7 @@ Neatline.module('ItemTray', function(
 
   };
   Neatline.commands.setHandler('ITEMTRAY:load', load);
+  Neatline.vent.on('refresh', load);
 
 
   /**

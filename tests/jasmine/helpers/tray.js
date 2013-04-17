@@ -24,6 +24,16 @@ var _tray = (function(_tray) {
   };
 
 
+  /**
+   * Get the array of models from the item tray collection.
+   *
+   * @return {Array}: The models.
+   */
+  _tray.getItemTrayModels = function() {
+    return Neatline.ItemTray.__collection.models;
+  };
+
+
   return _tray;
 
 

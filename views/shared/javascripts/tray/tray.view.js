@@ -20,8 +20,8 @@ Neatline.module('ItemTray', function(
     id: 'item-tray',
 
     events: {
-      'mouseenter a': 'onShow',
-      'mouseleave a': 'onHide',
+      'mouseenter a': 'onHighlight',
+      'mouseleave a': 'onUnhighlight',
       'click a': 'onSelect'
     },
 
@@ -53,22 +53,22 @@ Neatline.module('ItemTray', function(
 
 
     /**
-     * Show presenter on hover.
+     * Highlight presenter on hover.
      *
      * @param {Object} e: The DOM event.
      */
-    onShow: function(e) {
-      Neatline.vent.trigger('show', this.getModel(e));
+    onHighlight: function(e) {
+      Neatline.vent.trigger('highlight', this.getModel(e));
     },
 
 
     /**
-     * Hide presenter on unhover.
+     * Unhighlight presenter on unhover.
      *
      * @param {Object} e: The DOM event.
      */
-    onHide: function(e) {
-      Neatline.vent.trigger('hide', this.getModel(e));
+    onUnhighlight: function(e) {
+      Neatline.vent.trigger('unhighlight', this.getModel(e));
     },
 
 
