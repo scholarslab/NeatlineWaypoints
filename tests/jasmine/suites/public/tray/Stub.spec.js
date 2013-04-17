@@ -12,12 +12,15 @@
 
 describe('Public Stub', function() {
 
+
   beforeEach(function() {
     _tray.loadNeatline();
   });
 
+
   it('test', function() {
     expect(true).toBeTruthy();
   });
+
 
 });

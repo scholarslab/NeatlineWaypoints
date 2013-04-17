@@ -17,7 +17,7 @@ Neatline.module('ItemTray', function(
   /**
    * Query for records.
    */
-  var load = function(params) {
+  var load = function() {
     ItemTray.__collection.update({widget: 'ItemTray'}, function(records) {
       ingest(records);
     });

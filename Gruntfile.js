@@ -104,10 +104,10 @@ module.exports = function(grunt) {
 
       options: {
         helpers: [
-          './Neatline/'+nlCfg.jasmine+'/helpers/*.js',
-          './Neatline/'+nlCfg.jasmine+'/assertions/*.js',
           './Neatline/'+nlCfg.vendor.js.jasmine_jquery,
           './Neatline/'+nlCfg.vendor.js.sinon,
+          './Neatline/'+nlCfg.jasmine+'/helpers/*.js',
+          './Neatline/'+nlCfg.jasmine+'/assertions/*.js',
           cfg.jasmine+'/helpers/*.js'
         ]
       },

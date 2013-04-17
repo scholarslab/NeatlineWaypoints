@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * State management helpers.
+ * Fixture loading helpers.
  *
  * @package     omeka
  * @subpackage  neatline
@@ -15,20 +15,21 @@ var _tray = (function(_tray) {
 
 
   /**
-   * Load neatline application.
+   * Read JSON fixtures.
    */
-  _tray.loadNeatline = function() {
-    this.loadJsonFixtures();
-    _t.loadNeatline();
-  };
+  _tray.loadJsonFixtures = function() {
 
+    this.json = {
 
-  /**
-   * Load editor application.
-   */
-  _tray.loadEditor = function() {
-    this.loadJsonFixtures();
-    _t.loadEditor();
+      RecordLoading: {
+        records: {
+          regular:  readFixtures('RecordLoading.records.regular.json'),
+          empty:    readFixtures('RecordLoading.records.empty.json')
+        }
+      }
+
+    };
+
   };
 
 

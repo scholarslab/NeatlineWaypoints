@@ -12,12 +12,15 @@
 
 describe('Editor Stub', function() {
 
+
   beforeEach(function() {
     _tray.loadEditor();
   });
 
+
   it('test', function() {
     expect(true).toBeTruthy();
   });
+
 
 });
