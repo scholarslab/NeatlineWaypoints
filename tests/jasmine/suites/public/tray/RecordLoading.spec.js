@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * .
+ * Tests for item tray record loading.
  *
  * @package     omeka
  * @subpackage  neatline
@@ -10,7 +10,7 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-describe('Public Stub', function() {
+describe('Record Loading', function() {
 
 
   beforeEach(function() {
@@ -18,9 +18,8 @@ describe('Public Stub', function() {
   });
 
 
-  it('test', function() {
-    expect(true).toBeTruthy();
-  });
+  it('should load records when the exhibit starts');
+  it('should reload records when the exhibit is refreshed');
 
 
 });

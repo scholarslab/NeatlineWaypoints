@@ -78,9 +78,7 @@ Neatline.module('ItemTray', function(
      * @param {Object} e: The DOM event.
      */
     onSelect: function(e) {
-      var model = this.getModel(e);
-      Neatline.execute('MAP:focusById', model.id);
-      Neatline.vent.trigger('select', model);
+      Neatline.vent.trigger('select', this.getModel(e));
     },
 
 

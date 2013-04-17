@@ -24,7 +24,7 @@ var _tray = (function(_tray) {
       RecordLoading: {
         records: {
           regular:  readFixtures('RecordLoading.records.regular.json'),
-          empty:    readFixtures('RecordLoading.records.empty.json')
+          changed:  readFixtures('RecordLoading.records.changed.json')
         }
       }
 

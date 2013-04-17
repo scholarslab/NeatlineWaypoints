@@ -42,19 +42,4 @@ class FixturesTest_RecordLoading extends Neatline_RecordsFixtureCase
     }
 
 
-    /**
-     * `RecordLoading.records.empty.json`
-     */
-    public function testEmptyTitle()
-    {
-
-        $record = $this->__record($this->exhibit);
-
-        $this->writeFixtureFromRoute('neatline/records',
-            'RecordLoading.records.empty.json'
-        );
-
-    }
-
-
 }
