@@ -30,20 +30,44 @@ describe('Outgoing Events', function() {
 
 
   it('should publish `highlight` on record hover', function() {
+
+    // --------------------------------------------------------------------
+    // When the cursor enters a record listing, the `highlight` event
+    // should be published with the corresponding model.
+    // --------------------------------------------------------------------
+
     $(row).trigger('mouseenter')
+
     expect(vent).toHaveBeenCalledWith('highlight', model);
+
   });
 
 
   it('should publish `unhighlight` on record hover', function() {
+
+    // --------------------------------------------------------------------
+    // When the cursor leaves a record listing, the `unhighlight` event
+    // should be published with the corresponding model.
+    // --------------------------------------------------------------------
+
     $(row).trigger('mouseleave')
+
     expect(vent).toHaveBeenCalledWith('unhighlight', model);
+
   });
 
 
   it('should publish `select` on record click', function() {
+
+    // --------------------------------------------------------------------
+    // When a record listing is clicked, the `select` event should be
+    // published with the corresponding model.
+    // --------------------------------------------------------------------
+
     $(row).trigger('click')
+
     expect(vent).toHaveBeenCalledWith('select', model);
+
   });
 
 

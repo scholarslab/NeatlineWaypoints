@@ -29,7 +29,6 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
 
 
     protected $_filters = array(
-        'neatline_exhibit_tabs',
         'neatline_exhibit_widgets',
         'neatline_record_widgets'
     );
@@ -72,23 +71,6 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
         if ($args['exhibit']->hasWidget('ItemTray')) {
             queue_css_file('payloads/tray');
             queue_js_file('payloads/tray');
-        }
-    }
-
-
-    /**
-     * Register the editor configuration tab.
-     *
-     * @param array $tabs Tabs, <LABEL> => <SLUG>.
-     * @param array $args Array of arguments, with `exhibit`.
-     * @return array The array, with "Item Tray" tab.
-     */
-    public function filterNeatlineExhibitTabs($tabs, $args)
-    {
-        if ($args['exhibit']->hasWidget('ItemTray')) {
-            return array_merge($tabs, array(
-                self::NAME => self::SLUG
-            ));
         }
     }
 
