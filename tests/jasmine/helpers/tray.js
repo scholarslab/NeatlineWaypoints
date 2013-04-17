@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * State management helpers.
+ * Item tray helpers.
  *
  * @package     omeka
  * @subpackage  neatline
@@ -15,22 +15,12 @@ var _tray = (function(_tray) {
 
 
   /**
-   * Load neatline application.
+   * Get DOM collection of tray record listings.
+   *
+   * @return {Array}: The DOM collection of <a> elements.
    */
-  _tray.loadNeatline = function() {
-    this.loadJsonFixtures();
-    _t.loadNeatline();
-    this.aliasNeatline();
-  };
-
-
-  /**
-   * Load editor application.
-   */
-  _tray.loadEditor = function() {
-    this.loadJsonFixtures();
-    _t.loadEditor();
-    this.aliasEditor();
+  _tray.getItemTrayRows = function() {
+    return this.vw.LIST.$el.find('a.title');
   };
 
 

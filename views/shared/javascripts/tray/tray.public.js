@@ -15,12 +15,18 @@ Neatline.module('ItemTray', function(
 
 
   /**
-   * Query for records.
+   * Load records active on the item tray, ordered by weight.
    */
   var load = function() {
-    ItemTray.__collection.update({widget: 'ItemTray'}, function(records) {
+
+    var params = {
+      widget: 'ItemTray', order: 'weight'
+    };
+
+    ItemTray.__collection.update(params, function(records) {
       ingest(records);
     });
+
   };
   Neatline.commands.setHandler('ITEMTRAY:load', load);
 
