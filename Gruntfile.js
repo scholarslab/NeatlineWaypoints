@@ -28,9 +28,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     shell: {
+
       options: {
         stdout: true
       },
+
       phpunit: {
         command: 'phpunit --color',
         options: {
@@ -38,7 +40,16 @@ module.exports = function(grunt) {
             cwd: './tests/phpunit'
           }
         }
+      },
+
+      bower_cache_clean: {
+        command: 'rm -rf ~/.bower && bower cache-clean'
+      },
+
+      bower_install: {
+        command: 'bower install'
       }
+
     },
 
     symlink: {
@@ -68,16 +79,23 @@ module.exports = function(grunt) {
     },
 
     concat: {
-      tray: {
+      tray_public: {
         src: cfg.src.shared+'/*.js',
-        dest: cfg.payloads.shared.js+'/tray.js'
+        dest: cfg.payloads.shared.js+'/tray-public.js'
+      },
+      tray_editor: {
+        src: [
+          cfg.vendor.js.html5sortable,
+          cfg.src.shared+'/*.js'
+        ],
+        dest: cfg.payloads.shared.js+'/tray-editor.js'
       }
     },
 
     uglify: {
-      tray: {
-        src: '<%= concat.tray.src %>',
-        dest: cfg.payloads.shared.js+'/tray.js'
+      tray_public: {
+        src: '<%= concat.neatline.src %>',
+        dest: cfg.payloads.shared.js+'/tray-public.js'
       }
     },
 
@@ -93,7 +111,7 @@ module.exports = function(grunt) {
     watch: {
       payload: {
         files: [
-          '<%= concat.tray.src %>',
+          '<%= concat.neatline.src %>',
           cfg.stylus.shared+'/*.styl'
         ],
         tasks: ['concat', 'stylus']
@@ -115,7 +133,7 @@ module.exports = function(grunt) {
       neatline: {
         src: [
           './Neatline/'+nlCfg.payloads.shared.js+'/neatline.js',
-          cfg.payloads.shared.js+'/tray.js'
+          cfg.payloads.shared.js+'/tray-public.js'
         ],
         options: {
           specs: cfg.jasmine+'/suites/public/**/*.spec.js'
@@ -125,7 +143,7 @@ module.exports = function(grunt) {
       editor: {
         src: [
           './Neatline/'+nlCfg.payloads.shared.js+'/editor.js',
-          cfg.payloads.shared.js+'/tray.js'
+          cfg.payloads.shared.js+'/tray-editor.js'
         ],
         options: {
           specs: cfg.jasmine+'/suites/editor/**/*.spec.js'
@@ -136,20 +154,34 @@ module.exports = function(grunt) {
 
   });
 
-  // Run tests by default.
+  // Run tests.
   grunt.registerTask('default', 'test');
 
-  // Symlink Neatline.
-  grunt.registerTask('build', ['symlink']);
+  // Build the application.
+  grunt.registerTask('build', [
+    'clean',
+    'symlink',
+    'shell:bower_cache_clean', 
+    'shell:bower_install' 
+  ]);
 
   // Assemble static assets.
-  grunt.registerTask('compile', ['concat', 'stylus']);
+  grunt.registerTask('compile', [
+    'concat',
+    'stylus'
+  ]);
 
   // Assemble/min static assets.
-  grunt.registerTask('compile:min', ['uglify', 'stylus']);
+  grunt.registerTask('compile:min', [
+    'uglify',
+    'stylus'
+  ]);
 
   // Run all tests.
-  grunt.registerTask('test', ['shell:phpunit', 'jasmine']);
+  grunt.registerTask('test', [
+    'shell:phpunit',
+    'jasmine'
+  ]);
 
   // Run PHPUnit.
   grunt.registerTask('phpunit', 'shell:phpunit');

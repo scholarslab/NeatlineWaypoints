@@ -15,6 +15,14 @@
     }
   },
 
-  "jasmine":  "./tests/jasmine"
+  "jasmine":  "./tests/jasmine",
+
+  "vendor": {
+
+    "js": {
+      "html5sortable": "./components/html5sortable/jquery.sortable.js"
+    }
+
+  }
 
 }

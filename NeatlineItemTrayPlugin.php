@@ -55,8 +55,8 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookNeatlinePublicStatic($args)
     {
         if ($args['exhibit']->hasWidget('ItemTray')) {
+            queue_js_file('payloads/tray-public');
             queue_css_file('payloads/tray');
-            queue_js_file('payloads/tray');
         }
     }
 
@@ -69,8 +69,8 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookNeatlineEditorStatic($args)
     {
         if ($args['exhibit']->hasWidget('ItemTray')) {
+            queue_js_file('payloads/tray-editor');
             queue_css_file('payloads/tray');
-            queue_js_file('payloads/tray');
         }
     }
 
