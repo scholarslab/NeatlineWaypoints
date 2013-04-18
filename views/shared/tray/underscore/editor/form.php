@@ -6,7 +6,7 @@
  * Item tray editor.
  *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-ItemTray
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
@@ -20,7 +20,7 @@
     <label><?php echo __('Record Order'); ?></label>
     <div class="controls">
       <div class="inline-inputs">
-        <div class="sort" /></div>
+        <div class="sort"></ul>
       </div>
     </div>
 

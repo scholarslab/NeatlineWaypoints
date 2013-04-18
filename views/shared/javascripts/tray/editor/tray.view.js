@@ -5,7 +5,7 @@
  * Item tray editor view.
  *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-ItemTray
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
@@ -52,7 +52,7 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
      */
     ingest: function(records) {
       this.__ui.sort.html(this.list({ records: records }));
-      // TODO
+      this.__ui.sort.sortable();
     },
 
 
@@ -60,6 +60,9 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
      * Save the order.
      */
     save: function() {
+      console.log(this.__ui.sort.sortable('toArray', {
+        attribute: 'data-id'
+      }));
       // TODO
     },
 
