@@ -20,7 +20,7 @@
     <label><?php echo __('Record Order'); ?></label>
     <div class="controls">
       <div class="inline-inputs">
-        <div class="sort"></ul>
+        <div class="sort"></div>
       </div>
     </div>
 

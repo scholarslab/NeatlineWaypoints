@@ -60,10 +60,21 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
      * Save the order.
      */
     save: function() {
-      var data = JSON.stringify(this.__ui.sort.sortable('toArray', {
+
+      // Gather order from jQuery UI.
+      var order = this.__ui.sort.sortable('toArray', {
         attribute: 'data-id'
-      }));
-      // TODO
+      });
+
+      // Update weights.
+      $.ajax({
+        url:      Neatline.global.item_tray_api,
+        data:     { 'order[]': order },
+        success:  _.bind(this.onSaveSuccess, this),
+        error:    _.bind(this.onSaveError, this),
+        type:     'POST'
+      });
+
     },
 
 
@@ -71,7 +82,8 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
      * When a save succeeds.
      */
     onSaveSuccess: function() {
-      // TODO
+      Neatline.vent.trigger('refresh')
+      // TODO: Flash success.
     },
 
 
@@ -79,7 +91,7 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
      * When a save fails.
      */
     onSaveError: function() {
-      // TODO
+      // TODO: Flash error.
     }
 
 

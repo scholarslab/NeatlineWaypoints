@@ -22,6 +22,7 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
 
 
     protected $_hooks = array(
+        'define_routes',
         'neatline_public_underscore',
         'neatline_editor_underscore',
         'neatline_public_static',
@@ -32,8 +33,22 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
     protected $_filters = array(
         'neatline_exhibit_tabs',
         'neatline_exhibit_widgets',
-        'neatline_record_widgets'
+        'neatline_record_widgets',
+        'neatline_globals'
     );
+
+
+    /**
+     * Register routes.
+     *
+     * @param array $args Zend_Config instance under `router` key.
+     */
+    public function hookDefineRoutes($args)
+    {
+        $args['router']->addConfig(new Zend_Config_Ini(
+            NL_ITEM_TRAY_DIR . '/routes.ini', 'routes')
+        );
+    }
 
 
     /**
@@ -131,6 +146,21 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
     {
         return array_merge($widgets, array(
             self::NAME => self::ID
+        ));
+    }
+
+
+    /**
+     * Register order API on `Neatline.global`.
+     *
+     * @param array $globals The array of global properties.
+     * @param array $args Array of arguments, with `exhibit`.
+     * @return array The modified array.
+     */
+    public function filterNeatlineGlobals($globals, $args)
+    {
+        return array_merge($globals, array(
+            'item_tray_api' => url('neatline-item-tray')
         ));
     }
 
