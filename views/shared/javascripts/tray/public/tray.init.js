@@ -17,7 +17,7 @@ Neatline.module('ItemTray', function(
   ItemTray.addInitializer(function() {
     this.__collection = new Neatline.Shared.Record.Collection();
     this.__view = new ItemTray.View();
-    Neatline.execute('ITEMTRAY:load');
+    Neatline.execute('TRAY:load');
   });
 
 

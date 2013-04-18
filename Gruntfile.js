@@ -81,14 +81,15 @@ module.exports = function(grunt) {
     concat: {
 
       tray_public: {
-        src: cfg.src.shared+'/*.js',
+        src: cfg.src.shared+'/public/*.js',
         dest: cfg.payloads.shared.js+'/tray-public.js'
       },
 
       tray_editor: {
         src: [
           cfg.vendor.js.html5sortable,
-          cfg.src.shared+'/*.js'
+          cfg.src.shared+'/public/*.js',
+          cfg.src.shared+'/editor/*.js'
         ],
         dest: cfg.payloads.shared.js+'/tray-editor.js'
       },

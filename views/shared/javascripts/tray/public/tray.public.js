@@ -28,7 +28,7 @@ Neatline.module('ItemTray', function(
     });
 
   };
-  Neatline.commands.setHandler('ITEMTRAY:load', load);
+  Neatline.commands.setHandler('TRAY:load', load);
   Neatline.vent.on('refresh', load);
 
 
@@ -40,7 +40,7 @@ Neatline.module('ItemTray', function(
   var ingest = function(records) {
     ItemTray.__view.ingest(records);
   };
-  Neatline.commands.setHandler('ITEMTRAY:ingest', ingest);
+  Neatline.commands.setHandler('TRAY:ingest', ingest);
 
 
 });

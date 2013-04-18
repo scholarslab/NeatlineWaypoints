@@ -35,8 +35,8 @@ Neatline.module('ItemTray', function(
       ItemTray.View.__super__.init.apply(this);
 
       // Compile template.
-      this.template = _.template(
-        $('#item-tray-records-template').html()
+      this.list = _.template(
+        $('#item-tray-public-list-template').html()
       );
 
     },
@@ -48,7 +48,7 @@ Neatline.module('ItemTray', function(
      * @param {Object} records: The records collection.
      */
     ingest: function(records) {
-      this.$el.html(this.template({ records: records }));
+      this.$el.html(this.list({ records: records }));
     },
 
 

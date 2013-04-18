@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * Item tray record list.
+ * Item tray editor record list.
  *
  * @package     omeka
  * @subpackage  neatline
@@ -13,14 +13,12 @@
 
 ?>
 
-<script id="item-tray-records-template" type="text/templates">
-
+<script id="item-tray-editor-list-template" type="text/templates">
   <ul>
     <% records.each(function(r) { %>
-      <a class="title" data-id="<%= r.id %>">
+      <li class="title" data-id="<%= r.id %>">
         <%= r.get('title') %>
-      </a>
+      </li>
     <% }); %>
   </ul>
-
 </script>
