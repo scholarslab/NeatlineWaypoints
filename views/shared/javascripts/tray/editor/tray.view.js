@@ -60,7 +60,7 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
      * Save the order.
      */
     save: function() {
-      console.log(this.__ui.sort.sortable('toArray', {
+      var data = JSON.stringify(this.__ui.sort.sortable('toArray', {
         attribute: 'data-id'
       }));
       // TODO
