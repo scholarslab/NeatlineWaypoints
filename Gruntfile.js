@@ -79,31 +79,51 @@ module.exports = function(grunt) {
     },
 
     concat: {
+
       tray_public: {
         src: cfg.src.shared+'/*.js',
         dest: cfg.payloads.shared.js+'/tray-public.js'
       },
+
       tray_editor: {
         src: [
           cfg.vendor.js.html5sortable,
           cfg.src.shared+'/*.js'
         ],
         dest: cfg.payloads.shared.js+'/tray-editor.js'
+      },
+
+      tray_editor_css: {
+        src: [
+          cfg.payloads.shared.css+'/tray-public.css',
+          cfg.payloads.shared.css+'/tray-editor.css',
+        ],
+        dest: cfg.payloads.shared.css+'/tray-editor.css'
       }
+
     },
 
     uglify: {
+
       tray_public: {
-        src: '<%= concat.neatline.src %>',
+        src: '<%= concat.tray_public.src %>',
         dest: cfg.payloads.shared.js+'/tray-public.js'
+      },
+
+      tray_editor: {
+        src: '<%= concat.tray_editor.src %>',
+        dest: cfg.payloads.shared.js+'/tray-editor.js'
       }
+
     },
 
     stylus: {
       compile: {
         files: {
-          './views/shared/css/payloads/tray.css':
-            cfg.stylus.shared+'/*.styl'
+          './views/shared/css/payloads/tray-public.css':
+            cfg.stylus.shared+'/public/*.styl',
+          './views/shared/css/payloads/tray-editor.css':
+            cfg.stylus.shared+'/editor/*.styl'
         }
       }
     },
@@ -167,14 +187,18 @@ module.exports = function(grunt) {
 
   // Assemble static assets.
   grunt.registerTask('compile', [
-    'concat',
-    'stylus'
+    'concat:tray_public',
+    'concat:tray_editor',
+    'stylus',
+    'concat:tray_editor_css'
   ]);
 
   // Assemble/min static assets.
   grunt.registerTask('compile:min', [
-    'uglify',
-    'stylus'
+    'uglify:tray_public',
+    'uglify:tray_editor',
+    'stylus',
+    'concat:tray_editor_css'
   ]);
 
   // Run all tests.
