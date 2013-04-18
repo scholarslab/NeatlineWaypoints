@@ -15,18 +15,19 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
 
 
   /**
-   * Load records and append the form to the editor container.
+   * Display the form and update the sorting list.
    *
    * @param {Object} container: The container element.
    */
   var display = function(container) {
+
+    ItemTray.__view.showIn(container);
 
     var params = {
       widget: 'ItemTray', order: 'weight'
     };
 
     ItemTray.__collection.update(params, function(records) {
-      ItemTray.__view.showIn(container);
       ItemTray.__view.ingest(records);
     });
 
