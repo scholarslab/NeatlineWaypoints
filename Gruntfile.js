@@ -131,10 +131,11 @@ module.exports = function(grunt) {
     watch: {
       payload: {
         files: [
-          '<%= concat.neatline.src %>',
-          cfg.stylus.shared+'/*.styl'
+          '<%= concat.tray_public.src %>',
+          '<%= concat.tray_editor.src %>',
+          cfg.stylus.shared+'/**/*.styl'
         ],
-        tasks: ['concat', 'stylus']
+        tasks: ['compile']
       }
     },
 
