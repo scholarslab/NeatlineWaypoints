@@ -1,9 +1,0 @@
-{
-    "name": "NeatlineItemTray"
-  , "version": "0.1"
-  , "dependencies": {
-
-      "html5sortable": "https://github.com/farhadi/html5sortable.git"
-
-  }
-}

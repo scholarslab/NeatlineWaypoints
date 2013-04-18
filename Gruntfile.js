@@ -28,11 +28,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     shell: {
-
       options: {
         stdout: true
       },
-
       phpunit: {
         command: 'phpunit --color',
         options: {
@@ -40,16 +38,7 @@ module.exports = function(grunt) {
             cwd: './tests/phpunit'
           }
         }
-      },
-
-      bower_cache_clean: {
-        command: 'rm -rf ~/.bower && bower cache-clean'
-      },
-
-      bower_install: {
-        command: 'bower install'
       }
-
     },
 
     symlink: {
@@ -87,8 +76,7 @@ module.exports = function(grunt) {
 
       tray_editor: {
         src: [
-          cfg.vendor.js.html5sortable,
-          cfg.src.shared+'/public/*.js',
+          '<%= concat.tray_public.src %>',
           cfg.src.shared+'/editor/*.js'
         ],
         dest: cfg.payloads.shared.js+'/tray-editor.js'
@@ -183,8 +171,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean',
     'symlink',
-    'shell:bower_cache_clean', 
-    'shell:bower_install' 
+    'compile'
   ]);
 
   // Assemble static assets.
