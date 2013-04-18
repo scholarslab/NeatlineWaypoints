@@ -17,8 +17,9 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
   ItemTray.View = Backbone.Neatline.View.extend({
 
 
-    template: '#item-tray-editor-template',
-    tagName:  'form',
+    template:   '#item-tray-form-template',
+    className:  'form-stacked item-tray',
+    tagName:    'form',
 
     events: {
       'click a[name="save"]': 'save'
@@ -34,7 +35,6 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
      */
     init: function() {
 
-      // Initialize parent.
       ItemTray.View.__super__.init.apply(this);
 
       // Compile template.
@@ -52,6 +52,7 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
      */
     ingest: function(records) {
       this.__ui.sort.html(this.list({ records: records }));
+      // TODO
     },
 
 

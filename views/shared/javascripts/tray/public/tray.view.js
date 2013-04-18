@@ -31,7 +31,6 @@ Neatline.module('ItemTray', function(
      */
     init: function() {
 
-      // Initialize parent.
       ItemTray.View.__super__.init.apply(this);
 
       // Compile template.

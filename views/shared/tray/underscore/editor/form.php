@@ -13,7 +13,7 @@
 
 ?>
 
-<script id="item-tray-editor-template" type="text/templates">
+<script id="item-tray-form-template" type="text/templates">
 
   <div class="control-group">
 

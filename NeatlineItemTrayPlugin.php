@@ -44,7 +44,7 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookNeatlinePublicUnderscore($args)
     {
         if ($args['exhibit']->hasWidget('ItemTray')) {
-            echo get_view()->partial('tray/underscore/public-list.php');
+            echo get_view()->partial('tray/underscore/public/list.php');
         }
     }
 
@@ -57,8 +57,8 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookNeatlineEditorUnderscore($args)
     {
         if ($args['exhibit']->hasWidget('ItemTray')) {
-            echo get_view()->partial('tray/underscore/editor-list.php');
-            echo get_view()->partial('tray/underscore/editor.php');
+            echo get_view()->partial('tray/underscore/editor/form.php');
+            echo get_view()->partial('tray/underscore/editor/list.php');
         }
     }
 

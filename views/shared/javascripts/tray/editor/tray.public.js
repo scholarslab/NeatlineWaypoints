@@ -15,7 +15,7 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
 
 
   /**
-   * Append the form to the editor container.
+   * Load records and append the form to the editor container.
    *
    * @param {Object} container: The container element.
    */
@@ -25,7 +25,6 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
       widget: 'ItemTray', order: 'weight'
     };
 
-    // Show form, populate record list.
     ItemTray.__collection.update(params, function(records) {
       ItemTray.__view.showIn(container);
       ItemTray.__view.ingest(records);
