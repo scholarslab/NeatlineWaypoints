@@ -2,8 +2,7 @@
          convertErrorsToExceptions="true"
          convertWarningsToExceptions="true"
          verbose="true">
-    <testsuite name="Neatline Item Tray Tests">
-        <directory>unit</directory>
+    <testsuite name="Neatline Waypoints Tests">
         <directory>integration</directory>
         <directory>fixtures</directory>
     </testsuite>

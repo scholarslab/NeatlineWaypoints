@@ -3,7 +3,7 @@
 
 /**
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
@@ -16,11 +16,11 @@ describe('Outgoing Events', function() {
 
   beforeEach(function() {
 
-    _tray.loadNeatline();
-    _tray.respondItemTray200(_tray.json.OutgoingEvents.records);
+    _w.loadNeatline();
+    _w.respondWaypoints200(_w.json.OutgoingEvents.records);
 
-    model = _tray.getItemTrayModels()[0];
-    row = _tray.getItemTrayRows()[0];
+    model = _w.getModels()[0];
+    row = _w.getRows()[0];
 
     vent = spyOn(Neatline.vent, 'trigger');
 

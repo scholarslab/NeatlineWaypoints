@@ -2,24 +2,23 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * State management helpers.
- *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
 
-var _tray = (function(_tray) {
+var _w = (function(_w) {
 
 
   /**
    * Load neatline application.
    */
-  _tray.loadNeatline = function() {
+  _w.loadNeatline = function() {
+    loadFixtures('neatline-partial.html');
     this.loadJsonFixtures();
-    _t.loadNeatline();
+    _t.__initNeatline();
     this.aliasNeatline();
   };
 
@@ -27,14 +26,15 @@ var _tray = (function(_tray) {
   /**
    * Load editor application.
    */
-  _tray.loadEditor = function() {
+  _w.loadEditor = function() {
+    loadFixtures('editor-partial.html');
     this.loadJsonFixtures();
-    _t.loadEditor();
+    _t.__initEditor();
     this.aliasEditor();
   };
 
 
-  return _tray;
+  return _w;
 
 
-})(_tray || {});
+})(_w || {});

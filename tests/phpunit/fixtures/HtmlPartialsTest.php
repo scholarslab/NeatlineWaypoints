@@ -3,15 +3,13 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 cc=76; */
 
 /**
- * HTML fixture generators.
- *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class FixturesTest_HtmlPartials extends NeatlineItemTray_TestCase
+class FixturesTest_HtmlPartials extends NeatlineWaypoints_TestCase
 {
 
 
@@ -32,7 +30,7 @@ class FixturesTest_HtmlPartials extends NeatlineItemTray_TestCase
         // Mock exhibit.
         $exhibit = $this->__exhibit();
         $exhibit->base_layer = 'OpenStreetMap';
-        $exhibit->widgets = 'ItemTray';
+        $exhibit->widgets = 'waypoints';
         $exhibit->save();
 
         // Set exhibit on view.

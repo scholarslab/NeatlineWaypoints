@@ -1,3 +1,3 @@
-# NeatlineItemTray
+# NeatlineWaypoints
 
-Add an item-browser tray to Neatline exhibits.
+Adds a list of waypoints to Neatline exhibits.

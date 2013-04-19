@@ -3,7 +3,7 @@
 
 /**
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
@@ -12,19 +12,19 @@ describe('Record Loading', function() {
 
 
   beforeEach(function() {
-    _tray.loadNeatline();
-    _tray.respondItemTray200(_tray.json.RecordLoading.records.regular);
+    _w.loadNeatline();
+    _w.respondWaypoints200(_w.json.RecordLoading.records.regular);
   });
 
 
   it('should load records when the exhibit starts', function() {
 
     // --------------------------------------------------------------------
-    // When the exhibit starts, the item tray should render listings for
+    // When the exhibit starts, the waypoints should template listings for
     // records that arrive in the initial query.
     // --------------------------------------------------------------------
 
-    var rows = _tray.getItemTrayRows();
+    var rows = _w.getRows();
 
     // Show list titles.
     expect($(rows[0])).toHaveText('title1');
@@ -37,14 +37,14 @@ describe('Record Loading', function() {
   it('should reload records when the exhibit is refreshed', function() {
 
     // --------------------------------------------------------------------
-    // When the exhibit is refreshed, the item tray should query for new
+    // When the exhibit is refreshed, the waypoints should query for new
     // records and update the list.
     // --------------------------------------------------------------------
 
     Neatline.vent.trigger('refresh');
 
-    _tray.respondItemTray200(_tray.json.RecordLoading.records.changed);
-    var rows = _tray.getItemTrayRows();
+    _w.respondWaypoints200(_w.json.RecordLoading.records.changed);
+    var rows = _w.getRows();
 
     // Show list updated titles.
     expect($(rows[0])).toHaveText('title3');

@@ -3,16 +3,14 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 cc=76; */
 
 /**
- * Neatline test case.
- *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
 
-class NeatlineItemTray_TestCase extends Neatline_AbstractTestCase
+class NeatlineWaypoints_TestCase extends Neatline_AbstractTestCase
 {
 
 
@@ -28,13 +26,13 @@ class NeatlineItemTray_TestCase extends Neatline_AbstractTestCase
         $this->user = $this->db->getTable('User')->find(1);
         $this->_authenticateUser($this->user);
 
-        // Install Neatline and NeatlineItemTray.
+        // Install Neatline and NeatlineWaypoints.
         $pluginHelper = new Omeka_Test_Helper_Plugin;
         $pluginHelper->setUp('Neatline');
-        $pluginHelper->setUp('NeatlineItemTray');
+        $pluginHelper->setUp('NeatlineWaypoints');
 
         // Register script paths.
-        get_view()->setScriptPath(NL_ITEM_TRAY_DIR . '/views/shared');
+        get_view()->setScriptPath(NL_WAYPOINTS_DIR . '/views/shared');
         get_view()->addScriptPath(NL_DIR . '/views/shared');
 
     }
@@ -47,7 +45,7 @@ class NeatlineItemTray_TestCase extends Neatline_AbstractTestCase
      */
     protected function getFixturesPath()
     {
-        return NL_ITEM_TRAY_DIR . '/tests/jasmine/fixtures/';
+        return NL_WAYPOINTS_DIR . '/tests/jasmine/fixtures/';
     }
 
 

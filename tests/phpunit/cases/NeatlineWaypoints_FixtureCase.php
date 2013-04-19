@@ -3,16 +3,14 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 cc=76; */
 
 /**
- * Abstract cast for record collection fixture generation.
- *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
 
-class Neatline_RecordsFixtureCase extends NeatlineItemTray_TestCase
+class NeatlineWaypoints_FixtureCase extends NeatlineWaypoints_TestCase
 {
 
 

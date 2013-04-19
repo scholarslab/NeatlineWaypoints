@@ -2,22 +2,20 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * Fixture loading helpers.
- *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
 
-var _tray = (function(_tray) {
+var _w = (function(_w) {
 
 
   /**
    * Read JSON fixtures.
    */
-  _tray.loadJsonFixtures = function() {
+  _w.loadJsonFixtures = function() {
 
     this.json = {
 
@@ -30,6 +28,10 @@ var _tray = (function(_tray) {
 
       OutgoingEvents: {
         records:    readFixtures('OutgoingEvents.records.json')
+      },
+
+      Sorting: {
+        records:    readFixtures('Sorting.records.json')
       }
 
     };
@@ -37,7 +39,7 @@ var _tray = (function(_tray) {
   };
 
 
-  return _tray;
+  return _w;
 
 
-})(_tray || {});
+})(_w || {});

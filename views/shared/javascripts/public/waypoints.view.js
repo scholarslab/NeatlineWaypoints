@@ -2,22 +2,20 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * Item tray view.
- *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('ItemTray', function(
-  ItemTray, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Waypoints', function(
+  Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  ItemTray.View = Neatline.Shared.Widget.View.extend({
+  Waypoints.View = Neatline.Shared.Widget.View.extend({
 
 
-    id: 'item-tray',
+    id: 'waypoints',
 
     events: {
       'mouseenter a': 'onHighlight',
@@ -31,11 +29,11 @@ Neatline.module('ItemTray', function(
      */
     init: function() {
 
-      ItemTray.View.__super__.init.apply(this);
+      Waypoints.View.__super__.init.apply(this);
 
       // Compile template.
       this.list = _.template(
-        $('#item-tray-public-list-template').html()
+        $('#waypoints-public-list-template').html()
       );
 
     },
@@ -87,7 +85,7 @@ Neatline.module('ItemTray', function(
      * @param {Object} e: The DOM event.
      */
     getModel: function(e) {
-      return ItemTray.__collection.get(
+      return Waypoints.__collection.get(
         parseInt($(e.currentTarget).attr('data-id'), 10)
       );
     }

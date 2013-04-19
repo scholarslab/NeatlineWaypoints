@@ -3,15 +3,13 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 cc=76; */
 
 /**
- * Tests for INDEX action in order controller.
- *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class OrderControllerTest_Index extends NeatlineItemTray_TestCase
+class OrderControllerTest_Index extends NeatlineWaypoints_TestCase
 {
 
 
@@ -34,7 +32,7 @@ class OrderControllerTest_Index extends NeatlineItemTray_TestCase
             )
         ));
 
-        $this->dispatch('neatline-item-tray');
+        $this->dispatch('neatline-waypoints');
         $record1 = $this->reload($record1);
         $record2 = $this->reload($record2);
         $record3 = $this->reload($record3);

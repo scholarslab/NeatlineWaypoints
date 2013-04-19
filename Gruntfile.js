@@ -2,10 +2,8 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * Gruntfile.
- *
  * @package     omeka
- * @subpackage  neatline-SIMILE
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
@@ -69,39 +67,39 @@ module.exports = function(grunt) {
 
     concat: {
 
-      tray_public: {
+      waypoints_public: {
         src: cfg.src.shared+'/public/*.js',
-        dest: cfg.payloads.shared.js+'/tray-public.js'
+        dest: cfg.payloads.shared.js+'/waypoints-public.js'
       },
 
-      tray_editor: {
+      waypoints_editor: {
         src: [
-          '<%= concat.tray_public.src %>',
+          '<%= concat.waypoints_public.src %>',
           cfg.src.shared+'/editor/*.js'
         ],
-        dest: cfg.payloads.shared.js+'/tray-editor.js'
+        dest: cfg.payloads.shared.js+'/waypoints-editor.js'
       },
 
-      tray_editor_css: {
+      waypoints_editor_css: {
         src: [
-          cfg.payloads.shared.css+'/tray-public.css',
-          cfg.payloads.shared.css+'/tray-editor.css',
+          cfg.payloads.shared.css+'/waypoints-public.css',
+          cfg.payloads.shared.css+'/waypoints-editor.css',
         ],
-        dest: cfg.payloads.shared.css+'/tray-editor.css'
+        dest: cfg.payloads.shared.css+'/waypoints-editor.css'
       }
 
     },
 
     uglify: {
 
-      tray_public: {
-        src: '<%= concat.tray_public.src %>',
-        dest: cfg.payloads.shared.js+'/tray-public.js'
+      waypoints_public: {
+        src: '<%= concat.waypoints_public.src %>',
+        dest: cfg.payloads.shared.js+'/waypoints-public.js'
       },
 
-      tray_editor: {
-        src: '<%= concat.tray_editor.src %>',
-        dest: cfg.payloads.shared.js+'/tray-editor.js'
+      waypoints_editor: {
+        src: '<%= concat.waypoints_editor.src %>',
+        dest: cfg.payloads.shared.js+'/waypoints-editor.js'
       }
 
     },
@@ -109,9 +107,9 @@ module.exports = function(grunt) {
     stylus: {
       compile: {
         files: {
-          './views/shared/css/payloads/tray-public.css':
+          './views/shared/css/payloads/waypoints-public.css':
             cfg.stylus.shared+'/public/*.styl',
-          './views/shared/css/payloads/tray-editor.css':
+          './views/shared/css/payloads/waypoints-editor.css':
             cfg.stylus.shared+'/editor/*.styl'
         }
       }
@@ -120,8 +118,8 @@ module.exports = function(grunt) {
     watch: {
       payload: {
         files: [
-          '<%= concat.tray_public.src %>',
-          '<%= concat.tray_editor.src %>',
+          '<%= concat.waypoints_public.src %>',
+          '<%= concat.waypoints_editor.src %>',
           cfg.stylus.shared+'/**/*.styl'
         ],
         tasks: ['compile']
@@ -143,7 +141,7 @@ module.exports = function(grunt) {
       neatline: {
         src: [
           './Neatline/'+nlCfg.payloads.shared.js+'/neatline.js',
-          cfg.payloads.shared.js+'/tray-public.js'
+          cfg.payloads.shared.js+'/waypoints-public.js'
         ],
         options: {
           specs: cfg.jasmine+'/suites/public/**/*.spec.js'
@@ -153,7 +151,7 @@ module.exports = function(grunt) {
       editor: {
         src: [
           './Neatline/'+nlCfg.payloads.shared.js+'/editor.js',
-          cfg.payloads.shared.js+'/tray-editor.js'
+          cfg.payloads.shared.js+'/waypoints-editor.js'
         ],
         options: {
           specs: cfg.jasmine+'/suites/editor/**/*.spec.js'
@@ -176,18 +174,18 @@ module.exports = function(grunt) {
 
   // Assemble static assets.
   grunt.registerTask('compile', [
-    'concat:tray_public',
-    'concat:tray_editor',
+    'concat:waypoints_public',
+    'concat:waypoints_editor',
     'stylus',
-    'concat:tray_editor_css'
+    'concat:waypoints_editor_css'
   ]);
 
   // Assemble/min static assets.
   grunt.registerTask('compile:min', [
-    'uglify:tray_public',
-    'uglify:tray_editor',
+    'uglify:waypoints_public',
+    'uglify:waypoints_editor',
     'stylus',
-    'concat:tray_editor_css'
+    'concat:waypoints_editor_css'
   ]);
 
   // Run all tests.

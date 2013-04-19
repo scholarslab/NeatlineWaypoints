@@ -1,7 +1,7 @@
 {
 
   "src": {
-    "shared": "./views/shared/javascripts/tray"
+    "shared": "./views/shared/javascripts"
   },
 
   "stylus": {

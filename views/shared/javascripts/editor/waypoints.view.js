@@ -2,23 +2,21 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * Item tray editor view.
- *
  * @package     omeka
- * @subpackage  neatline-ItemTray
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('Editor.Exhibit.ItemTray', function(
-  ItemTray, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Editor.Exhibit.Waypoints', function(
+  Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  ItemTray.View = Backbone.Neatline.View.extend({
+  Waypoints.View = Backbone.Neatline.View.extend({
 
 
-    template:   '#item-tray-form-template',
-    className:  'form-stacked item-tray',
+    template:   '#waypoints-form-template',
+    className:  'form-stacked waypoints',
     tagName:    'form',
 
     events: {
@@ -35,11 +33,11 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
      */
     init: function() {
 
-      ItemTray.View.__super__.init.apply(this);
+      Waypoints.View.__super__.init.apply(this);
 
       // Compile template.
       this.list = _.template(
-        $('#item-tray-editor-list-template').html()
+        $('#waypoints-editor-list-template').html()
       );
 
     },
@@ -68,8 +66,8 @@ Neatline.module('Editor.Exhibit.ItemTray', function(
 
       // Update weights.
       $.ajax({
-        url:      Neatline.global.item_tray_api,
-        data:     { 'order[]': order },
+        data:     { order: order },
+        url:      Neatline.global.waypoints_api,
         success:  _.bind(this.onSaveSuccess, this),
         error:    _.bind(this.onSaveError, this),
         type:     'POST'

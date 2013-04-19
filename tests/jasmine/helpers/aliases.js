@@ -2,24 +2,22 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * Component aliasing helpers.
- *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
 
-var _tray = (function(_tray) {
+var _w = (function(_w) {
 
 
   /**
    * Shortcut public views.
    */
-  _tray.aliasNeatline = function() {
+  _w.aliasNeatline = function() {
     this.vw = {
-      LIST: Neatline.ItemTray.__view
+      WP:     Neatline.Waypoints.__view
     };
   };
 
@@ -27,12 +25,15 @@ var _tray = (function(_tray) {
   /**
    * Shortcut editor views.
    */
-  _tray.aliasEditor = function() {
-    // TODO
+  _w.aliasEditor = function() {
+    this.vw = {
+      WP:     Neatline.Waypoints.__view,
+      WPEDIT: Neatline.Editor.Exhibit.Waypoints.__view
+    };
   };
 
 
-  return _tray;
+  return _w;
 
 
-})(_tray || {});
+})(_w || {});

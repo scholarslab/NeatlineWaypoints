@@ -9,14 +9,14 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class FixturesTest_RecordLoading extends NeatlineWaypoints_FixtureCase
+class FixturesTest_Sorting extends NeatlineWaypoints_FixtureCase
 {
 
 
     /**
-     * `RecordLoading.records.regular.json`
+     * `Sorting.records.json`
      */
-    public function testRecordLoading()
+    public function testSorting()
     {
 
         $record1 = $this->__record($this->exhibit);
@@ -34,20 +34,7 @@ class FixturesTest_RecordLoading extends NeatlineWaypoints_FixtureCase
         $record3->save();
 
         $this->writeFixtureFromRoute('neatline/records',
-            'RecordLoading.records.regular.json'
-        );
-
-        $record1->weight = 3;
-        $record2->weight = 2;
-        $record3->weight = 1;
-
-        $record1->save();
-        $record2->save();
-        $record3->save();
-
-        $this->resetResponse();
-        $this->writeFixtureFromRoute('neatline/records',
-            'RecordLoading.records.changed.json'
+            'Sorting.records.json'
         );
 
     }

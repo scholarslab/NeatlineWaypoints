@@ -3,22 +3,19 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 cc=76; */
 
 /**
- * Plugin manager class.
- *
  * @package     omeka
- * @subpackage  neatline-ItemTray
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
 
-class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
+class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
 {
 
 
-    const NAME  = 'Item Tray';
-    const ID    = 'ItemTray';
-    const SLUG  = 'item-tray';
+    const NAME  = 'Waypoints';
+    const ID    = 'waypoints';
 
 
     protected $_hooks = array(
@@ -46,7 +43,7 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookDefineRoutes($args)
     {
         $args['router']->addConfig(new Zend_Config_Ini(
-            NL_ITEM_TRAY_DIR . '/routes.ini', 'routes')
+            NL_WAYPOINTS_DIR . '/routes.ini', 'routes')
         );
     }
 
@@ -58,8 +55,8 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlinePublicUnderscore($args)
     {
-        if ($args['exhibit']->hasWidget('ItemTray')) {
-            echo get_view()->partial('tray/underscore/public/list.php');
+        if ($args['exhibit']->hasWidget(self::ID)) {
+            echo get_view()->partial('underscore/public/list.php');
         }
     }
 
@@ -71,9 +68,9 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlineEditorUnderscore($args)
     {
-        if ($args['exhibit']->hasWidget('ItemTray')) {
-            echo get_view()->partial('tray/underscore/editor/form.php');
-            echo get_view()->partial('tray/underscore/editor/list.php');
+        if ($args['exhibit']->hasWidget(self::ID)) {
+            echo get_view()->partial('underscore/editor/form.php');
+            echo get_view()->partial('underscore/editor/list.php');
         }
     }
 
@@ -85,9 +82,9 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlinePublicStatic($args)
     {
-        if ($args['exhibit']->hasWidget('ItemTray')) {
-            queue_css_file('payloads/tray-public');
-            queue_js_file('payloads/tray-public');
+        if ($args['exhibit']->hasWidget(self::ID)) {
+            queue_css_file('payloads/waypoints-public');
+            queue_js_file('payloads/waypoints-public');
         }
     }
 
@@ -99,9 +96,9 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlineEditorStatic($args)
     {
-        if ($args['exhibit']->hasWidget('ItemTray')) {
-            queue_css_file('payloads/tray-editor');
-            queue_js_file('payloads/tray-editor');
+        if ($args['exhibit']->hasWidget(self::ID)) {
+            queue_css_file('payloads/waypoints-editor');
+            queue_js_file('payloads/waypoints-editor');
         }
     }
 
@@ -110,13 +107,13 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      * Register the exhibit widget tab.
      *
      * @param array $tabs Tabs, <LABEL> => <SLUG>.
-     * @return array The array, with "Item Tray".
+     * @return array The array, with "Waypoints".
      */
     public function filterNeatlineExhibitTabs($tabs, $args)
     {
-        if ($args['exhibit']->hasWidget('ItemTray')) {
+        if ($args['exhibit']->hasWidget(self::ID)) {
           return array_merge($tabs, array(
-              self::NAME => self::SLUG
+              self::NAME => self::ID
           ));
         }
     }
@@ -126,7 +123,7 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      * Register the exhibit widget.
      *
      * @param array $widgets Widgets, <NAME> => <ID>.
-     * @return array The array, with "Item Tray".
+     * @return array The array, with "Waypoints".
      */
     public function filterNeatlineExhibitWidgets($widgets)
     {
@@ -140,7 +137,7 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
      * Register the record widget.
      *
      * @param array $widgets Widgets, <NAME> => <ID>.
-     * @return array The array, with "Item Tray".
+     * @return array The array, with "Waypoints".
      */
     public function filterNeatlineRecordWidgets($widgets)
     {
@@ -160,7 +157,7 @@ class NeatlineItemTrayPlugin extends Omeka_Plugin_AbstractPlugin
     public function filterNeatlineGlobals($globals, $args)
     {
         return array_merge($globals, array(
-            'item_tray_api' => url('neatline-item-tray')
+            'waypoints_api' => url('neatline-waypoints')
         ));
     }
 

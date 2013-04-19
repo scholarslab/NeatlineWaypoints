@@ -3,15 +3,13 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 cc=76; */
 
 /**
- * Fixture generator for "Outgoing Events" Jasmine suite.
- *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class FixturesTest_OutgoingEvents extends Neatline_RecordsFixtureCase
+class FixturesTest_OutgoingEvents extends NeatlineWaypoints_FixtureCase
 {
 
 

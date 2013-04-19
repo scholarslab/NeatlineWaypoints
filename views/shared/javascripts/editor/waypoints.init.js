@@ -2,22 +2,20 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 
 /**
- * Item tray editor initializer.
- *
  * @package     omeka
- * @subpackage  neatline
+ * @subpackage  neatline-Waypoints
  * @copyright   2012 Rector and Board of Visitors, University of Virginia
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('Editor.Exhibit.ItemTray', function(
-  ItemTray, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Editor.Exhibit.Waypoints', function(
+  Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  ItemTray.addInitializer(function() {
+  Waypoints.addInitializer(function() {
     this.__collection = new Neatline.Shared.Record.Collection();
-    this.__view       = new ItemTray.View();
-    this.__router     = new ItemTray.Router();
+    this.__view       = new Waypoints.View();
+    this.__router     = new Waypoints.Router();
   });
 
 
