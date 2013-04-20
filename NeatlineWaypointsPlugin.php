@@ -113,10 +113,9 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
     public function filterNeatlineExhibitTabs($tabs, $args)
     {
         if ($args['exhibit']->hasWidget(self::ID)) {
-          return array_merge($tabs, array(
-              self::NAME => self::ID
-          ));
+            $tabs[self::NAME] = self::ID;
         }
+        return $tabs;
     }
 
 

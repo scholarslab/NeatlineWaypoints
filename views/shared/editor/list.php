@@ -12,9 +12,19 @@
 ?>
 
 <script id="waypoints-editor-list-template" type="text/templates">
+
+  <!-- Placeholder. -->
+  <% if (records.length == 0) { %>
+    <div class="alert alert-error">
+      <%= WP_STRINGS.order.placeholders.empty %>
+    </div>
+  <% } %>
+
+  <!-- Waypoints. -->
   <% records.each(function(r) { %>
     <div class="alert alert-info" data-id="<%= r.id %>">
       <%= r.get('title') %>
     </div>
   <% }); %>
+
 </script>

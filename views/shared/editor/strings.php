@@ -15,8 +15,11 @@
   WP_STRINGS = {
     order: {
       save: {
-        success: '<?php echo __('The waypoint order was saved successfully!'); ?>',
-        error: '<?php echo __('There was an error; the waypoint order was not saved.'); ?>'
+        success:  '<?php echo __('The waypoint order was saved successfully!'); ?>',
+        error:    '<?php echo __('There was an error; the waypoint order was not saved.'); ?>'
+      },
+      placeholders: {
+        empty:    '<?php echo __('No waypoints have been added yet!'); ?>'
       }
     }
   };

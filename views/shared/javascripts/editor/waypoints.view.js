@@ -24,7 +24,8 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
     },
 
     ui: {
-      sort: 'div.sort'
+      save: 'a[name="save"]',
+      list: 'div.sort'
     },
 
 
@@ -36,9 +37,11 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
       Waypoints.View.__super__.init.apply(this);
 
       // Compile template.
-      this.list = _.template(
+      this.template = _.template(
         $('#waypoints-editor-list-template').html()
       );
+
+      this.__ui.list.sortable();
 
     },
 
@@ -49,8 +52,25 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
      * @param {Object} records: The records collection.
      */
     ingest: function(records) {
-      this.__ui.sort.html(this.list({ records: records }));
-      this.__ui.sort.sortable();
+
+      // Render the record list.
+      this.__ui.list.html(this.template({ records: records }));
+
+      // If waypoints exist, enable sorting, refresh the widget to pick up
+      // any new waypoints, and enable the "Save" button.
+
+      if (records.length > 0) {
+        this.__ui.list.sortable('enable').sortable('refresh');
+        this.__ui.save.removeClass('disabled');
+      }
+
+      // Otherwise, disable sorting and the "Save" button.
+
+      else {
+        this.__ui.list.sortable('disable');
+        this.__ui.save.addClass('disabled');
+      }
+
     },
 
 
@@ -60,7 +80,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
     save: function() {
 
       // Gather order from jQuery UI.
-      var order = this.__ui.sort.sortable('toArray', {
+      var order = this.__ui.list.sortable('toArray', {
         attribute: 'data-id'
       });
 

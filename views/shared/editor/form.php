@@ -15,7 +15,7 @@
 
   <div class="control-group">
 
-    <label><?php echo __('Waypoint Order'); ?></label>
+    <label><?php echo __('Edit Waypoint Order'); ?></label>
     <div class="controls">
       <div class="inline-inputs">
         <div class="sort"></div>

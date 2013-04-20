@@ -1,3 +1,3 @@
 # NeatlineWaypoints
 
-Adds a list of waypoints to Neatline exhibits.
+Adds an ordered list of waypoints to Neatline exhibits.

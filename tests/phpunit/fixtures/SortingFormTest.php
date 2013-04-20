@@ -22,6 +22,7 @@ class FixturesTest_SortingForm extends NeatlineWaypoints_FixtureCase
         $record1 = $this->__record($this->exhibit);
         $record2 = $this->__record($this->exhibit);
         $record3 = $this->__record($this->exhibit);
+
         $record1->title = 'title1';
         $record2->title = 'title2';
         $record3->title = 'title3';
