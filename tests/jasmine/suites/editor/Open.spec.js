@@ -8,13 +8,12 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-describe('Form Open', function() {
+describe('Waypoints Open', function() {
 
 
   beforeEach(function() {
     WP.loadEditor();
-    NL.navigate('waypoints');
-    NL.respondLast200(WP.json.SortingForm.records);
+    WP.showWaypoints(WP.json.SortingForm.records);
   });
 
 

@@ -24,7 +24,7 @@ describe('Record Loading', function() {
     // records that arrive in the initial query.
     // --------------------------------------------------------------------
 
-    var rows = WP.getRows();
+    var rows = WP.getWidgetRows();
 
     // Show list titles.
     expect($(rows[0])).toHaveText('title1');
@@ -44,7 +44,7 @@ describe('Record Loading', function() {
     Neatline.vent.trigger('refresh');
 
     WP.respondWaypoints200(WP.json.RecordLoading.records.changed);
-    var rows = WP.getRows();
+    var rows = WP.getWidgetRows();
 
     // Show list updated titles.
     expect($(rows[0])).toHaveText('title3');

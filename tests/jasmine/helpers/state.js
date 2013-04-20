@@ -34,6 +34,17 @@ var WP = (function(WP) {
   };
 
 
+  /**
+   * Navigate to the waypoints form.
+   *
+   * @param {Object} response: The response body.
+   */
+  WP.showWaypoints = function(response) {
+    NL.navigate('waypoints');
+    NL.respondLast200(response);
+  };
+
+
   return WP;
 
 

@@ -8,7 +8,7 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-describe('Form Save', function() {
+describe('Waypoints Save', function() {
 
 
   var el;
@@ -17,9 +17,7 @@ describe('Form Save', function() {
   beforeEach(function() {
 
     WP.loadEditor();
-
-    NL.navigate('waypoints');
-    NL.respondLast200(WP.json.SortingForm.records);
+    WP.showWaypoints(WP.json.SortingForm.records);
 
     el = {
       save: WP.vw.WPEDIT.$('a[name="save"]')
@@ -42,8 +40,13 @@ describe('Form Save', function() {
     NL.assertLastRequestRoute(Neatline.global.waypoints_api);
     NL.assertLastRequestMethod('POST');
 
-    // TODO: Check `order` parameter.
-    console.log(NL.getLastRequestParams());
+    var order = NL.getLastRequestParams();
+    var rows  = WP.getEditorRows();
+
+    // Should emit row `data-id` ordering.
+    expect(order[0]).toEqual($(rows[0]).attr('data-id'));
+    expect(order[1]).toEqual($(rows[1]).attr('data-id'));
+    expect(order[2]).toEqual($(rows[2]).attr('data-id'));
 
   });
 
@@ -55,7 +58,6 @@ describe('Form Save', function() {
     // success notification should be displayed.
     // --------------------------------------------------------------------
 
-    // Spy on toaster.
     spyOn(toastr, 'info');
 
     // Click on "Save".
@@ -77,7 +79,6 @@ describe('Form Save', function() {
     // notification should be displayed.
     // --------------------------------------------------------------------
 
-    // Spy on toaster.
     spyOn(toastr, 'error');
 
     // Click on "Save".

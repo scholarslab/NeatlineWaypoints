@@ -17,8 +17,18 @@ var WP = (function(WP) {
    *
    * @return {Array}: The DOM collection of <a> elements.
    */
-  WP.getRows = function() {
+  WP.getWidgetRows = function() {
     return this.vw.WP.$('a.title');
+  };
+
+
+  /**
+   * Get the array of models from the waypoints collection.
+   *
+   * @return {Array}: The models.
+   */
+  WP.getWidgetModels = function() {
+    return Neatline.Waypoints.__collection.models;
   };
 
 
@@ -29,16 +39,6 @@ var WP = (function(WP) {
    */
   WP.getEditorRows = function() {
     return this.vw.WPEDIT.$('div.alert');
-  };
-
-
-  /**
-   * Get the array of models from the waypoints collection.
-   *
-   * @return {Array}: The models.
-   */
-  WP.getModels = function() {
-    return Neatline.Waypoints.__collection.models;
   };
 
 
