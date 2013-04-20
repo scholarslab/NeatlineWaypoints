@@ -19,9 +19,7 @@ describe('Outgoing Events', function() {
     WP.loadNeatline();
     WP.respondWaypoints200(WP.json.OutgoingEvents.records);
 
-    model = WP.getModels()[0];
-    row = WP.getRows()[0];
-
+    model = WP.getModels()[0], row = WP.getRows()[0];
     vent = spyOn(Neatline.vent, 'trigger');
 
   });

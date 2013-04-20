@@ -8,7 +8,7 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-describe('Save', function() {
+describe('Form Save', function() {
 
 
   var el;
@@ -19,7 +19,7 @@ describe('Save', function() {
     WP.loadEditor();
 
     NL.navigate('waypoints');
-    NL.respondLast200(WP.json.Sorting.records);
+    NL.respondLast200(WP.json.SortingForm.records);
 
     el = {
       save: WP.vw.WPEDIT.$('a[name="save"]')
@@ -38,7 +38,7 @@ describe('Save', function() {
     // Click on "Save".
     el.save.trigger('click');
 
-    // Route should be /neatline-waypoints, method POST.
+    // Route should be waypoints API, method POST.
     NL.assertLastRequestRoute(Neatline.global.waypoints_api);
     NL.assertLastRequestMethod('POST');
 

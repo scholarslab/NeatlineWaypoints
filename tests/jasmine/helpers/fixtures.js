@@ -30,8 +30,8 @@ var WP = (function(WP) {
         records:    readFixtures('OutgoingEvents.records.json')
       },
 
-      Sorting: {
-        records:    readFixtures('Sorting.records.json')
+      SortingForm: {
+        records:    readFixtures('SortingForm.records.json')
       }
 
     };

@@ -8,21 +8,21 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-describe('Open', function() {
+describe('Form Open', function() {
 
 
   beforeEach(function() {
     WP.loadEditor();
     NL.navigate('waypoints');
-    NL.respondLast200(WP.json.Sorting.records);
+    NL.respondLast200(WP.json.SortingForm.records);
   });
 
 
   it('should load records when tab is selected', function() {
 
     // --------------------------------------------------------------------
-    // When the "Waypoints" tab is selected, the sortable list of records
-    // under "Waypoint Order" should be loaded from the server. 
+    // When the "Waypoints" tab is selected, the  list of records under
+    // "Waypoint Order" should be loaded from the server. 
     // --------------------------------------------------------------------
 
     var rows = WP.getEditorRows();
@@ -36,7 +36,7 @@ describe('Open', function() {
   it('should make the list sortable', function() {
 
     // --------------------------------------------------------------------
-    // The list of records under "Record Order" should be sortable.
+    // The list of records under "Waypoint Order" should be sortable.
     // --------------------------------------------------------------------
 
     expect(WP.vw.WPEDIT.__ui.sort).toHaveClass('ui-sortable');

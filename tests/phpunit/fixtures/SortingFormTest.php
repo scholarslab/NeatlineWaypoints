@@ -9,12 +9,12 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class FixturesTest_Sorting extends NeatlineWaypoints_FixtureCase
+class FixturesTest_SortingForm extends NeatlineWaypoints_FixtureCase
 {
 
 
     /**
-     * `Sorting.records.json`
+     * `SortingForm.records.json`
      */
     public function testSorting()
     {
@@ -34,7 +34,7 @@ class FixturesTest_Sorting extends NeatlineWaypoints_FixtureCase
         $record3->save();
 
         $this->writeFixtureFromRoute('neatline/records',
-            'Sorting.records.json'
+            'SortingForm.records.json'
         );
 
     }
