@@ -15,6 +15,7 @@ class FixturesTest_RecordLoading extends NeatlineWaypoints_FixtureCase
 
     /**
      * `RecordLoading.records.regular.json`
+     * `RecordLoading.records.changed.json`
      */
     public function testRecordLoading()
     {

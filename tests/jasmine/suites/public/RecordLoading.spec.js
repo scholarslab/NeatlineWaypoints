@@ -42,7 +42,6 @@ describe('Record Loading', function() {
     // --------------------------------------------------------------------
 
     Neatline.vent.trigger('refresh');
-
     WP.respondWaypoints200(WP.json.RecordLoading.records.changed);
     var rows = WP.getWidgetRows();
 

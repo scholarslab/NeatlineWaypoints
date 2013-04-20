@@ -30,17 +30,18 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
 
 
     /**
-     * Compile the records template.
+     * Compile the records template, instantiate Sortable.
      */
     init: function() {
 
       Waypoints.View.__super__.init.apply(this);
 
-      // Compile template.
+      // Compile list template.
       this.template = _.template(
         $('#waypoints-editor-list-template').html()
       );
 
+      // Initialize Sortable.
       this.__ui.list.sortable();
 
     },
@@ -56,17 +57,11 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
       // Render the record list.
       this.__ui.list.html(this.template({ records: records }));
 
-      // If waypoints exist, enable sorting, refresh the widget to pick up
-      // any new waypoints, and enable the "Save" button.
-
+      // (En/dis)able sorting and the "Save" button.
       if (records.length > 0) {
         this.__ui.list.sortable('enable').sortable('refresh');
         this.__ui.save.removeClass('disabled');
-      }
-
-      // Otherwise, disable sorting and the "Save" button.
-
-      else {
+      } else {
         this.__ui.list.sortable('disable');
         this.__ui.save.addClass('disabled');
       }
