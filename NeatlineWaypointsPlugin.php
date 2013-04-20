@@ -20,8 +20,8 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
 
     protected $_hooks = array(
         'define_routes',
-        'neatline_public_underscore',
-        'neatline_editor_underscore',
+        'neatline_public_templates',
+        'neatline_editor_templates',
         'neatline_public_static',
         'neatline_editor_static'
     );
@@ -53,10 +53,10 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      *
      * @param array $args Array of arguments, with `exhibit`.
      */
-    public function hookNeatlinePublicUnderscore($args)
+    public function hookNeatlinePublicTemplates($args)
     {
         if ($args['exhibit']->hasWidget(self::ID)) {
-            echo get_view()->partial('underscore/public/list.php');
+            echo get_view()->partial('public/list.php');
         }
     }
 
@@ -66,11 +66,12 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      *
      * @param array $args Array of arguments, with `exhibit`.
      */
-    public function hookNeatlineEditorUnderscore($args)
+    public function hookNeatlineEditorTemplates($args)
     {
         if ($args['exhibit']->hasWidget(self::ID)) {
-            echo get_view()->partial('underscore/editor/form.php');
-            echo get_view()->partial('underscore/editor/list.php');
+            echo get_view()->partial('editor/strings.php');
+            echo get_view()->partial('editor/form.php');
+            echo get_view()->partial('editor/list.php');
         }
     }
 

@@ -47,10 +47,48 @@ describe('Form Save', function() {
   });
 
 
-  it('should flash notification when save succeeds');
+  it('should flash notification when save succeeds', function() {
+
+    // --------------------------------------------------------------------
+    // When the "Save" button is clicked and the request is successful, a
+    // success notification should be displayed.
+    // --------------------------------------------------------------------
+
+    // Spy on toaster.
+    spyOn(toastr, 'info');
+
+    // Click on "Save".
+    el.save.trigger('click');
+    NL.respondLast200('');
+
+    // Should flash success.
+    expect(toastr.info).toHaveBeenCalledWith(
+      WP_STRINGS.order.save.success
+    );
+
+  });
 
 
-  it('should flash notification when save fails');
+  it('should flash notification when save fails', function() {
+
+    // --------------------------------------------------------------------
+    // When the "Save" button is clicked and the request fails, a failure
+    // notification should be displayed.
+    // --------------------------------------------------------------------
+
+    // Spy on toaster.
+    spyOn(toastr, 'error');
+
+    // Click on "Save".
+    el.save.trigger('click');
+    NL.respondLast500();
+
+    // Should flash error.
+    expect(toastr.error).toHaveBeenCalledWith(
+      WP_STRINGS.order.save.error
+    );
+
+  });
 
 
   it('should refresh the exhibit when save succeeds', function() {

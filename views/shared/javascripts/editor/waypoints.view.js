@@ -81,7 +81,9 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
      */
     onSaveSuccess: function() {
       Neatline.vent.trigger('refresh')
-      // TODO: Flash success.
+      Neatline.execute('EDITOR:notifySuccess',
+        WP_STRINGS.order.save.success
+      );
     },
 
 
@@ -89,7 +91,9 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
      * When a save fails.
      */
     onSaveError: function() {
-      // TODO: Flash error.
+      Neatline.execute('EDITOR:notifyError',
+        WP_STRINGS.order.save.error
+      );
     }
 
 
