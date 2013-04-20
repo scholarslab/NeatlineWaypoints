@@ -9,12 +9,12 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class FixturesTest_FormOpen extends NeatlineWaypoints_FixtureCase
+class FixturesTest_Form extends NeatlineWaypoints_FixtureCase
 {
 
 
     /**
-     * `FormOpen.records.regular.json`
+     * `Form.records.regular.json`
      */
     public function testRegular()
     {
@@ -35,19 +35,19 @@ class FixturesTest_FormOpen extends NeatlineWaypoints_FixtureCase
         $record3->save();
 
         $this->writeFixtureFromRoute('neatline/records',
-            'FormOpen.records.regular.json'
+            'Form.records.regular.json'
         );
 
     }
 
 
     /**
-     * `FormOpen.records.empty.json`
+     * `Form.records.empty.json`
      */
     public function testEmpty()
     {
         $this->writeFixtureFromRoute('neatline/records',
-            'FormOpen.records.empty.json'
+            'Form.records.empty.json'
         );
     }
 

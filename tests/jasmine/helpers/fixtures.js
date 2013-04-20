@@ -30,15 +30,11 @@ var WP = (function(WP) {
         records:    readFixtures('OutgoingEvents.records.json')
       },
 
-      FormOpen: {
+      Form: {
         records: {
-          regular:  readFixtures('FormOpen.records.regular.json'),
-          empty:    readFixtures('FormOpen.records.empty.json')
+          regular:  readFixtures('Form.records.regular.json'),
+          empty:    readFixtures('Form.records.empty.json')
         }
-      },
-
-      SortingForm: {
-        records:    readFixtures('SortingForm.records.json')
       }
 
     };

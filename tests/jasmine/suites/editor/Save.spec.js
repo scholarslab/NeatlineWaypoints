@@ -17,7 +17,7 @@ describe('Form Save', function() {
   beforeEach(function() {
 
     WP.loadEditor();
-    WP.showWaypoints(WP.json.SortingForm.records);
+    WP.showWaypoints(WP.json.Form.records.regular);
 
     el = {
       save: WP.vw.WPEDIT.$('a[name="save"]')
