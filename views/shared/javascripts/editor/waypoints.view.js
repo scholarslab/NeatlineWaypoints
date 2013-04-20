@@ -66,7 +66,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
 
       // Update weights.
       $.ajax({
-        data:     { order: order },
+        data:     JSON.stringify(order),
         url:      Neatline.global.waypoints_api,
         success:  _.bind(this.onSaveSuccess, this),
         error:    _.bind(this.onSaveError, this),

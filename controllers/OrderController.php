@@ -29,11 +29,17 @@ class NeatlineWaypoints_OrderController
      */
     public function indexAction()
     {
-        foreach ($this->getRequest()->getPost('order') as $i => $id) {
+
+        // Decode the `id` ordering.
+        $order = Zend_Json::decode($this->getRequest()->getRawBody());
+
+        // Update the record weights.
+        foreach ($order as $i => $id) {
             $record = $this->records->find($id);
             $record->weight = $i;
             $record->save();
         }
+
     }
 
 

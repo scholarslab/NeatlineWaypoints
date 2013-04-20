@@ -43,6 +43,7 @@ describe('Form Save', function() {
     NL.assertLastRequestMethod('POST');
 
     // TODO: Check `order` parameter.
+    console.log(NL.getLastRequestParams());
 
   });
 

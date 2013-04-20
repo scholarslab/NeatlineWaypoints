@@ -24,13 +24,12 @@ class OrderControllerTest_Index extends NeatlineWaypoints_TestCase
         $record2 = $this->__record($exhibit);
         $record3 = $this->__record($exhibit);
 
-        $this->request->setMethod('POST')->setPost(array(
-            'order' => array(
-                $record1->id,
-                $record2->id,
-                $record3->id
-            )
-        ));
+        $this->request->setMethod('POST')->setRawBody(
+          Zend_Json::encode(array(
+            $record1->id,
+            $record2->id,
+            $record3->id
+        )));
 
         $this->dispatch('neatline-waypoints');
         $record1 = $this->reload($record1);
