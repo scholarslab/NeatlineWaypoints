@@ -9,7 +9,7 @@
  */
 
 
-var _w = (function(_w) {
+var WP = (function(WP) {
 
 
   /**
@@ -17,7 +17,7 @@ var _w = (function(_w) {
    *
    * @return {Array}: The DOM collection of <a> elements.
    */
-  _w.getRows = function() {
+  WP.getRows = function() {
     return this.vw.WP.$('a.title');
   };
 
@@ -27,7 +27,7 @@ var _w = (function(_w) {
    *
    * @return {Array}: The DOM collection of <a> elements.
    */
-  _w.getEditorRows = function() {
+  WP.getEditorRows = function() {
     return this.vw.WPEDIT.$('div.alert');
   };
 
@@ -37,12 +37,12 @@ var _w = (function(_w) {
    *
    * @return {Array}: The models.
    */
-  _w.getModels = function() {
+  WP.getModels = function() {
     return Neatline.Waypoints.__collection.models;
   };
 
 
-  return _w;
+  return WP;
 
 
-})(_w || {});
+})(WP || {});

@@ -9,13 +9,13 @@
  */
 
 
-var _w = (function(_w) {
+var WP = (function(WP) {
 
 
   /**
    * Read JSON fixtures.
    */
-  _w.loadJsonFixtures = function() {
+  WP.loadJsonFixtures = function() {
 
     this.json = {
 
@@ -39,7 +39,7 @@ var _w = (function(_w) {
   };
 
 
-  return _w;
+  return WP;
 
 
-})(_w || {});
+})(WP || {});

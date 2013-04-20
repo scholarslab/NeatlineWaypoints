@@ -9,7 +9,7 @@
  */
 
 
-var _w = (function(_w) {
+var WP = (function(WP) {
 
 
   /**
@@ -17,20 +17,16 @@ var _w = (function(_w) {
    *
    * @param {Object} response: The response body.
    */
-  _w.respondWaypoints200 = function(response) {
-    _.each(_t.server.requests, _.bind(function(request) {
-
-      // Check for `widget` and `order` GET parameters.
-      var widget  = _.str.include(request.url, 'widget=waypoints');
-      var order   = _.str.include(request.url, 'order=weight');
-
-      if (widget && order) _t.respond200(request, response);
-
+  WP.respondWaypoints200 = function(response) {
+    _.each(NL.server.requests, _.bind(function(request) {
+      var widget = _.str.include(request.url, 'widget=waypoints');
+      var order  = _.str.include(request.url, 'order=weight');
+      if (widget && order) NL.respond200(request, response);
     }, this));
   };
 
 
-  return _w;
+  return WP;
 
 
-})(_w || {});
+})(WP || {});

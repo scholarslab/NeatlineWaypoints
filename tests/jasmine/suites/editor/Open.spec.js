@@ -12,12 +12,9 @@ describe('Open', function() {
 
 
   beforeEach(function() {
-
-    _w.loadEditor();
-
-    _t.navigate('waypoints');
-    _t.respondLast200(_w.json.Sorting.records);
-
+    WP.loadEditor();
+    NL.navigate('waypoints');
+    NL.respondLast200(WP.json.Sorting.records);
   });
 
 
@@ -28,7 +25,7 @@ describe('Open', function() {
     // under "Waypoint Order" should be loaded from the server. 
     // --------------------------------------------------------------------
 
-    var rows = _w.getEditorRows();
+    var rows = WP.getEditorRows();
     expect($(rows[0])).toHaveText('title1');
     expect($(rows[1])).toHaveText('title2');
     expect($(rows[2])).toHaveText('title3');
@@ -42,7 +39,7 @@ describe('Open', function() {
     // The list of records under "Record Order" should be sortable.
     // --------------------------------------------------------------------
 
-    expect(_w.vw.WPEDIT.__ui.sort).toHaveClass('ui-sortable');
+    expect(WP.vw.WPEDIT.__ui.sort).toHaveClass('ui-sortable');
 
   });
 

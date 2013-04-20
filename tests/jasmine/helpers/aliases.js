@@ -9,13 +9,13 @@
  */
 
 
-var _w = (function(_w) {
+var WP = (function(WP) {
 
 
   /**
    * Shortcut public views.
    */
-  _w.aliasNeatline = function() {
+  WP.aliasNeatline = function() {
     this.vw = {
       WP:     Neatline.Waypoints.__view
     };
@@ -25,7 +25,7 @@ var _w = (function(_w) {
   /**
    * Shortcut editor views.
    */
-  _w.aliasEditor = function() {
+  WP.aliasEditor = function() {
     this.vw = {
       WP:     Neatline.Waypoints.__view,
       WPEDIT: Neatline.Editor.Exhibit.Waypoints.__view
@@ -33,7 +33,7 @@ var _w = (function(_w) {
   };
 
 
-  return _w;
+  return WP;
 
 
-})(_w || {});
+})(WP || {});

@@ -12,8 +12,8 @@ describe('Record Loading', function() {
 
 
   beforeEach(function() {
-    _w.loadNeatline();
-    _w.respondWaypoints200(_w.json.RecordLoading.records.regular);
+    WP.loadNeatline();
+    WP.respondWaypoints200(WP.json.RecordLoading.records.regular);
   });
 
 
@@ -24,7 +24,7 @@ describe('Record Loading', function() {
     // records that arrive in the initial query.
     // --------------------------------------------------------------------
 
-    var rows = _w.getRows();
+    var rows = WP.getRows();
 
     // Show list titles.
     expect($(rows[0])).toHaveText('title1');
@@ -43,8 +43,8 @@ describe('Record Loading', function() {
 
     Neatline.vent.trigger('refresh');
 
-    _w.respondWaypoints200(_w.json.RecordLoading.records.changed);
-    var rows = _w.getRows();
+    WP.respondWaypoints200(WP.json.RecordLoading.records.changed);
+    var rows = WP.getRows();
 
     // Show list updated titles.
     expect($(rows[0])).toHaveText('title3');

@@ -16,13 +16,13 @@ describe('Save', function() {
 
   beforeEach(function() {
 
-    _w.loadEditor();
+    WP.loadEditor();
 
-    _t.navigate('waypoints');
-    _t.respondLast200(_w.json.Sorting.records);
+    NL.navigate('waypoints');
+    NL.respondLast200(WP.json.Sorting.records);
 
     el = {
-      save: _w.vw.WPEDIT.$('a[name="save"]')
+      save: WP.vw.WPEDIT.$('a[name="save"]')
     };
 
   });
@@ -39,8 +39,8 @@ describe('Save', function() {
     el.save.trigger('click');
 
     // Route should be /neatline-waypoints, method POST.
-    _t.assertLastRequestRoute(Neatline.global.waypoints_api);
-    _t.assertLastRequestMethod('POST');
+    NL.assertLastRequestRoute(Neatline.global.waypoints_api);
+    NL.assertLastRequestMethod('POST');
 
     // TODO: Check `order` parameter.
 
@@ -64,7 +64,7 @@ describe('Save', function() {
 
     // Click on "Save".
     el.save.trigger('click');
-    _t.respondLast200('');
+    NL.respondLast200('');
 
     // Should refresh the exhibit.
     expect(Neatline.vent.trigger).toHaveBeenCalledWith('refresh');

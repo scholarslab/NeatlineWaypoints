@@ -9,16 +9,16 @@
  */
 
 
-var _w = (function(_w) {
+var WP = (function(WP) {
 
 
   /**
    * Load neatline application.
    */
-  _w.loadNeatline = function() {
+  WP.loadNeatline = function() {
     loadFixtures('neatline-partial.html');
     this.loadJsonFixtures();
-    _t.__initNeatline();
+    NL.__initNeatline();
     this.aliasNeatline();
   };
 
@@ -26,15 +26,15 @@ var _w = (function(_w) {
   /**
    * Load editor application.
    */
-  _w.loadEditor = function() {
+  WP.loadEditor = function() {
     loadFixtures('editor-partial.html');
     this.loadJsonFixtures();
-    _t.__initEditor();
+    NL.__initEditor();
     this.aliasEditor();
   };
 
 
-  return _w;
+  return WP;
 
 
-})(_w || {});
+})(WP || {});

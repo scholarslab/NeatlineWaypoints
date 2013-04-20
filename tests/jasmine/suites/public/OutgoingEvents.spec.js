@@ -16,11 +16,11 @@ describe('Outgoing Events', function() {
 
   beforeEach(function() {
 
-    _w.loadNeatline();
-    _w.respondWaypoints200(_w.json.OutgoingEvents.records);
+    WP.loadNeatline();
+    WP.respondWaypoints200(WP.json.OutgoingEvents.records);
 
-    model = _w.getModels()[0];
-    row = _w.getRows()[0];
+    model = WP.getModels()[0];
+    row = WP.getRows()[0];
 
     vent = spyOn(Neatline.vent, 'trigger');
 
