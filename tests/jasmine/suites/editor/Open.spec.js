@@ -22,7 +22,7 @@ describe('Form Open', function() {
   describe('when waypoints exist', function() {
 
     beforeEach(function() {
-      WP.showWaypoints(WP.json.Form.records.regular);
+      WP.showForm(WP.json.Form.records.regular);
       rows = WP.getEditorRows();
     });
 
@@ -33,7 +33,6 @@ describe('Form Open', function() {
       // list should be populated with records.
       // ------------------------------------------------------------------
 
-      // Should list record titles.
       expect($(rows[0])).toHaveText('title1');
       expect($(rows[1])).toHaveText('title2');
       expect($(rows[2])).toHaveText('title3');
@@ -49,21 +48,20 @@ describe('Form Open', function() {
       // have been added to the widget since the last form open.
       // ------------------------------------------------------------------
 
-      WP.showWaypoints(WP.json.Form.records.empty);
-      WP.showWaypoints(WP.json.Form.records.regular);
-
+      WP.showForm(WP.json.Form.records.empty);
+      WP.showForm(WP.json.Form.records.regular);
       expect(WP.vw.WPEDIT.__ui.save).not.toHaveClass('disabled');
 
     });
 
-    it('should make waypoints sortable', function() {
+    it('should enable sorting', function() {
 
       // ------------------------------------------------------------------
       // The records under "Edit Waypoint Order" should be sortable.
       // ------------------------------------------------------------------
 
       expect(
-        WP.vw.WPEDIT.__ui.list.sortable('option','disabled')
+        WP.vw.WPEDIT.__ui.list.sortable('option', 'disabled')
       ).toBeFalsy();
 
     });
@@ -73,7 +71,7 @@ describe('Form Open', function() {
   describe('when waypoints do not exist', function() {
 
     beforeEach(function() {
-      WP.showWaypoints(WP.json.Form.records.empty);
+      WP.showForm(WP.json.Form.records.empty);
       rows = WP.getEditorRows();
     });
 
@@ -106,7 +104,7 @@ describe('Form Open', function() {
       // ------------------------------------------------------------------
 
       expect(
-        WP.vw.WPEDIT.__ui.list.sortable('option','disabled')
+        WP.vw.WPEDIT.__ui.list.sortable('option', 'disabled')
       ).toBeTruthy();
 
     });

@@ -22,7 +22,8 @@ var WP = (function(WP) {
       RecordLoading: {
         records: {
           regular:  readFixtures('RecordLoading.records.regular.json'),
-          changed:  readFixtures('RecordLoading.records.changed.json')
+          changed:  readFixtures('RecordLoading.records.changed.json'),
+          empty:    readFixtures('RecordLoading.records.empty.json')
         }
       },
 

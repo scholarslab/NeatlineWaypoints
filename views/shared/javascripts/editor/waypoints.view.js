@@ -41,7 +41,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
         $('#waypoints-editor-list-template').html()
       );
 
-      // Initialize Sortable.
+      // Instantiate Sortable.
       this.__ui.list.sortable();
 
     },
@@ -57,15 +57,31 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
       // Render the record list.
       this.__ui.list.html(this.template({ records: records }));
 
-      // (En/dis)able sorting and the "Save" button.
-      if (records.length > 0) {
-        this.__ui.list.sortable('enable').sortable('refresh');
-        this.__ui.save.removeClass('disabled');
-      } else {
-        this.__ui.list.sortable('disable');
-        this.__ui.save.addClass('disabled');
-      }
+      // (En/dis)able Sortable, "Save" button.
+      if (records.length > 0) this.enableSorting();
+      else this.disableSorting();
 
+      // Store collection.
+      this.records = records;
+
+    },
+
+
+    /**
+     * Enable Sortable and the "Save" button.
+     */
+    enableSorting: function() {
+      this.__ui.list.sortable('enable');
+      this.__ui.save.removeClass('disabled');
+    },
+
+
+    /**
+     * Disable Sortable and the "Save" button.
+     */
+    disableSorting: function() {
+      this.__ui.list.sortable('disable');
+      this.__ui.save.addClass('disabled');
     },
 
 
@@ -74,20 +90,26 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
      */
     save: function() {
 
-      // Gather order from jQuery UI.
-      var order = this.__ui.list.sortable('toArray', {
-        attribute: 'data-id'
-      });
+      if (this.records.length == 0) return;
 
-      // Update weights.
       $.ajax({
-        data:     JSON.stringify(order),
+        data:     JSON.stringify(this.getOrder()),
         url:      Neatline.global.waypoints_api,
         success:  _.bind(this.onSaveSuccess, this),
         error:    _.bind(this.onSaveError, this),
         type:     'POST'
       });
 
+    },
+
+
+    /**
+     * Gather the record order as an array of id's.
+     */
+    getOrder: function() {
+      return this.__ui.list.sortable('toArray', {
+        attribute: 'data-id'
+      });
     },
 
 

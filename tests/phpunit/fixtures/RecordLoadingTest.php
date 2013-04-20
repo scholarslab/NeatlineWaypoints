@@ -55,4 +55,15 @@ class FixturesTest_RecordLoading extends NeatlineWaypoints_FixtureCase
     }
 
 
+    /**
+     * `RecordLoading.records.empty.json`
+     */
+    public function testEmpty()
+    {
+        $this->writeFixtureFromRoute('neatline/records',
+            'RecordLoading.records.empty.json'
+        );
+    }
+
+
 }

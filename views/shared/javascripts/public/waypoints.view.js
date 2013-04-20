@@ -45,6 +45,7 @@ Neatline.module('Waypoints', function(
      * @param {Object} records: The records collection.
      */
     ingest: function(records) {
+      this.$el.toggleClass('empty', records.length == 0);
       this.$el.html(this.list({ records: records }));
     },
 

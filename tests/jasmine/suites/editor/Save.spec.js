@@ -11,18 +11,9 @@
 describe('Form Save', function() {
 
 
-  var el;
-
-
   beforeEach(function() {
-
     WP.loadEditor();
-    WP.showWaypoints(WP.json.Form.records.regular);
-
-    el = {
-      save: WP.vw.WPEDIT.$('a[name="save"]')
-    };
-
+    WP.showForm(WP.json.Form.records.regular);
   });
 
 
@@ -34,7 +25,7 @@ describe('Form Save', function() {
     // --------------------------------------------------------------------
 
     // Click on "Save".
-    el.save.trigger('click');
+    WP.vw.WPEDIT.__ui.save.trigger('click');
 
     // Route should be waypoints API, method POST.
     NL.assertLastRequestRoute(Neatline.global.waypoints_api);
@@ -51,6 +42,26 @@ describe('Form Save', function() {
   });
 
 
+  it('should not issue request when no waypoints exist ', function() {
+
+    // --------------------------------------------------------------------
+    // When no records have been added to the waypoints widget and the
+    // "Save" button is clicked, a request should not be issued.
+    // --------------------------------------------------------------------
+
+    WP.showForm(WP.json.Form.records.empty);
+
+    // Click on "Save".
+    var c1 = NL.server.requests.length;
+    WP.vw.WPEDIT.__ui.save.trigger('click');
+    var c2 = NL.server.requests.length;
+
+    // No POST request.
+    expect(c2).toEqual(c1);
+
+  });
+
+
   it('should flash notification when save succeeds', function() {
 
     // --------------------------------------------------------------------
@@ -61,7 +72,7 @@ describe('Form Save', function() {
     spyOn(toastr, 'info');
 
     // Click on "Save".
-    el.save.trigger('click');
+    WP.vw.WPEDIT.__ui.save.trigger('click');
     NL.respondLast200('');
 
     // Should flash success.
@@ -82,7 +93,7 @@ describe('Form Save', function() {
     spyOn(toastr, 'error');
 
     // Click on "Save".
-    el.save.trigger('click');
+    WP.vw.WPEDIT.__ui.save.trigger('click');
     NL.respondLast500();
 
     // Should flash error.
@@ -103,7 +114,7 @@ describe('Form Save', function() {
     spyOn(Neatline.vent, 'trigger').andCallThrough();
 
     // Click on "Save".
-    el.save.trigger('click');
+    WP.vw.WPEDIT.__ui.save.trigger('click');
     NL.respondLast200('');
 
     // Should refresh the exhibit.

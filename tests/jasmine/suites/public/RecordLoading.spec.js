@@ -53,4 +53,22 @@ describe('Record Loading', function() {
   });
 
 
+  it('should add `empty` class when collection is empty', function() {
+
+    // --------------------------------------------------------------------
+    // When an empty collection is ingested, the `empty` class should be
+    // added to the widget container.
+    // --------------------------------------------------------------------
+
+    // Should add empty class.
+    WP.refreshWidget(WP.json.RecordLoading.records.empty);
+    expect(WP.vw.WP.$el).toHaveClass('empty');
+
+    // Should remove empty class.
+    WP.refreshWidget(WP.json.RecordLoading.records.regular);
+    expect(WP.vw.WP.$el).not.toHaveClass('empty');
+
+  });
+
+
 });

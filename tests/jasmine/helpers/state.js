@@ -35,11 +35,22 @@ var WP = (function(WP) {
 
 
   /**
+   * Refresh the waypoints widget.
+   *
+   * @param {Object} response: The response body.
+   */
+  WP.refreshWidget = function(response) {
+    Neatline.vent.trigger('refresh');
+    this.respondWaypoints200(response);
+  };
+
+
+  /**
    * Navigate to the waypoints form.
    *
    * @param {Object} response: The response body.
    */
-  WP.showWaypoints = function(response) {
+  WP.showForm = function(response) {
     NL.navigate('waypoints');
     NL.respondLast200(response);
   };
