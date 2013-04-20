@@ -10,7 +10,7 @@
  */
 
 
-class NeatlineWaypoints_TestCase extends Neatline_AbstractTestCase
+class NeatlineWaypoints_TestCase extends Neatline_AbstractCase
 {
 
 
