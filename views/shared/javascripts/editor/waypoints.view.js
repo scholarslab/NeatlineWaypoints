@@ -30,20 +30,13 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
 
 
     /**
-     * Compile the records template, instantiate Sortable.
+     * Instantiate Sortable, compile the records template.
      */
     init: function() {
-
-      Waypoints.View.__super__.init.apply(this);
-
-      // Compile list template.
+      this.__ui.list.sortable();
       this.template = _.template(
         $('#waypoints-editor-list-template').html()
       );
-
-      // Instantiate Sortable.
-      this.__ui.list.sortable();
-
     },
 
 

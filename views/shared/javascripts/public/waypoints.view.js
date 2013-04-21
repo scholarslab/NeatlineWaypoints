@@ -28,14 +28,9 @@ Neatline.module('Waypoints', function(
      * Compile the records template.
      */
     init: function() {
-
-      Waypoints.View.__super__.init.apply(this);
-
-      // Compile template.
-      this.list = _.template(
+      this.template = _.template(
         $('#waypoints-public-list-template').html()
       );
-
     },
 
 
@@ -46,7 +41,7 @@ Neatline.module('Waypoints', function(
      */
     ingest: function(records) {
       this.$el.toggleClass('empty', records.length == 0);
-      this.$el.html(this.list({ records: records }));
+      this.$el.html(this.template({ records: records }));
     },
 
 
