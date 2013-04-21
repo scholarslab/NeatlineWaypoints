@@ -68,6 +68,25 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
 
 
     /**
+     * Save the order.
+     */
+    save: function() {
+
+      // Break if collection is empty.
+      if (this.records.length == 0) return;
+
+      $.ajax({
+        data:     JSON.stringify(this.getOrder()),
+        url:      Neatline.global.waypoints_api,
+        success:  _.bind(this.onSaveSuccess, this),
+        error:    _.bind(this.onSaveError, this),
+        type:     'POST'
+      });
+
+    },
+
+
+    /**
      * Enable Sortable and the "Save" button.
      */
     enableSorting: function() {
@@ -82,24 +101,6 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
     disableSorting: function() {
       this.__ui.list.sortable('disable');
       this.__ui.save.addClass('disabled');
-    },
-
-
-    /**
-     * Save the order.
-     */
-    save: function() {
-
-      if (this.records.length == 0) return;
-
-      $.ajax({
-        data:     JSON.stringify(this.getOrder()),
-        url:      Neatline.global.waypoints_api,
-        success:  _.bind(this.onSaveSuccess, this),
-        error:    _.bind(this.onSaveError, this),
-        type:     'POST'
-      });
-
     },
 
 
