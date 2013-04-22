@@ -12,7 +12,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
   Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  Waypoints.Router = Neatline.Editor.Router.extend({
+  this.Router = Neatline.Editor.Router.extend({
 
 
     routes: {

@@ -12,7 +12,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
   Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  Waypoints.View = Backbone.Neatline.View.extend({
+  this.View = Backbone.Neatline.View.extend({
 
 
     template:   '#waypoints-form-template',

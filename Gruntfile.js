@@ -140,7 +140,7 @@ module.exports = function(grunt) {
 
       neatline: {
         src: [
-          './Neatline/'+nlCfg.payloads.shared.js+'/neatline.js',
+          './Neatline/'+nlCfg.payloads.shared.js+'/neatline-public.js',
           cfg.payloads.shared.js+'/waypoints-public.js'
         ],
         options: {
@@ -150,7 +150,7 @@ module.exports = function(grunt) {
 
       editor: {
         src: [
-          './Neatline/'+nlCfg.payloads.shared.js+'/editor.js',
+          './Neatline/'+nlCfg.payloads.shared.js+'/neatline-editor.js',
           cfg.payloads.shared.js+'/waypoints-editor.js'
         ],
         options: {

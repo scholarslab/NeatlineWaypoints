@@ -12,7 +12,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
   Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  Waypoints.addInitializer(function() {
+  this.addInitializer(function() {
     this.__collection = new Neatline.Shared.Record.Collection();
     this.__view       = new Waypoints.View();
     this.__router     = new Waypoints.Router();

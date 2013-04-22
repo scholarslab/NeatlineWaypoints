@@ -12,7 +12,7 @@ Neatline.module('Waypoints', function(
   Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  Waypoints.View = Neatline.Shared.Widget.View.extend({
+  this.View = Neatline.Shared.Widget.View.extend({
 
 
     id: 'waypoints',
