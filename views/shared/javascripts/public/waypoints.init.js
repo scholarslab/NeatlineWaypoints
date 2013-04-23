@@ -18,7 +18,7 @@ Neatline.module('Waypoints', function(
   this.addInitializer(function() {
     this.__collection = new Neatline.Shared.Record.Collection();
     this.__view = new Waypoints.View();
-    Neatline.execute('WAYPOINTS:load');
+    Neatline.execute(this.ID+':load');
   });
 
 
