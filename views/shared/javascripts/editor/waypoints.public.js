@@ -30,7 +30,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
     });
 
   };
-  Neatline.commands.setHandler('WPEDIT:display', display);
+  Neatline.commands.setHandler(this.ID+':display', display);
 
 
 });

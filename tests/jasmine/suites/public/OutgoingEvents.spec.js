@@ -36,7 +36,10 @@ describe('Outgoing Events', function() {
 
     $(row).trigger('mouseenter')
 
-    expect(vent).toHaveBeenCalledWith('highlight', model);
+    expect(vent).toHaveBeenCalledWith('highlight', {
+      model:  model,
+      source: 'WAYPOINTS'
+    });
 
   });
 
@@ -50,7 +53,10 @@ describe('Outgoing Events', function() {
 
     $(row).trigger('mouseleave')
 
-    expect(vent).toHaveBeenCalledWith('unhighlight', model);
+    expect(vent).toHaveBeenCalledWith('unhighlight', {
+      model:  model,
+      source: 'WAYPOINTS'
+    });
 
   });
 
@@ -64,7 +70,10 @@ describe('Outgoing Events', function() {
 
     $(row).trigger('click')
 
-    expect(vent).toHaveBeenCalledWith('select', model);
+    expect(vent).toHaveBeenCalledWith('select', {
+      model:  model,
+      source: 'WAYPOINTS'
+    });
 
   });
 

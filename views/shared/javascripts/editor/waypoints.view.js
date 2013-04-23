@@ -111,10 +111,17 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
      * When a save succeeds.
      */
     onSaveSuccess: function() {
-      Neatline.vent.trigger('refresh')
-      Neatline.execute('EDITOR:notifySuccess',
+
+      // Refresh the exhibit.
+      Neatline.vent.trigger('refresh', {
+        source: Waypoints.ID
+      })
+
+      // Flash success message.
+      Neatline.execute('E:notifySuccess',
         WP_STRINGS.order.save.success
       );
+
     },
 
 
@@ -122,9 +129,12 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
      * When a save fails.
      */
     onSaveError: function() {
-      Neatline.execute('EDITOR:notifyError',
+
+      // Flash error message.
+      Neatline.execute('E:notifyError',
         WP_STRINGS.order.save.error
       );
+
     }
 
 

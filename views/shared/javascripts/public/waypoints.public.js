@@ -26,7 +26,7 @@ Neatline.module('Waypoints', function(
     });
 
   };
-  Neatline.commands.setHandler('WP:load', load);
+  Neatline.commands.setHandler(this.ID+':load', load);
   Neatline.vent.on('refresh', load);
 
 
@@ -38,7 +38,7 @@ Neatline.module('Waypoints', function(
   var ingest = function(records) {
     Waypoints.__view.ingest(records);
   };
-  Neatline.commands.setHandler('WP:ingest', ingest);
+  Neatline.commands.setHandler(this.ID+':ingest', ingest);
 
 
 });

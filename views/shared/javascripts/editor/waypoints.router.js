@@ -24,8 +24,8 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
      * Show the waypoints sorting form.
      */
     waypoints: function() {
-      Neatline.execute('EDITOR:display', ['EXHIBIT', 'WPEDIT']);
-      Neatline.execute('EXHIBIT:activateTab', 'waypoints');
+      Neatline.execute('E:display', ['E:EXHIBIT', 'E:WAYPOINTS']);
+      Neatline.execute('E:EXHIBIT:activateTab', 'waypoints');
     }
 
 

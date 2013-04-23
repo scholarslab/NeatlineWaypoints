@@ -12,6 +12,9 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
   Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
+  this.ID = 'E:WAYPOINTS';
+
+
   this.addInitializer(function() {
     this.__collection = new Neatline.Shared.Record.Collection();
     this.__view       = new Waypoints.View();

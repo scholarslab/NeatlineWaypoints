@@ -51,7 +51,10 @@ Neatline.module('Waypoints', function(
      * @param {Object} e: The DOM event.
      */
     onHighlight: function(e) {
-      Neatline.vent.trigger('highlight', this.getModel(e));
+      Neatline.vent.trigger('highlight', {
+        model:  this.getModel(e),
+        source: Waypoints.ID
+      });
     },
 
 
@@ -61,7 +64,10 @@ Neatline.module('Waypoints', function(
      * @param {Object} e: The DOM event.
      */
     onUnhighlight: function(e) {
-      Neatline.vent.trigger('unhighlight', this.getModel(e));
+      Neatline.vent.trigger('unhighlight', {
+        model:  this.getModel(e),
+        source: Waypoints.ID
+      });
     },
 
 
@@ -71,7 +77,10 @@ Neatline.module('Waypoints', function(
      * @param {Object} e: The DOM event.
      */
     onSelect: function(e) {
-      Neatline.vent.trigger('select', this.getModel(e));
+      Neatline.vent.trigger('select', {
+        model:  this.getModel(e),
+        source: Waypoints.ID
+      });
     },
 
 

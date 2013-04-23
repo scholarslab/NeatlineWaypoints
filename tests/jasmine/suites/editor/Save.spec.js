@@ -118,7 +118,9 @@ describe('Form Save', function() {
     NL.respondLast200('');
 
     // Should refresh the exhibit.
-    expect(Neatline.vent.trigger).toHaveBeenCalledWith('refresh');
+    expect(Neatline.vent.trigger).toHaveBeenCalledWith('refresh', {
+      source: 'E:WAYPOINTS'
+    });
 
   });
 
