@@ -19,7 +19,7 @@ var WP = (function(WP) {
    */
   WP.respondWaypoints200 = function(response) {
     _.each(NL.server.requests, _.bind(function(request) {
-      var widget = _.str.include(request.url, 'widget=waypoints');
+      var widget = _.str.include(request.url, 'widget=Waypoints');
       var order  = _.str.include(request.url, 'order=weight');
       if (widget && order) NL.respond200(request, response);
     }, this));

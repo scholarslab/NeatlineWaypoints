@@ -18,7 +18,7 @@ Neatline.module('Waypoints', function(
   var load = function() {
 
     var params = {
-      widget: 'waypoints', order: 'weight'
+      widget: 'Waypoints', order: 'weight'
     };
 
     Waypoints.__collection.update(params, function(records) {

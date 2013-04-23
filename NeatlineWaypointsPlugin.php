@@ -15,7 +15,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
 
 
     const NAME  = 'Waypoints';
-    const SLUG  = 'waypoints';
+    const ID    = 'waypoints';
 
 
     protected $_hooks = array(
@@ -55,7 +55,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlinePublicTemplates($args)
     {
-        if ($args['exhibit']->hasWidget(self::SLUG)) {
+        if ($args['exhibit']->hasWidget(self::ID)) {
             echo get_view()->partial('public/list.php');
         }
     }
@@ -68,7 +68,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlineEditorTemplates($args)
     {
-        if ($args['exhibit']->hasWidget(self::SLUG)) {
+        if ($args['exhibit']->hasWidget(self::ID)) {
             echo get_view()->partial('editor/strings.php');
             echo get_view()->partial('editor/form.php');
             echo get_view()->partial('editor/list.php');
@@ -83,7 +83,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlinePublicStatic($args)
     {
-        if ($args['exhibit']->hasWidget(self::SLUG)) {
+        if ($args['exhibit']->hasWidget(self::ID)) {
             queue_css_file('payloads/waypoints-public');
             queue_js_file('payloads/waypoints-public');
         }
@@ -97,7 +97,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookNeatlineEditorStatic($args)
     {
-        if ($args['exhibit']->hasWidget(self::SLUG)) {
+        if ($args['exhibit']->hasWidget(self::ID)) {
             queue_css_file('payloads/waypoints-editor');
             queue_js_file('payloads/waypoints-editor');
         }
@@ -107,13 +107,13 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
     /**
      * Register the exhibit widget tab.
      *
-     * @param array $tabs Tabs, <LABEL> => <SLUG>.
+     * @param array $tabs Tabs, <LABEL> => <ID>.
      * @return array The array, with "Waypoints".
      */
     public function filterNeatlineExhibitTabs($tabs, $args)
     {
-        if ($args['exhibit']->hasWidget(self::SLUG)) {
-            $tabs[self::NAME] = self::SLUG;
+        if ($args['exhibit']->hasWidget(self::ID)) {
+            $tabs[self::NAME] = 'waypoints';
         }
         return $tabs;
     }
@@ -122,13 +122,13 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
     /**
      * Register the exhibit widget.
      *
-     * @param array $widgets Widgets, <NAME> => <SLUG>.
+     * @param array $widgets Widgets, <NAME> => <ID>.
      * @return array The array, with "Waypoints".
      */
     public function filterNeatlineExhibitWidgets($widgets)
     {
         return array_merge($widgets, array(
-            self::NAME => self::SLUG
+            self::NAME => self::ID
         ));
     }
 
@@ -136,13 +136,13 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
     /**
      * Register the record widget.
      *
-     * @param array $widgets Widgets, <NAME> => <SLUG>.
+     * @param array $widgets Widgets, <NAME> => <ID>.
      * @return array The array, with "Waypoints".
      */
     public function filterNeatlineRecordWidgets($widgets)
     {
         return array_merge($widgets, array(
-            self::NAME => self::SLUG
+            self::NAME => self::ID
         ));
     }
 
