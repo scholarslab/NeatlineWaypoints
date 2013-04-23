@@ -18,7 +18,7 @@ var WP = (function(WP) {
    * @return {Array}: The DOM collection of <a> elements.
    */
   WP.getWidgetRows = function() {
-    return this.vw.WP.$('a.title');
+    return this.vw.PUBLIC.$('a.title');
   };
 
 
@@ -38,7 +38,7 @@ var WP = (function(WP) {
    * @return {Array}: The DOM collection of <a> elements.
    */
   WP.getEditorRows = function() {
-    return this.vw.WPEDIT.$('div.alert');
+    return this.vw.EDITOR.$('div.alert');
   };
 
 

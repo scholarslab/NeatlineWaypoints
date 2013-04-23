@@ -31,7 +31,7 @@ describe('Form Router', function() {
 
     // Tabs and waypoints form should be visible.
     expect(NL.vw.EDITOR.__ui.editor).toContain(NL.vw.EXHIBIT.$el);
-    expect(NL.vw.EDITOR.__ui.editor).toContain(WP.vw.WPEDIT.$el);
+    expect(NL.vw.EDITOR.__ui.editor).toContain(WP.vw.EDITOR.$el);
 
     // "Waypoints" tab should be active.
     expect(el.waypoints).toHaveClass('active');

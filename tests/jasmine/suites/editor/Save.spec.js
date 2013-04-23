@@ -25,7 +25,7 @@ describe('Form Save', function() {
     // --------------------------------------------------------------------
 
     // Click on "Save".
-    WP.vw.WPEDIT.__ui.save.trigger('click');
+    WP.vw.EDITOR.__ui.save.trigger('click');
 
     // Route should be waypoints API, method POST.
     NL.assertLastRequestRoute(Neatline.global.waypoints_api);
@@ -53,7 +53,7 @@ describe('Form Save', function() {
 
     // Click on "Save".
     var c1 = NL.server.requests.length;
-    WP.vw.WPEDIT.__ui.save.trigger('click');
+    WP.vw.EDITOR.__ui.save.trigger('click');
     var c2 = NL.server.requests.length;
 
     // No POST request.
@@ -72,7 +72,7 @@ describe('Form Save', function() {
     spyOn(toastr, 'info');
 
     // Click on "Save".
-    WP.vw.WPEDIT.__ui.save.trigger('click');
+    WP.vw.EDITOR.__ui.save.trigger('click');
     NL.respondLast200('');
 
     // Should flash success.
@@ -93,7 +93,7 @@ describe('Form Save', function() {
     spyOn(toastr, 'error');
 
     // Click on "Save".
-    WP.vw.WPEDIT.__ui.save.trigger('click');
+    WP.vw.EDITOR.__ui.save.trigger('click');
     NL.respondLast500();
 
     // Should flash error.
@@ -114,7 +114,7 @@ describe('Form Save', function() {
     spyOn(Neatline.vent, 'trigger').andCallThrough();
 
     // Click on "Save".
-    WP.vw.WPEDIT.__ui.save.trigger('click');
+    WP.vw.EDITOR.__ui.save.trigger('click');
     NL.respondLast200('');
 
     // Should refresh the exhibit.

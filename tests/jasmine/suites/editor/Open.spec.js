@@ -50,7 +50,7 @@ describe('Form Open', function() {
 
       WP.showForm(WP.json.Form.records.empty);
       WP.showForm(WP.json.Form.records.regular);
-      expect(WP.vw.WPEDIT.__ui.save).not.toHaveClass('disabled');
+      expect(WP.vw.EDITOR.__ui.save).not.toHaveClass('disabled');
 
     });
 
@@ -61,7 +61,7 @@ describe('Form Open', function() {
       // ------------------------------------------------------------------
 
       expect(
-        WP.vw.WPEDIT.__ui.list.sortable('option', 'disabled')
+        WP.vw.EDITOR.__ui.list.sortable('option', 'disabled')
       ).toBeFalsy();
 
     });
@@ -93,7 +93,7 @@ describe('Form Open', function() {
       // The "Save" button should be disabled.
       // ------------------------------------------------------------------
 
-      expect(WP.vw.WPEDIT.__ui.save).toHaveClass('disabled');
+      expect(WP.vw.EDITOR.__ui.save).toHaveClass('disabled');
 
     });
 
@@ -104,7 +104,7 @@ describe('Form Open', function() {
       // ------------------------------------------------------------------
 
       expect(
-        WP.vw.WPEDIT.__ui.list.sortable('option', 'disabled')
+        WP.vw.EDITOR.__ui.list.sortable('option', 'disabled')
       ).toBeTruthy();
 
     });

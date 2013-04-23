@@ -62,11 +62,11 @@ describe('Record Loading', function() {
 
     // Should add empty class.
     WP.refreshWidget(WP.json.RecordLoading.records.empty);
-    expect(WP.vw.WP.$el).toHaveClass('empty');
+    expect(WP.vw.PUBLIC.$el).toHaveClass('empty');
 
     // Should remove empty class.
     WP.refreshWidget(WP.json.RecordLoading.records.regular);
-    expect(WP.vw.WP.$el).not.toHaveClass('empty');
+    expect(WP.vw.PUBLIC.$el).not.toHaveClass('empty');
 
   });
 

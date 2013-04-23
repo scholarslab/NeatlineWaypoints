@@ -30,7 +30,7 @@ class FixturesTest_HtmlPartials extends NeatlineWaypoints_TestCase
         // Mock exhibit.
         $exhibit = $this->__exhibit();
         $exhibit->base_layer = 'OpenStreetMap';
-        $exhibit->widgets = 'waypoints';
+        $exhibit->widgets = 'Waypoints';
         $exhibit->save();
 
         // Set exhibit on view.

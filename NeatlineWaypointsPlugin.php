@@ -15,7 +15,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
 
 
     const NAME  = 'Waypoints';
-    const ID    = 'waypoints';
+    const ID    = 'Waypoints';
 
 
     protected $_hooks = array(
