@@ -119,7 +119,7 @@ describe('Form Save', function() {
 
     // Should refresh the exhibit.
     expect(Neatline.vent.trigger).toHaveBeenCalledWith('refresh', {
-      source: 'E:WAYPOINTS'
+      source: 'EDITOR:WAYPOINTS'
     });
 
   });

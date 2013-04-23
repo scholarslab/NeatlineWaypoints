@@ -12,13 +12,13 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
   Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  this.ID = 'E:WAYPOINTS';
+  Waypoints.ID = 'EDITOR:WAYPOINTS';
 
 
-  this.addInitializer(function() {
-    this.__collection = new Neatline.Shared.Record.Collection();
-    this.__view       = new Waypoints.View();
-    this.__router     = new Waypoints.Router();
+  Waypoints.addInitializer(function() {
+    Waypoints.__collection  = new Neatline.Shared.Record.Collection();
+    Waypoints.__view        = new Waypoints.View();
+    Waypoints.__router      = new Waypoints.Router();
   });
 
 

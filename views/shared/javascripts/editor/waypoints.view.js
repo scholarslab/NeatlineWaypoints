@@ -12,7 +12,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
   Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  this.View = Backbone.Neatline.View.extend({
+  Waypoints.View = Backbone.Neatline.View.extend({
 
 
     template:   '#waypoints-form-template',
@@ -118,7 +118,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
       })
 
       // Flash success message.
-      Neatline.execute('E:notifySuccess',
+      Neatline.execute('EDITOR:notifySuccess',
         WP_STRINGS.order.save.success
       );
 
@@ -131,7 +131,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
     onSaveError: function() {
 
       // Flash error message.
-      Neatline.execute('E:notifyError',
+      Neatline.execute('EDITOR:notifyError',
         WP_STRINGS.order.save.error
       );
 

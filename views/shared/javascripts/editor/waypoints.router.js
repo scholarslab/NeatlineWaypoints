@@ -12,7 +12,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
   Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  this.Router = Neatline.Editor.Router.extend({
+  Waypoints.Router = Neatline.Editor.Router.extend({
 
 
     routes: {
@@ -24,8 +24,16 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
      * Show the waypoints sorting form.
      */
     waypoints: function() {
-      Neatline.execute('E:display', ['E:EXHIBIT', 'E:WAYPOINTS']);
-      Neatline.execute('E:EXHIBIT:activateTab', 'waypoints');
+
+      Neatline.execute('EDITOR:display', [
+        'EDITOR:EXHIBIT',
+        'EDITOR:WAYPOINTS'
+      ]);
+
+      Neatline.execute(
+        'EDITOR:EXHIBIT:activateTab', 'waypoints'
+      );
+
     }
 
 

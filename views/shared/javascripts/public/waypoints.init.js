@@ -12,13 +12,13 @@ Neatline.module('Waypoints', function(
   Waypoints, Neatline, Backbone, Marionette, $, _) {
 
 
-  this.ID = 'WAYPOINTS';
+  Waypoints.ID = 'WAYPOINTS';
 
 
-  this.addInitializer(function() {
-    this.__collection = new Neatline.Shared.Record.Collection();
-    this.__view = new Waypoints.View();
-    Neatline.execute(this.ID+':load');
+  Waypoints.addInitializer(function() {
+    Waypoints.__collection = new Neatline.Shared.Record.Collection();
+    Waypoints.__view = new Waypoints.View();
+    Neatline.execute(Waypoints.ID+':load');
   });
 
 
