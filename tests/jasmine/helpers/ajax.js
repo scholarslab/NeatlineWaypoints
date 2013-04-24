@@ -13,7 +13,7 @@ var WP = (function(WP) {
 
 
   /**
-   * Respond 200 to a record list collection request.
+   * Respond 200 to a waypoints collection request.
    *
    * @param {Object} response: The response body.
    */

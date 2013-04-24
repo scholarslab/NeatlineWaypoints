@@ -37,8 +37,8 @@ describe('Outgoing Events', function() {
     $(row).trigger('mouseenter')
 
     expect(vent).toHaveBeenCalledWith('highlight', {
-      model:  model,
-      source: 'WAYPOINTS'
+      source: Neatline.Waypoints.ID,
+      model:  model
     });
 
   });
@@ -54,8 +54,8 @@ describe('Outgoing Events', function() {
     $(row).trigger('mouseleave')
 
     expect(vent).toHaveBeenCalledWith('unhighlight', {
-      model:  model,
-      source: 'WAYPOINTS'
+      source: Neatline.Waypoints.ID,
+      model:  model
     });
 
   });
@@ -71,8 +71,8 @@ describe('Outgoing Events', function() {
     $(row).trigger('click')
 
     expect(vent).toHaveBeenCalledWith('select', {
-      model:  model,
-      source: 'WAYPOINTS'
+      source: Neatline.Waypoints.ID,
+      model:  model
     });
 
   });
