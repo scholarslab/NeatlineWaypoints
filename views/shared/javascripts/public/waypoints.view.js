@@ -52,8 +52,8 @@ Neatline.module('Waypoints', function(
      */
     onHighlight: function(e) {
       Neatline.vent.trigger('highlight', {
-        model:  this.getModel(e),
-        source: Waypoints.ID
+        source: Waypoints.ID,
+        model: this.getModel(e)
       });
     },
 
@@ -65,8 +65,8 @@ Neatline.module('Waypoints', function(
      */
     onUnhighlight: function(e) {
       Neatline.vent.trigger('unhighlight', {
-        model:  this.getModel(e),
-        source: Waypoints.ID
+        source: Waypoints.ID,
+        model: this.getModel(e)
       });
     },
 
@@ -78,8 +78,8 @@ Neatline.module('Waypoints', function(
      */
     onSelect: function(e) {
       Neatline.vent.trigger('select', {
-        model:  this.getModel(e),
-        source: Waypoints.ID
+        source: Waypoints.ID,
+        model: this.getModel(e)
       });
     },
 
