@@ -108,7 +108,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      * Register the exhibit widget tab.
      *
      * @param array $tabs Tabs, <LABEL> => <ID>.
-     * @return array The array, with "Waypoints".
+     * @return array The modified array.
      */
     public function filterNeatlineExhibitTabs($tabs, $args)
     {
@@ -123,7 +123,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      * Register the exhibit widget.
      *
      * @param array $widgets Widgets, <NAME> => <ID>.
-     * @return array The array, with "Waypoints".
+     * @return array The modified array.
      */
     public function filterNeatlineExhibitWidgets($widgets)
     {
@@ -137,7 +137,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      * Register the record widget.
      *
      * @param array $widgets Widgets, <NAME> => <ID>.
-     * @return array The array, with "Waypoints".
+     * @return array The modified array.
      */
     public function filterNeatlineRecordWidgets($widgets)
     {
