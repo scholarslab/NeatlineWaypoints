@@ -17,8 +17,8 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
 
   Waypoints.addInitializer(function() {
     Waypoints.__collection  = new Neatline.Shared.Record.Collection();
-    Waypoints.__view        = new Waypoints.View();
     Waypoints.__router      = new Waypoints.Router();
+    Waypoints.__view        = new Waypoints.View();
   });
 
 
