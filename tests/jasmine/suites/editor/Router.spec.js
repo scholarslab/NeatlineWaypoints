@@ -27,7 +27,8 @@ describe('Form Router', function() {
 
   it('#waypoints', function() {
 
-    WP.showForm(WP.json.Form.records.regular);
+    NL.navigate('waypoints');
+    NL.respondLast200(WP.json.Form.records.regular);
 
     // Tabs and waypoints form should be visible.
     expect(NL.vw.EDITOR.__ui.editor).toContain(NL.vw.EXHIBIT.$el);

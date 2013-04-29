@@ -56,7 +56,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookNeatlinePublicTemplates($args)
     {
         if ($args['exhibit']->hasWidget(self::ID)) {
-            echo get_view()->partial('public/list.php');
+            echo get_view()->partial('waypoints/public/list.php');
         }
     }
 
@@ -69,9 +69,9 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookNeatlineEditorTemplates($args)
     {
         if ($args['exhibit']->hasWidget(self::ID)) {
-            echo get_view()->partial('editor/strings.php');
-            echo get_view()->partial('editor/form.php');
-            echo get_view()->partial('editor/list.php');
+            echo get_view()->partial('waypoints/editor/strings.php');
+            echo get_view()->partial('waypoints/editor/form.php');
+            echo get_view()->partial('waypoints/editor/list.php');
         }
     }
 
