@@ -20,8 +20,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-symbolic-link');
   grunt.loadNpmTasks('grunt-shell');
 
-  var nlCfg = grunt.file.readJSON('../Neatline/config.json');
-  var cfg = grunt.file.readJSON('./config.json');
+  var nlPaths = grunt.file.readJSON('../Neatline/paths.json');
+  var paths = grunt.file.readJSON('./paths.json');
 
   grunt.initConfig({
 
@@ -60,32 +60,32 @@ module.exports = function(grunt) {
 
     clean: {
       payloads: [
-        cfg.payloads.shared.js,
-        cfg.payloads.shared.css
+        paths.payloads.shared.js,
+        paths.payloads.shared.css
       ]
     },
 
     concat: {
 
       waypoints_public: {
-        src: cfg.src.shared+'/public/*.js',
-        dest: cfg.payloads.shared.js+'/waypoints-public.js'
+        src: paths.src.shared+'/public/*.js',
+        dest: paths.payloads.shared.js+'/waypoints-public.js'
       },
 
       waypoints_editor: {
         src: [
           '<%= concat.waypoints_public.src %>',
-          cfg.src.shared+'/editor/*.js'
+          paths.src.shared+'/editor/*.js'
         ],
-        dest: cfg.payloads.shared.js+'/waypoints-editor.js'
+        dest: paths.payloads.shared.js+'/waypoints-editor.js'
       },
 
       waypoints_editor_css: {
         src: [
-          cfg.payloads.shared.css+'/waypoints-public.css',
-          cfg.payloads.shared.css+'/waypoints-editor.css',
+          paths.payloads.shared.css+'/waypoints-public.css',
+          paths.payloads.shared.css+'/waypoints-editor.css',
         ],
-        dest: cfg.payloads.shared.css+'/waypoints-editor.css'
+        dest: paths.payloads.shared.css+'/waypoints-editor.css'
       }
 
     },
@@ -94,12 +94,12 @@ module.exports = function(grunt) {
 
       waypoints_public: {
         src: '<%= concat.waypoints_public.src %>',
-        dest: cfg.payloads.shared.js+'/waypoints-public.js'
+        dest: paths.payloads.shared.js+'/waypoints-public.js'
       },
 
       waypoints_editor: {
         src: '<%= concat.waypoints_editor.src %>',
-        dest: cfg.payloads.shared.js+'/waypoints-editor.js'
+        dest: paths.payloads.shared.js+'/waypoints-editor.js'
       }
 
     },
@@ -108,9 +108,9 @@ module.exports = function(grunt) {
       compile: {
         files: {
           './views/shared/css/payloads/waypoints-public.css':
-            cfg.stylus.shared+'/public/*.styl',
+            paths.stylus.shared+'/public/*.styl',
           './views/shared/css/payloads/waypoints-editor.css':
-            cfg.stylus.shared+'/editor/*.styl'
+            paths.stylus.shared+'/editor/*.styl'
         }
       }
     },
@@ -120,7 +120,7 @@ module.exports = function(grunt) {
         files: [
           '<%= concat.waypoints_public.src %>',
           '<%= concat.waypoints_editor.src %>',
-          cfg.stylus.shared+'/**/*.styl'
+          paths.stylus.shared+'/**/*.styl'
         ],
         tasks: ['compile']
       }
@@ -130,31 +130,31 @@ module.exports = function(grunt) {
 
       options: {
         helpers: [
-          './Neatline/'+nlCfg.vendor.js.jasmine_jquery,
-          './Neatline/'+nlCfg.vendor.js.sinon,
-          './Neatline/'+nlCfg.jasmine+'/helpers/*.js',
-          './Neatline/'+nlCfg.jasmine+'/assertions/*.js',
-          cfg.jasmine+'/helpers/*.js'
+          './Neatline/'+nlPaths.vendor.js.jasmine_jquery,
+          './Neatline/'+nlPaths.vendor.js.sinon,
+          './Neatline/'+nlPaths.jasmine+'/helpers/*.js',
+          './Neatline/'+nlPaths.jasmine+'/assertions/*.js',
+          paths.jasmine+'/helpers/*.js'
         ]
       },
 
       neatline: {
         src: [
-          './Neatline/'+nlCfg.payloads.shared.js+'/neatline-public.js',
-          cfg.payloads.shared.js+'/waypoints-public.js'
+          './Neatline/'+nlPaths.payloads.shared.js+'/neatline-public.js',
+          paths.payloads.shared.js+'/waypoints-public.js'
         ],
         options: {
-          specs: cfg.jasmine+'/suites/public/**/*.spec.js'
+          specs: paths.jasmine+'/suites/public/**/*.spec.js'
         }
       },
 
       editor: {
         src: [
-          './Neatline/'+nlCfg.payloads.shared.js+'/neatline-editor.js',
-          cfg.payloads.shared.js+'/waypoints-editor.js'
+          './Neatline/'+nlPaths.payloads.shared.js+'/neatline-editor.js',
+          paths.payloads.shared.js+'/waypoints-editor.js'
         ],
         options: {
-          specs: cfg.jasmine+'/suites/editor/**/*.spec.js'
+          specs: paths.jasmine+'/suites/editor/**/*.spec.js'
         }
       }
 
