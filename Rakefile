@@ -13,10 +13,6 @@ require 'fileutils'
 
 class PackageTask < Rake::PackageTask
 
-  def package_dir_path
-    "#{package_dir}/#{@name}"
-  end
-
   def package_name
     @name
   end
@@ -25,16 +21,8 @@ class PackageTask < Rake::PackageTask
     @version ? "#{@name}-#{@version}" : @name
   end
 
-  def tar_bz2_file
-    "#{basename}.tar.bz2"
-  end
-
   def tar_gz_file
     "#{basename}.tar.gz"
-  end
-
-  def tgz_file
-    "#{basename}.tgz"
   end
 
   def zip_file
@@ -50,18 +38,18 @@ PackageTask.new('NeatlineWaypoints') do |p|
   p.need_tar_gz = true
   p.need_zip    = true
 
-  # Configuration:
+  # Configuration --
   p.package_files.include('plugin.php')
   p.package_files.include('plugin.ini')
   p.package_files.include('routes.ini')
   p.package_files.include('README.md')
 
-  # Application:
+  # Application --
   p.package_files.include('NeatlineWaypointsPlugin.php')
   p.package_files.include('controllers/**/*.php')
   p.package_files.include('views/**/*.php')
 
-  # Static:
+  # Payloads --
   p.package_files.include('views/**/payloads/**/*')
   p.package_files.include('views/**/payloads/**/*')
 
