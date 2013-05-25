@@ -9,7 +9,7 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class OrderControllerTest_Index extends NeatlineWaypoints_TestCase
+class OrderControllerTest_Index extends NeatlineWaypoints_Case_Default
 {
 
 

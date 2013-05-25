@@ -9,7 +9,7 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class FixturesTest_RecordLoading extends NeatlineWaypoints_FixtureCase
+class FixturesTest_RecordLoading extends NeatlineWaypoints_Case_Fixture
 {
 
 

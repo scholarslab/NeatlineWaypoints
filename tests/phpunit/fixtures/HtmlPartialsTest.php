@@ -9,7 +9,7 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class FixturesTest_HtmlPartials extends NeatlineWaypoints_TestCase
+class FixturesTest_HtmlPartials extends NeatlineWaypoints_Case_Default
 {
 
 

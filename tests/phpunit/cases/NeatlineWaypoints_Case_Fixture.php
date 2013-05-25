@@ -10,7 +10,7 @@
  */
 
 
-class NeatlineWaypoints_FixtureCase extends NeatlineWaypoints_TestCase
+class NeatlineWaypoints_Case_Fixture extends NeatlineWaypoints_Case_Default
 {
 
 
