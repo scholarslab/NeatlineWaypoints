@@ -70,7 +70,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
 
       $.ajax({
         data:     JSON.stringify(this.getOrder()),
-        url:      Neatline.global.waypoints_api,
+        url:      Neatline.g.waypoints.order_api,
         success:  _.bind(this.onSaveSuccess, this),
         error:    _.bind(this.onSaveError, this),
         type:     'POST'

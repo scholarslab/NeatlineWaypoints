@@ -148,7 +148,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
 
 
     /**
-     * Register order API on `Neatline.global`.
+     * Register ordering API endpoint on `Neatline.g`.
      *
      * @param array $globals The array of global properties.
      * @param array $args Array of arguments, with `exhibit`.
@@ -156,9 +156,9 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function filterNeatlineGlobals($globals, $args)
     {
-        return array_merge($globals, array(
-            'waypoints_api' => url('neatline-waypoints')
-        ));
+        return array_merge($globals, array('waypoints' => array(
+            'order_api' => url('neatline-waypoints')
+        )));
     }
 
 

@@ -28,7 +28,7 @@ describe('Form Save', function() {
     WP.vw.EDITOR.__ui.save.trigger('click');
 
     // Route should be waypoints API, method POST.
-    NL.assertLastRequestRoute(Neatline.global.waypoints_api);
+    NL.assertLastRequestRoute(Neatline.g.waypoints.order_api);
     NL.assertLastRequestMethod('POST');
 
     var order = NL.getLastRequestParams();
