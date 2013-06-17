@@ -11,9 +11,15 @@
 describe('Form Save', function() {
 
 
+  var fx = {
+    regular:  readFixtures('Form.records.regular.json'),
+    empty:    readFixtures('Form.records.empty.json')
+  };
+
+
   beforeEach(function() {
     WP.loadEditor();
-    WP.showForm(WP.json.Form.records.regular);
+    WP.showForm(fx.regular);
   });
 
 
@@ -49,7 +55,7 @@ describe('Form Save', function() {
     // "Save" button is clicked, a request should not be issued.
     // --------------------------------------------------------------------
 
-    WP.showForm(WP.json.Form.records.empty);
+    WP.showForm(fx.empty);
 
     // Click on "Save".
     var c1 = NL.server.requests.length;

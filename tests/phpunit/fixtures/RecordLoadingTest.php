@@ -13,10 +13,6 @@ class FixturesTest_RecordLoading extends NeatlineWaypoints_Case_Fixture
 {
 
 
-    /**
-     * `RecordLoading.records.regular.json`
-     * `RecordLoading.records.changed.json`
-     */
     public function testRecordLoading()
     {
 
@@ -36,7 +32,7 @@ class FixturesTest_RecordLoading extends NeatlineWaypoints_Case_Fixture
         $record3->save();
 
         $this->writeFixtureFromRoute('neatline/records',
-            'RecordLoading.records.regular.json'
+            'RecordLoading.regular.json'
         );
 
         $record1->weight = 3;
@@ -49,19 +45,16 @@ class FixturesTest_RecordLoading extends NeatlineWaypoints_Case_Fixture
 
         $this->resetResponse();
         $this->writeFixtureFromRoute('neatline/records',
-            'RecordLoading.records.changed.json'
+            'RecordLoading.changed.json'
         );
 
     }
 
 
-    /**
-     * `RecordLoading.records.empty.json`
-     */
     public function testEmpty()
     {
         $this->writeFixtureFromRoute('neatline/records',
-            'RecordLoading.records.empty.json'
+            'RecordLoading.empty.json'
         );
     }
 

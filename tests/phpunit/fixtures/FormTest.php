@@ -13,9 +13,6 @@ class FixturesTest_Form extends NeatlineWaypoints_Case_Fixture
 {
 
 
-    /**
-     * `Form.records.regular.json`
-     */
     public function testRegular()
     {
 
@@ -41,9 +38,6 @@ class FixturesTest_Form extends NeatlineWaypoints_Case_Fixture
     }
 
 
-    /**
-     * `Form.records.empty.json`
-     */
     public function testEmpty()
     {
         $this->writeFixtureFromRoute('neatline/records',

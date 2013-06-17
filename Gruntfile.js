@@ -62,6 +62,10 @@ module.exports = function(grunt) {
       payloads: [
         paths.payloads.shared.js,
         paths.payloads.shared.css
+      ],
+      fixtures: [
+        paths.jasmine+'/fixtures/*.json',
+        paths.jasmine+'/fixtures/*.html'
       ]
     },
 
@@ -190,7 +194,8 @@ module.exports = function(grunt) {
 
   // Run all tests.
   grunt.registerTask('test', [
-    'shell:phpunit',
+    'clean:fixtures',
+    'phpunit',
     'jasmine'
   ]);
 

@@ -11,7 +11,10 @@
 describe('Form Open', function() {
 
 
-  var rows;
+  var rows, fx = {
+    regular:  readFixtures('Form.records.regular.json'),
+    empty:    readFixtures('Form.records.empty.json')
+  };
 
 
   beforeEach(function() {
@@ -22,7 +25,7 @@ describe('Form Open', function() {
   describe('when waypoints exist', function() {
 
     beforeEach(function() {
-      WP.showForm(WP.json.Form.records.regular);
+      WP.showForm(fx.regular);
       rows = WP.getEditorRows();
     });
 
@@ -48,8 +51,8 @@ describe('Form Open', function() {
       // have been added to the widget since the last form open.
       // ------------------------------------------------------------------
 
-      WP.showForm(WP.json.Form.records.empty);
-      WP.showForm(WP.json.Form.records.regular);
+      WP.showForm(fx.empty);
+      WP.showForm(fx.regular);
       expect(WP.vw.EDITOR.__ui.save).not.toHaveClass('disabled');
 
     });
@@ -71,7 +74,7 @@ describe('Form Open', function() {
   describe('when waypoints do not exist', function() {
 
     beforeEach(function() {
-      WP.showForm(WP.json.Form.records.empty);
+      WP.showForm(fx.empty);
       rows = WP.getEditorRows();
     });
 

@@ -39,9 +39,6 @@ class FixturesTest_HtmlPartials extends NeatlineWaypoints_Case_Default
     }
 
 
-    /**
-     * `neatline-partial.html`
-     */
     public function testNeatlinePartial()
     {
         $this->writeFixture(
@@ -51,9 +48,6 @@ class FixturesTest_HtmlPartials extends NeatlineWaypoints_Case_Default
     }
 
 
-    /**
-     * `editor-partial.html`
-     */
     public function testEditorPartial()
     {
         $this->writeFixture(

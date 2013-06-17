@@ -13,9 +13,6 @@ class FixturesTest_OutgoingEvents extends NeatlineWaypoints_Case_Fixture
 {
 
 
-    /**
-     * `OutgoingEvents.records.json`
-     */
     public function testOutgoingEvents()
     {
 
@@ -24,7 +21,7 @@ class FixturesTest_OutgoingEvents extends NeatlineWaypoints_Case_Fixture
         $record->save();
 
         $this->writeFixtureFromRoute('neatline/records',
-            'OutgoingEvents.records.json'
+            'OutgoingEvents.json'
         );
 
     }

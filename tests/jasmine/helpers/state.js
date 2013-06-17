@@ -17,7 +17,6 @@ var WP = (function(WP) {
    */
   WP.loadNeatline = function() {
     loadFixtures('neatline-partial.html');
-    this.loadJsonFixtures();
     NL.__initNeatline();
     this.aliasNeatline();
   };
@@ -28,7 +27,6 @@ var WP = (function(WP) {
    */
   WP.loadEditor = function() {
     loadFixtures('editor-partial.html');
-    this.loadJsonFixtures();
     NL.__initEditor();
     this.aliasEditor();
   };
