@@ -9,11 +9,11 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class FixturesTest_RecordLoading extends NeatlineWaypoints_Case_Fixture
+class FixturesTest_EditorForm extends NeatlineWaypoints_Case_Fixture
 {
 
 
-    public function testRecordLoading()
+    public function testRegular()
     {
 
         $record1 = $this->__record($this->exhibit);
@@ -32,20 +32,7 @@ class FixturesTest_RecordLoading extends NeatlineWaypoints_Case_Fixture
         $record3->save();
 
         $this->writeFixtureFromRoute('neatline/records',
-            'RecordLoading.regular.json'
-        );
-
-        $record1->weight = 3;
-        $record2->weight = 2;
-        $record3->weight = 1;
-
-        $record1->save();
-        $record2->save();
-        $record3->save();
-
-        $this->resetResponse();
-        $this->writeFixtureFromRoute('neatline/records',
-            'RecordLoading.changed.json'
+            'EditorForm.regular.json'
         );
 
     }
@@ -54,7 +41,7 @@ class FixturesTest_RecordLoading extends NeatlineWaypoints_Case_Fixture
     public function testEmpty()
     {
         $this->writeFixtureFromRoute('neatline/records',
-            'RecordLoading.empty.json'
+            'EditorForm.empty.json'
         );
     }
 

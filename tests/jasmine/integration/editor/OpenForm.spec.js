@@ -8,12 +8,12 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-describe('Form Open', function() {
+describe('Editor | Open Form', function() {
 
 
   var rows, fx = {
-    regular:  readFixtures('Form.records.regular.json'),
-    empty:    readFixtures('Form.records.empty.json')
+    regular:  readFixtures('EditorForm.regular.json'),
+    empty:    readFixtures('EditorForm.empty.json')
   };
 
 
