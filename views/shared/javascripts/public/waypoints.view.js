@@ -42,6 +42,7 @@ Neatline.module('Waypoints', function(
     ingest: function(records) {
       this.$el.toggleClass('empty', records.length == 0);
       this.$el.html(this.template({ records: records }));
+      this.records = records;
     },
 
 
@@ -89,7 +90,7 @@ Neatline.module('Waypoints', function(
      * @param {Object} model: The record model.
      */
     renderHighlight: function(model) {
-      // TODO
+      this.getElementById(model.id).addClass('highlighted');
     },
 
 
@@ -99,7 +100,7 @@ Neatline.module('Waypoints', function(
      * @param {Object} model: The record model.
      */
     renderUnhighlight: function(model) {
-      // TODO
+      this.getElementById(model.id).removeClass('highlighted');
     },
 
 
@@ -109,7 +110,7 @@ Neatline.module('Waypoints', function(
      * @param {Object} model: The record model.
      */
     renderSelect: function(model) {
-      // TODO
+      this.getElementById(model.id).addClass('selected');
     },
 
 
@@ -119,7 +120,7 @@ Neatline.module('Waypoints', function(
      * @param {Object} model: The record model.
      */
     renderUnselect: function(model) {
-      // TODO
+      this.getElementById(model.id).removeClass('selected');
     },
 
 

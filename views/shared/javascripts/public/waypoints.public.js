@@ -47,7 +47,7 @@ Neatline.module('Waypoints', function(
    * @param {Object} args: Event arguments.
    */
   var highlight = function(args) {
-    // TODO
+    Waypoints.__view.renderHighlight(args.model);
   };
   Neatline.commands.setHandler(Waypoints.ID+':highlight', highlight);
   Neatline.vent.on('highlight', highlight);
@@ -59,7 +59,7 @@ Neatline.module('Waypoints', function(
    * @param {Object} args: Event arguments.
    */
   var unhighlight = function(args) {
-    // TODO
+    Waypoints.__view.renderUnhighlight(args.model);
   };
   Neatline.commands.setHandler(Waypoints.ID+':unhighlight', unhighlight);
   Neatline.vent.on('unhighlight', unhighlight);
@@ -71,7 +71,7 @@ Neatline.module('Waypoints', function(
    * @param {Object} args: Event arguments.
    */
   var select = function(args) {
-    // TODO
+    Waypoints.__view.renderSelect(args.model);
   };
   Neatline.commands.setHandler(Waypoints.ID+':select', select);
   Neatline.vent.on('select', select);
@@ -83,7 +83,7 @@ Neatline.module('Waypoints', function(
    * @param {Object} args: Event arguments.
    */
   var unselect = function(args) {
-    // TODO
+    Waypoints.__view.renderUnselect(args.model);
   };
   Neatline.commands.setHandler(Waypoints.ID+':unselect', unselect);
   Neatline.vent.on('unselect', unselect);

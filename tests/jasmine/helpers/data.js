@@ -23,12 +23,35 @@ var WP = (function(WP) {
 
 
   /**
+   * Get waypoints element by record title.
+   *
+   * @param {String} title: The record title.
+   * @return {Array}: The DOM element.
+   */
+  WP.getWidgetRowByTitle = function(title) {
+    var model = this.getWidgetModelByTitle(title);
+    return this.vw.PUBLIC.$('a[data-id="'+model.id+'"]');
+  };
+
+
+  /**
    * Get the array of models from the waypoints collection.
    *
    * @return {Array}: The models.
    */
   WP.getWidgetModels = function() {
     return Neatline.Waypoints.__collection.models;
+  };
+
+
+  /**
+   * Get waypoints model by record title.
+   *
+   * @param {String} title: The record title.
+   * @return {Array}: The DOM element.
+   */
+  WP.getWidgetModelByTitle = function(title) {
+    return Neatline.Waypoints.__collection.findWhere({ title: title });
   };
 
 
