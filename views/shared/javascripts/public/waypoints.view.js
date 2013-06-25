@@ -45,16 +45,17 @@ Neatline.module('Waypoints', function(
     },
 
 
+    // PUBLISHERS
+    // --------------------------------------------------------------------
+
+
     /**
      * Publish `highlight` when the cursor enters a listing.
      *
      * @param {Object} e: The DOM event.
      */
     publishHighlight: function(e) {
-      Neatline.vent.trigger('highlight', {
-        source: Waypoints.ID,
-        model: this.getModel(e)
-      });
+      this.publish('highlight', this.getModelByEvent(e));
     },
 
 
@@ -64,10 +65,7 @@ Neatline.module('Waypoints', function(
      * @param {Object} e: The DOM event.
      */
     publishUnhighlight: function(e) {
-      Neatline.vent.trigger('unhighlight', {
-        source: Waypoints.ID,
-        model: this.getModel(e)
-      });
+      this.publish('unhighlight', this.getModelByEvent(e));
     },
 
 
@@ -77,11 +75,66 @@ Neatline.module('Waypoints', function(
      * @param {Object} e: The DOM event.
      */
     publishSelect: function(e) {
-      Neatline.vent.trigger('select', {
-        source: Waypoints.ID,
-        model: this.getModel(e)
-      });
+      this.publish('select', this.getModelByEvent(e));
     },
+
+
+    // RENDERERS
+    // --------------------------------------------------------------------
+
+
+    /**
+     * Add `highlighted` class to a listing.
+     *
+     * @param {Object} model: The record model.
+     */
+    renderHighlight: function(model) {
+      // TODO
+    },
+
+
+    /**
+     * Remove `highlighted` class from a listing.
+     *
+     * @param {Object} model: The record model.
+     */
+    renderUnhighlight: function(model) {
+      // TODO
+    },
+
+
+    /**
+     * Add `selected` class to a listing.
+     *
+     * @param {Object} model: The record model.
+     */
+    renderSelect: function(model) {
+      // TODO
+    },
+
+
+    /**
+     * Remove `selected` class from a listing.
+     *
+     * @param {Object} model: The record model.
+     */
+    renderUnselect: function(model) {
+      // TODO
+    },
+
+
+    /**
+     * Scroll to the listing for a model.
+     *
+     * @param {Object} model: The record model.
+     */
+    scrollTo: function(model) {
+      // TODO
+    },
+
+
+    // HELPERS
+    // --------------------------------------------------------------------
 
 
     /**
@@ -89,10 +142,33 @@ Neatline.module('Waypoints', function(
      *
      * @param {Object} e: The DOM event.
      */
-    getModel: function(e) {
+    getModelByEvent: function(e) {
       return Waypoints.__collection.get(
         parseInt($(e.currentTarget).attr('data-id'), 10)
       );
+    },
+
+
+    /**
+     * Get the DOM element for a record.
+     *
+     * @param {Number} id: The record id.
+     */
+    getElementById: function(id) {
+      return this.$('a[data-id='+id+']');
+    },
+
+
+    /**
+     * Publish an event with a model.
+     *
+     * @param {String} event: An event name.
+     * @param {Object} model: A record model.
+     */
+    publish: function(event, model) {
+      Neatline.vent.trigger(event, {
+        source: Waypoints.ID, model: model
+      });
     }
 
 

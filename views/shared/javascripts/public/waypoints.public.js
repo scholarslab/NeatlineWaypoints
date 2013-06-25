@@ -41,4 +41,52 @@ Neatline.module('Waypoints', function(
   Neatline.commands.setHandler(Waypoints.ID+':ingest', ingest);
 
 
+  /**
+   * Highlight a listing.
+   *
+   * @param {Object} args: Event arguments.
+   */
+  var highlight = function(args) {
+    // TODO
+  };
+  Neatline.commands.setHandler(Waypoints.ID+':highlight', highlight);
+  Neatline.vent.on('highlight', highlight);
+
+
+  /**
+   * Unhighlight a listing.
+   *
+   * @param {Object} args: Event arguments.
+   */
+  var unhighlight = function(args) {
+    // TODO
+  };
+  Neatline.commands.setHandler(Waypoints.ID+':unhighlight', unhighlight);
+  Neatline.vent.on('unhighlight', unhighlight);
+
+
+  /**
+   * Select tagged a listing.
+   *
+   * @param {Object} args: Event arguments.
+   */
+  var select = function(args) {
+    // TODO
+  };
+  Neatline.commands.setHandler(Waypoints.ID+':select', select);
+  Neatline.vent.on('select', select);
+
+
+  /**
+   * Unselect a listing.
+   *
+   * @param {Object} args: Event arguments.
+   */
+  var unselect = function(args) {
+    // TODO
+  };
+  Neatline.commands.setHandler(Waypoints.ID+':unselect', unselect);
+  Neatline.vent.on('unselect', unselect);
+
+
 });
