@@ -24,9 +24,6 @@ class FixturesTest_Html extends NeatlineWaypoints_Case_Default
 
         parent::setUp();
 
-        // Inject real layer definition files.
-        Zend_Registry::set('layers', NL_DIR . '/layers');
-
         // Mock exhibit.
         $exhibit = $this->_exhibit();
         $exhibit->base_layer = 'OpenStreetMap';
