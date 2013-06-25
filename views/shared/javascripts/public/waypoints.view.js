@@ -25,12 +25,16 @@ Neatline.module('Waypoints', function(
 
 
     /**
-     * Compile the records template.
+     * Compile the records template, initialize state.
      */
     init: function() {
+
       this.template = _.template(
         $('#waypoints-public-list-template').html()
       );
+
+      this.model = null;
+
     },
 
 
@@ -80,6 +84,15 @@ Neatline.module('Waypoints', function(
     },
 
 
+    /**
+     * Unselect the current model on click-off.
+     */
+    publishUnselect: function() {
+      if (this.model) this.publish('unselect', this.model);
+      this.model = null;
+    },
+
+
     // RENDERERS
     // --------------------------------------------------------------------
 
@@ -110,7 +123,9 @@ Neatline.module('Waypoints', function(
      * @param {Object} model: The record model.
      */
     renderSelect: function(model) {
+      this.publishUnselect();
       this.getElementById(model.id).addClass('selected');
+      this.model = model;
     },
 
 
