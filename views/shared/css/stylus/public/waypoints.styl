@@ -11,17 +11,17 @@
 
 #waypoints
   background white
-  color black
-  padding 1em
   font-size 1.4em
   border-radius 2px
   overflow-y auto
+  color black
 
   ul
     margin 0
     padding 0
 
   a.title
+    padding 0.5em 1em
     display list-item
     list-style none
     cursor pointer
@@ -30,6 +30,13 @@
 
     &:hover
       text-decoration none
+
+    &.highlighted
+      background lighten(#08c, 90%)
+
+    &.selected
+      background #08c
+      color white
 
 
 #neatline
