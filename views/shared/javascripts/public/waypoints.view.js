@@ -80,16 +80,8 @@ Neatline.module('Waypoints', function(
      * @param {Object} e: The DOM event.
      */
     publishSelect: function(e) {
-      this.publish('select', this.getModelByEvent(e));
-    },
-
-
-    /**
-     * Unselect the current model on click-off.
-     */
-    publishUnselect: function() {
       if (this.model) this.publish('unselect', this.model);
-      this.model = null;
+      this.publish('select', this.getModelByEvent(e));
     },
 
 
@@ -123,7 +115,6 @@ Neatline.module('Waypoints', function(
      * @param {Object} model: The record model.
      */
     renderSelect: function(model) {
-      this.publishUnselect();
       this.getElementById(model.id).addClass('selected');
       this.model = model;
     },
@@ -136,6 +127,7 @@ Neatline.module('Waypoints', function(
      */
     renderUnselect: function(model) {
       this.getElementById(model.id).removeClass('selected');
+      this.model = null;
     },
 
 
