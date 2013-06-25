@@ -24,11 +24,11 @@ class FixturesTest_Html extends NeatlineWaypoints_Case_Default
 
         parent::setUp();
 
-        // Inject real `layers.json`.
-        Zend_Registry::set('layers', NL_DIR . '/layers.json');
+        // Inject real layer definition files.
+        Zend_Registry::set('layers', NL_DIR . '/layers');
 
         // Mock exhibit.
-        $exhibit = $this->__exhibit();
+        $exhibit = $this->_exhibit();
         $exhibit->base_layer = 'OpenStreetMap';
         $exhibit->widgets = 'Waypoints';
         $exhibit->save();
@@ -41,7 +41,7 @@ class FixturesTest_Html extends NeatlineWaypoints_Case_Default
 
     public function testNeatlinePartial()
     {
-        $this->writeFixture(
+        $this->_writeFixture(
             get_view()->partial('exhibits/partials/exhibit.php'),
             'neatline-partial.html'
         );
@@ -50,7 +50,7 @@ class FixturesTest_Html extends NeatlineWaypoints_Case_Default
 
     public function testEditorPartial()
     {
-        $this->writeFixture(
+        $this->_writeFixture(
             get_view()->partial('exhibits/partials/editor_core.php'),
             'editor-partial.html'
         );

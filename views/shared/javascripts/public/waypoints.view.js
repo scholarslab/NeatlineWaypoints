@@ -18,9 +18,9 @@ Neatline.module('Waypoints', function(
     id: 'waypoints',
 
     events: {
-      'mouseenter a': 'onHighlight',
-      'mouseleave a': 'onUnhighlight',
-      'click a': 'onSelect'
+      'mouseenter a': 'publishHighlight',
+      'mouseleave a': 'publishUnhighlight',
+      'click a':      'publishSelect'
     },
 
 
@@ -46,11 +46,11 @@ Neatline.module('Waypoints', function(
 
 
     /**
-     * Highlight presenter on hover.
+     * Publish `highlight` when the cursor enters a listing.
      *
      * @param {Object} e: The DOM event.
      */
-    onHighlight: function(e) {
+    publishHighlight: function(e) {
       Neatline.vent.trigger('highlight', {
         source: Waypoints.ID,
         model: this.getModel(e)
@@ -59,11 +59,11 @@ Neatline.module('Waypoints', function(
 
 
     /**
-     * Unhighlight presenter on unhover.
+     * Publish `unhighlight` when the cursor leaves a listing.
      *
      * @param {Object} e: The DOM event.
      */
-    onUnhighlight: function(e) {
+    publishUnhighlight: function(e) {
       Neatline.vent.trigger('unhighlight', {
         source: Waypoints.ID,
         model: this.getModel(e)
@@ -72,11 +72,11 @@ Neatline.module('Waypoints', function(
 
 
     /**
-     * Select when a record is clicked.
+     * Publish `select` when a listing is clicked.
      *
      * @param {Object} e: The DOM event.
      */
-    onSelect: function(e) {
+    publishSelect: function(e) {
       Neatline.vent.trigger('select', {
         source: Waypoints.ID,
         model: this.getModel(e)

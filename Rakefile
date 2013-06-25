@@ -51,6 +51,5 @@ PackageTask.new('NeatlineWaypoints') do |p|
 
   # Payloads --
   p.package_files.include('views/**/payloads/**/*')
-  p.package_files.include('views/**/payloads/**/*')
 
 end

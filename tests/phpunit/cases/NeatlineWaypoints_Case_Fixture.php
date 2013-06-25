@@ -18,16 +18,19 @@ class NeatlineWaypoints_Case_Fixture extends NeatlineWaypoints_Case_Default
 
 
     /**
-     * Create exhibit, set `exhibit_id` GET parameter.
+     * Create exhibit, set `exhibit_id` and `order` GET parameters.
      */
     public function setUp()
     {
+
         parent::setUp();
-        $this->exhibit = $this->__exhibit();
+        $this->exhibit = $this->_exhibit();
+
         $this->request->setQuery(array(
             'exhibit_id' => $this->exhibit->id,
             'order' => 'weight'
         ));
+
     }
 
 

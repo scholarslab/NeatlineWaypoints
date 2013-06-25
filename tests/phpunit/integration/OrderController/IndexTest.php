@@ -19,10 +19,10 @@ class OrderControllerTest_Index extends NeatlineWaypoints_Case_Default
     public function testBaseMarkup()
     {
 
-        $exhibit = $this->__exhibit();
-        $record1 = $this->__record($exhibit);
-        $record2 = $this->__record($exhibit);
-        $record3 = $this->__record($exhibit);
+        $exhibit = $this->_exhibit();
+        $record1 = $this->_record($exhibit);
+        $record2 = $this->_record($exhibit);
+        $record3 = $this->_record($exhibit);
 
         $this->request->setMethod('POST')->setRawBody(
           Zend_Json::encode(array(
@@ -32,9 +32,9 @@ class OrderControllerTest_Index extends NeatlineWaypoints_Case_Default
         )));
 
         $this->dispatch('neatline-waypoints');
-        $record1 = $this->reload($record1);
-        $record2 = $this->reload($record2);
-        $record3 = $this->reload($record3);
+        $record1 = $this->_reload($record1);
+        $record2 = $this->_reload($record2);
+        $record3 = $this->_reload($record3);
 
         $this->assertEquals($record1->weight, 0);
         $this->assertEquals($record2->weight, 1);
