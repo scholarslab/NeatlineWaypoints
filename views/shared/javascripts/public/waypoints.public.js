@@ -97,10 +97,10 @@ Neatline.module('Waypoints', function(
    * @param {Object} args: Event arguments.
    */
   var sFilter = function(args) {
-    Map.__view.setFilter(args.key, args.evaluator);
+    Waypoints.__view.setFilter(args.key, args.evaluator);
   };
-  Neatline.commands.setHandler(Waypoints.ID+':setFilter', setFilter);
-  Neatline.vent.on('setFilter', setFilter);
+  Neatline.commands.setHandler(Waypoints.ID+':setFilter', sFilter);
+  Neatline.vent.on('setFilter', sFilter);
 
 
   /**
@@ -109,7 +109,7 @@ Neatline.module('Waypoints', function(
    * @param {Object} args: Event arguments.
    */
   var rFilter = function(args) {
-    Map.__view.removeFilter(args.key);
+    Waypoints.__view.removeFilter(args.key);
   };
   Neatline.commands.setHandler(Waypoints.ID+':removeFilter', rFilter);
   Neatline.vent.on('removeFilter', rFilter);

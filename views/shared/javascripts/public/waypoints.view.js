@@ -47,7 +47,7 @@ Neatline.module('Waypoints', function(
     ingest: function(records) {
       this.$el.toggleClass('empty', records.length == 0);
       this.$el.html(this.template({ records: records }));
-      this.records = records;
+      this.filter();
     },
 
 
@@ -173,7 +173,20 @@ Neatline.module('Waypoints', function(
      * Pass listings through the collection of registered filters.
      */
     filter: function() {
-      // TODO
+
+      Waypoints.__collection.each(_.bind(function(record) {
+
+        var visible = true;
+
+        // Pass the model through the evaluator.
+        _.each(this.filters, function(evaluator, key) {
+          visible = visible && evaluator(record);
+        });
+
+        // Show/hide the record listing.
+        this.getElementById(record.id).toggle(visible);
+
+      }, this));
     },
 
 

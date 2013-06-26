@@ -136,14 +136,82 @@ describe('Neatline | Subscriptions', function() {
 
   describe('setFilter', function() {
 
-    it('should apply filter', function() {
+    it('should set filters', function() {
 
       // ------------------------------------------------------------------
       // `setFilter` should register the passed evaluator function and re-
       // filter all record listings.
       // ------------------------------------------------------------------
 
-      // TODO
+      // By default, all listings visible.
+      expect(WP.getWidgetRowByTitle('title1')).toBeVisible();
+      expect(WP.getWidgetRowByTitle('title2')).toBeVisible();
+      expect(WP.getWidgetRowByTitle('title3')).toBeVisible();
+
+      // Filter out records with `title1`
+      Neatline.vent.trigger('setFilter', {
+        key: 'title1',
+        evaluator: function(record) {
+          return record.get('title') != 'title1';
+        }
+      });
+
+      // Record 1 should be hidden.
+      expect(WP.getWidgetRowByTitle('title1')).not.toBeVisible();
+      expect(WP.getWidgetRowByTitle('title2')).toBeVisible();
+      expect(WP.getWidgetRowByTitle('title3')).toBeVisible();
+
+      // Filter out records with `title2`
+      Neatline.vent.trigger('setFilter', {
+        key: 'title2',
+        evaluator: function(record) {
+          return record.get('title') != 'title2';
+        }
+      });
+
+      // Records 1 and 2 should be hidden.
+      expect(WP.getWidgetRowByTitle('title1')).not.toBeVisible();
+      expect(WP.getWidgetRowByTitle('title2')).not.toBeVisible();
+      expect(WP.getWidgetRowByTitle('title3')).toBeVisible();
+
+      // Filter out records with `title3`
+      Neatline.vent.trigger('setFilter', {
+        key: 'title3',
+        evaluator: function(record) {
+          return record.get('title') != 'title3';
+        }
+      });
+
+      // Records 1, 2, and 3 should be hidden.
+      expect(WP.getWidgetRowByTitle('title1')).not.toBeVisible();
+      expect(WP.getWidgetRowByTitle('title2')).not.toBeVisible();
+      expect(WP.getWidgetRowByTitle('title3')).not.toBeVisible();
+
+    });
+
+    it('should filter new listings', function() {
+
+      // ------------------------------------------------------------------
+      // When new listings are ingested, they should be passed through the
+      // collection of registered filters.
+      // ------------------------------------------------------------------
+
+      // Filter out records with `title1`
+      Neatline.vent.trigger('setFilter', {
+        key: 'title1',
+        evaluator: function(record) {
+          return record.get('title') != 'title1';
+        }
+      });
+
+      // Trigger a record refresh.
+      Neatline.vent.trigger('refresh');
+      WP.respondWaypoints200(fx.records);
+
+      // Record 1 should be hidden.
+      expect(WP.getWidgetRowByTitle('title1')).not.toBeVisible();
+      expect(WP.getWidgetRowByTitle('title2')).toBeVisible();
+      expect(WP.getWidgetRowByTitle('title3')).toBeVisible();
 
     });
 
@@ -159,7 +227,57 @@ describe('Neatline | Subscriptions', function() {
       // passed key and re-filter all record listings.
       // ------------------------------------------------------------------
 
-      // TODO
+      // Filter out records with `title1`, `title2`, and `title3`.
+
+      Neatline.vent.trigger('setFilter', {
+        key: 'title1',
+        evaluator: function(record) {
+          return record.get('title') != 'title1';
+        }
+      });
+
+      Neatline.vent.trigger('setFilter', {
+        key: 'title2',
+        evaluator: function(record) {
+          return record.get('title') != 'title2';
+        }
+      });
+
+      Neatline.vent.trigger('setFilter', {
+        key: 'title3',
+        evaluator: function(record) {
+          return record.get('title') != 'title3';
+        }
+      });
+
+      // Records 1, 2, and 3 should be hidden.
+      expect(WP.getWidgetRowByTitle('title1')).not.toBeVisible();
+      expect(WP.getWidgetRowByTitle('title2')).not.toBeVisible();
+      expect(WP.getWidgetRowByTitle('title3')).not.toBeVisible();
+
+      // Remove `title1` filter.
+      Neatline.vent.trigger('removeFilter', { key: 'title1' });
+
+      // Record 1 should be visible.
+      expect(WP.getWidgetRowByTitle('title1')).toBeVisible();
+      expect(WP.getWidgetRowByTitle('title2')).not.toBeVisible();
+      expect(WP.getWidgetRowByTitle('title3')).not.toBeVisible();
+
+      // Remove `title2` filter.
+      Neatline.vent.trigger('removeFilter', { key: 'title2' });
+
+      // Records 1 and 2 should be visible.
+      expect(WP.getWidgetRowByTitle('title1')).toBeVisible();
+      expect(WP.getWidgetRowByTitle('title2')).toBeVisible();
+      expect(WP.getWidgetRowByTitle('title3')).not.toBeVisible();
+
+      // Remove `title3` filter.
+      Neatline.vent.trigger('removeFilter', { key: 'title3' });
+
+      // Records 1, 2, and 3 should be visible.
+      expect(WP.getWidgetRowByTitle('title1')).toBeVisible();
+      expect(WP.getWidgetRowByTitle('title2')).toBeVisible();
+      expect(WP.getWidgetRowByTitle('title3')).toBeVisible();
 
     });
 
