@@ -136,14 +136,32 @@ describe('Neatline | Subscriptions', function() {
 
   describe('setFilter', function() {
 
-    it('should apply filter');
+    it('should apply filter', function() {
+
+      // ------------------------------------------------------------------
+      // `setFilter` should register the passed evaluator function and re-
+      // filter all record listings.
+      // ------------------------------------------------------------------
+
+      // TODO
+
+    });
 
   });
 
 
   describe('removeFilter', function() {
 
-    it('should remove filter');
+    it('should remove filter', function() {
+
+      // ------------------------------------------------------------------
+      // `removeFilter` should remove evaluator function identified by the
+      // passed key and re-filter all record listings.
+      // ------------------------------------------------------------------
+
+      // TODO
+
+    });
 
   });
 

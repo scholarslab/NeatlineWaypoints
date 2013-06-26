@@ -91,4 +91,28 @@ Neatline.module('Waypoints', function(
   Neatline.vent.on('unselect', unselect);
 
 
+  /**
+   * Set a record filter.
+   *
+   * @param {Object} args: Event arguments.
+   */
+  var sFilter = function(args) {
+    Map.__view.setFilter(args.key, args.evaluator);
+  };
+  Neatline.commands.setHandler(Waypoints.ID+':setFilter', setFilter);
+  Neatline.vent.on('setFilter', setFilter);
+
+
+  /**
+   * Remove a record filter.
+   *
+   * @param {Object} args: Event arguments.
+   */
+  var rFilter = function(args) {
+    Map.__view.removeFilter(args.key);
+  };
+  Neatline.commands.setHandler(Waypoints.ID+':removeFilter', rFilter);
+  Neatline.vent.on('removeFilter', rFilter);
+
+
 });

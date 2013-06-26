@@ -33,6 +33,7 @@ Neatline.module('Waypoints', function(
         $('#waypoints-public-list-template').html()
       );
 
+      this.filters = {};
       this.model = null;
 
     },
@@ -137,6 +138,41 @@ Neatline.module('Waypoints', function(
      * @param {Object} model: The record model.
      */
     scrollTo: function(model) {
+      // TODO
+    },
+
+
+    // FILTERS
+    // --------------------------------------------------------------------
+
+
+    /**
+     * Register a record filter.
+     *
+     * @param {String} key: A key to identify the filter.
+     * @param {Function} evaluator: The boolean filtering function.
+     */
+    setFilter: function(key, evaluator) {
+      this.filters[key] = evaluator;
+      this.filter();
+    },
+
+
+    /**
+     * Remove a record filter.
+     *
+     * @param {String} key: The key of the filter to remove.
+     */
+    removeFilter: function(key) {
+      delete this.filters[key];
+      this.filter();
+    },
+
+
+    /**
+     * Pass listings through the collection of registered filters.
+     */
+    filter: function() {
       // TODO
     },
 
