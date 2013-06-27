@@ -23,6 +23,10 @@ Neatline.module('Waypoints', function(
       'click a':      'publishSelect'
     },
 
+    options: {
+      duration: 200
+    },
+
 
     /**
      * Compile the records template, initialize state.
@@ -138,7 +142,15 @@ Neatline.module('Waypoints', function(
      * @param {Object} model: The record model.
      */
     scrollTo: function(model) {
-      // TODO
+
+      // Get the record listings.
+      var el = this.getElementById(model.id)[0];
+
+      // Scroll the listing to the top.
+      this.$el.animate({ scrollTop: el.offsetTop },
+        { duration: this.options.duration }
+      );
+
     },
 
 

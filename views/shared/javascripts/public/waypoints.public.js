@@ -72,6 +72,7 @@ Neatline.module('Waypoints', function(
    */
   var select = function(args) {
     Waypoints.__view.renderSelect(args.model);
+    Waypoints.__view.scrollTo(args.model);
     unhighlight(args);
   };
   Neatline.commands.setHandler(Waypoints.ID+':select', select);
