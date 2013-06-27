@@ -98,6 +98,22 @@ describe('Neatline | Subscriptions', function() {
 
     });
 
+    it('should handle missing model', function() {
+
+      // ------------------------------------------------------------------
+      // An error should not be thrown if a model is passed that does not
+      // have a corresponding listing.
+      // ------------------------------------------------------------------
+
+      // Create a model that does not have a listing.
+      var absent = new Neatline.Shared.Record.Model({ id: 999 });
+
+      expect(function() {
+        Neatline.vent.trigger('select', { model: absent });
+      }).not.toThrow();
+
+    });
+
   });
 
 
@@ -130,6 +146,8 @@ describe('Neatline | Subscriptions', function() {
       expect(row1).not.toHaveClass('highlighted');
 
     });
+
+    it('should handle missing model');
 
   });
 

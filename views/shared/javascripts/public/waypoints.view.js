@@ -145,6 +145,7 @@ Neatline.module('Waypoints', function(
 
       // Get the record listings.
       var el = this.getElementById(model.id)[0];
+      if (!el) return;
 
       // Scroll the listing to the top.
       this.$el.animate({ scrollTop: el.offsetTop },
