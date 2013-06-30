@@ -74,7 +74,7 @@ describe('Neatline | Publications', function() {
   });
 
 
-  describe('select', function() {
+  describe('select/unselect', function() {
 
     it('should publish `select` on record click', function() {
 
@@ -102,6 +102,32 @@ describe('Neatline | Publications', function() {
       row2.trigger('click');
 
       expect(vent).toHaveBeenCalledWith('unselect', {
+        model:  model1,
+        source: Neatline.Waypoints.ID
+      });
+
+    });
+
+    it('should unselect (not re-select) on click-off', function() {
+
+      // ------------------------------------------------------------------
+      // When a listing is clicked off - clicked again when it is already
+      // selected - the listing should _just_ be unselected, as opposed to
+      // being immediately re-selected as the new selection.
+      // ------------------------------------------------------------------
+
+      row1.trigger('click');
+      vent.reset();
+      row1.trigger('click');
+
+      // Should unselect.
+      expect(vent).toHaveBeenCalledWith('unselect', {
+        model:  model1,
+        source: Neatline.Waypoints.ID
+      });
+
+      // Should not re-select.
+      expect(vent).not.toHaveBeenCalledWith('select', {
         model:  model1,
         source: Neatline.Waypoints.ID
       });

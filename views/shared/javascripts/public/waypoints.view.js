@@ -85,8 +85,24 @@ Neatline.module('Waypoints', function(
      * @param {Object} e: The DOM event.
      */
     publishSelect: function(e) {
-      if (this.model) this.publish('unselect', this.model);
-      this.publish('select', this.getModelByEvent(e));
+
+      // Get the new model, cache old model.
+      var newModel = this.getModelByEvent(e);
+      var oldModel = this.model;
+
+      if (oldModel) {
+
+        // First unselect the currently-selected model. If the model for
+        // the newly-clicked listing is the same as the old model - when a
+        // listing is being "clicked off," break out and don't reselect.
+
+        this.publish('unselect', oldModel);
+        if (oldModel.id == newModel.id) return;
+
+      }
+
+      this.publish('select', newModel);
+
     },
 
 
@@ -143,7 +159,7 @@ Neatline.module('Waypoints', function(
      */
     scrollTo: function(model) {
 
-      // Get the record listings.
+      // Get the record listing.
       var el = this.getElementById(model.id)[0];
       if (!el) return;
 

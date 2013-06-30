@@ -98,7 +98,7 @@ describe('Neatline | Subscriptions', function() {
 
     });
 
-    it('should handle missing model', function() {
+    it('should handle missing listing', function() {
 
       // ------------------------------------------------------------------
       // An error should not be thrown if a model is passed that does not
