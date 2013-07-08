@@ -16,7 +16,7 @@ var WP = (function(WP) {
    * Load neatline application.
    */
   WP.loadNeatline = function() {
-    loadFixtures('neatline-partial.html');
+    loadFixtures('SharedHtml.exhibit.html');
     NL.__initNeatline();
     this.aliasNeatline();
   };
@@ -26,7 +26,7 @@ var WP = (function(WP) {
    * Load editor application.
    */
   WP.loadEditor = function() {
-    loadFixtures('editor-partial.html');
+    loadFixtures('SharedHtml.editor.html');
     NL.__initEditor();
     this.aliasEditor();
   };

@@ -32,8 +32,8 @@ class NeatlineWaypoints_Case_Default extends Neatline_Case_Abstract
         $pluginHelper->setUp('NeatlineWaypoints');
 
         // Register script paths.
-        get_view()->setScriptPath(NL_WAYPOINTS_DIR . '/views/shared');
-        get_view()->addScriptPath(NL_DIR . '/views/shared');
+        get_view()->setScriptPath(NL_WAYPOINTS_DIR.'/views/shared');
+        get_view()->addScriptPath(NL_DIR.'/views/shared');
 
     }
 
@@ -45,7 +45,7 @@ class NeatlineWaypoints_Case_Default extends Neatline_Case_Abstract
      */
     protected function _getFixturesPath()
     {
-        return NL_WAYPOINTS_DIR . '/tests/jasmine/fixtures/';
+        return NL_WAYPOINTS_DIR.'/tests/jasmine/fixtures/';
     }
 
 
