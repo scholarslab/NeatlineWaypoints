@@ -14,7 +14,7 @@ class OrderControllerTest_Index extends NeatlineWaypoints_Case_Default
 
 
     /**
-     * INDEX should update record weights.
+     * INDEX should update record weights and return an empty response.
      */
     public function testBaseMarkup()
     {
@@ -36,9 +36,13 @@ class OrderControllerTest_Index extends NeatlineWaypoints_Case_Default
         $record2 = $this->_reload($record2);
         $record3 = $this->_reload($record3);
 
+        // Should set record weights.
         $this->assertEquals($record1->weight, 0);
         $this->assertEquals($record2->weight, 1);
         $this->assertEquals($record3->weight, 2);
+
+        // Should return empty response.
+        $this->assertEquals($this->_getResponseArray(), array());
 
     }
 

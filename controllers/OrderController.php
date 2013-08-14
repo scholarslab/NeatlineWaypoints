@@ -40,6 +40,9 @@ class NeatlineWaypoints_OrderController
             $record->save();
         }
 
+        // Return an empty JSON object.
+        echo Zend_Json::encode(array());
+
     }
 
 

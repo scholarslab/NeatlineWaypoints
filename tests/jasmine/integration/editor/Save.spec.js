@@ -79,7 +79,7 @@ describe('Editor | Save Order', function() {
 
     // Click on "Save".
     WP.vw.EDITOR.__ui.save.trigger('click');
-    NL.respondLast200('');
+    NL.respondLast200('[]');
 
     // Should flash success.
     expect(toastr.info).toHaveBeenCalledWith(
@@ -121,7 +121,7 @@ describe('Editor | Save Order', function() {
 
     // Click on "Save".
     WP.vw.EDITOR.__ui.save.trigger('click');
-    NL.respondLast200('');
+    NL.respondLast200('[]');
 
     // Should refresh the exhibit.
     expect(Neatline.vent.trigger).toHaveBeenCalledWith('refresh', {
