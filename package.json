@@ -1,6 +1,6 @@
 {
     "name": "NeatlineWaypoints"
-  , "version": "0.0.1"
+  , "version": "2.0.1"
   , "private": false
   , "devDependencies": {
       "grunt":                  ">= 0.4.0"
