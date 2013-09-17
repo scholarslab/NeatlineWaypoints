@@ -16,12 +16,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-symbolic-link');
   grunt.loadNpmTasks('grunt-shell');
 
+  var pkg     = grunt.file.readJSON('./package.json');
   var nlPaths = grunt.file.readJSON('../Neatline/paths.json');
-  var paths = grunt.file.readJSON('./paths.json');
+  var paths   = grunt.file.readJSON('./paths.json');
 
   grunt.initConfig({
 
@@ -66,7 +68,8 @@ module.exports = function(grunt) {
       fixtures: [
         paths.jasmine+'/fixtures/*.json',
         paths.jasmine+'/fixtures/*.html'
-      ]
+      ],
+      pkg: './pkg'
     },
 
     concat: {
@@ -162,6 +165,28 @@ module.exports = function(grunt) {
         }
       }
 
+    },
+
+    compress: {
+
+      dist: {
+        options: {
+          archive: 'pkg/NeatlineWaypoints-'+pkg.version+'.zip'
+        },
+        dest: 'NeatlineWaypoints/',
+        src: [
+          '**',
+          '!.git/**',
+          '!package.json',
+          '!node_modules/**',
+          '!.grunt/**',
+          '!Gruntfile.js',
+          '!paths.json',
+          '!Neatline/**',
+          '!pkg/**',
+          '!tests/**'
+        ]
+      }
     }
 
   });
@@ -212,6 +237,13 @@ module.exports = function(grunt) {
   grunt.registerTask('jasmine:editor:server', [
     'jasmine:editor:build',
     'connect'
+  ]);
+
+  // Spawn release package.
+  grunt.registerTask('package', [
+    'compile:min',
+    'clean:pkg',
+    'compress'
   ]);
 
 };
