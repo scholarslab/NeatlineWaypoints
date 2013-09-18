@@ -1,5 +1,5 @@
 
-/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=80; */
 
 /**
  * @package     omeka
@@ -26,10 +26,10 @@ describe('Neatline | Record Listing', function() {
 
   it('should load records when the exhibit starts', function() {
 
-    // --------------------------------------------------------------------
-    // When the exhibit starts, the waypoints should template listings for
-    // records that arrive in the initial query.
-    // --------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // When the exhibit starts, the waypoints should show listings for records
+    // that arrive in the initial query.
+    // ------------------------------------------------------------------------
 
     var rows = WP.getWidgetRows();
 
@@ -43,10 +43,10 @@ describe('Neatline | Record Listing', function() {
 
   it('should reload records when the exhibit is refreshed', function() {
 
-    // --------------------------------------------------------------------
-    // When the exhibit is refreshed, the waypoints should query for new
-    // records and update the list.
-    // --------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // When the exhibit is refreshed, the waypoints should load new records
+    // and update the list.
+    // ------------------------------------------------------------------------
 
     Neatline.vent.trigger('refresh');
     WP.respondWaypoints200(fx.changed);
@@ -62,10 +62,10 @@ describe('Neatline | Record Listing', function() {
 
   it('should add `empty` class when collection is empty', function() {
 
-    // --------------------------------------------------------------------
-    // When an empty collection is ingested, the `empty` class should be
-    // added to the widget container.
-    // --------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // When an empty collection is ingested, the `empty` class should be added
+    // to the widget container.
+    // ------------------------------------------------------------------------
 
     // Should add empty class.
     WP.refreshWidget(fx.empty);

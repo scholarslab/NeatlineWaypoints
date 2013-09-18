@@ -1,5 +1,5 @@
 
-/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=80; */
 
 /**
  * @package     omeka
@@ -34,10 +34,10 @@ describe('Neatline | Subscriptions', function() {
 
     it('should add `highlighted` class', function() {
 
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
       // When `highlight` is triggered, the `highlighted` class should be
       // added to the corresponding listing.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
 
       Neatline.vent.trigger('highlight', { model: model1 });
 
@@ -53,10 +53,10 @@ describe('Neatline | Subscriptions', function() {
 
     it('should remove `highlighted` class', function() {
 
-      // ------------------------------------------------------------------
-      // When `unhighlight` is triggered, the `highlighted` class should
-      // be removed to the corresponding listing.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
+      // When `unhighlight` is triggered, the `highlighted` class should be
+      // removed to the corresponding listing.
+      // ----------------------------------------------------------------------
 
       Neatline.vent.trigger('highlight', { model: model1 });
       Neatline.vent.trigger('unhighlight', { model: model1 });
@@ -72,10 +72,10 @@ describe('Neatline | Subscriptions', function() {
 
     it('should add `selected` class', function() {
 
-      // ------------------------------------------------------------------
-      // When `select` is triggered, the `selected` class should be added
-      // to the corresponding listing.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
+      // When `select` is triggered, the `selected` class should be added to
+      // the corresponding listing.
+      // ----------------------------------------------------------------------
 
       Neatline.vent.trigger('select', { model: model1 });
 
@@ -86,10 +86,10 @@ describe('Neatline | Subscriptions', function() {
 
     it('should remove `highlighted` class', function() {
 
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
       // The `highlighted` class should be removed, in case it was added
       // before the record was selected.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
 
       Neatline.vent.trigger('highlight', { model: model1 });
       Neatline.vent.trigger('select', { model: model1 });
@@ -100,10 +100,10 @@ describe('Neatline | Subscriptions', function() {
 
     it('should handle missing listing', function() {
 
-      // ------------------------------------------------------------------
-      // An error should not be thrown if a model is passed that does not
-      // have a corresponding listing.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
+      // An error should not be thrown if a model is passed that does not have
+      // a corresponding listing.
+      // ----------------------------------------------------------------------
 
       // Create a model that does not have a listing.
       var absent = new Neatline.Shared.Record.Model({ id: 999 });
@@ -121,10 +121,10 @@ describe('Neatline | Subscriptions', function() {
 
     it('should remove `selected` class', function() {
 
-      // ------------------------------------------------------------------
-      // When `unselect` is triggered, the `selected` class should be
-      // removed from the corresponding listing.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
+      // When `unselect` is triggered, the `selected` class should be removed
+      // from the corresponding listing.
+      // ----------------------------------------------------------------------
 
       Neatline.vent.trigger('select', { model: model1 });
       Neatline.vent.trigger('unselect', { model: model1 });
@@ -135,10 +135,10 @@ describe('Neatline | Subscriptions', function() {
 
     it('should remove `highlighted` class', function() {
 
-      // ------------------------------------------------------------------
-      // The `highlighted` class should also be removed, in case it was
-      // added before the record was selected.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
+      // The `highlighted` class should also be removed, in case it was added
+      // before the record was selected.
+      // ----------------------------------------------------------------------
 
       Neatline.vent.trigger('highlight', { model: model1 });
       Neatline.vent.trigger('unselect', { model: model1 });
@@ -156,10 +156,10 @@ describe('Neatline | Subscriptions', function() {
 
     it('should set filters', function() {
 
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
       // `setFilter` should register the passed evaluator function and re-
       // filter all record listings.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
 
       // By default, all listings visible.
       expect(WP.getWidgetRowByTitle('title1')).toBeVisible();
@@ -209,10 +209,10 @@ describe('Neatline | Subscriptions', function() {
 
     it('should filter new listings', function() {
 
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
       // When new listings are ingested, they should be passed through the
       // collection of registered filters.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
 
       // Filter out records with `title1`
       Neatline.vent.trigger('setFilter', {
@@ -240,10 +240,10 @@ describe('Neatline | Subscriptions', function() {
 
     it('should remove filter', function() {
 
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
       // `removeFilter` should remove evaluator function identified by the
       // passed key and re-filter all record listings.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
 
       // Filter out records with `title1`, `title2`, and `title3`.
 

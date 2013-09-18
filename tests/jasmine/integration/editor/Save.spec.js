@@ -1,5 +1,5 @@
 
-/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=80; */
 
 /**
  * @package     omeka
@@ -25,10 +25,10 @@ describe('Editor | Save Order', function() {
 
   it('should issue POST request when "Save" is clicked', function() {
 
-    // --------------------------------------------------------------------
-    // When the "Save" button is clicked, a POST request should be issued
-    // to the waypoints order API with the new record order.
-    // --------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // When the "Save" button is clicked, a POST request should be issued to
+    // the waypoints order API with the new record order.
+    // ------------------------------------------------------------------------
 
     // Click on "Save".
     WP.vw.EDITOR.__ui.save.trigger('click');
@@ -50,10 +50,10 @@ describe('Editor | Save Order', function() {
 
   it('should not issue request when no waypoints exist ', function() {
 
-    // --------------------------------------------------------------------
-    // When no records have been added to the waypoints widget and the
-    // "Save" button is clicked, a request should not be issued.
-    // --------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // When no records have been added to the waypoints widget and the "Save"
+    // button is clicked, a request should not be issued.
+    // ------------------------------------------------------------------------
 
     WP.showForm(fx.empty);
 
@@ -70,10 +70,10 @@ describe('Editor | Save Order', function() {
 
   it('should flash notification when save succeeds', function() {
 
-    // --------------------------------------------------------------------
-    // When the "Save" button is clicked and the request is successful, a
-    // success notification should be displayed.
-    // --------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // When the "Save" button is clicked and the request succeeds, a success
+    // notification should be displayed.
+    // ------------------------------------------------------------------------
 
     spyOn(toastr, 'info');
 
@@ -91,10 +91,10 @@ describe('Editor | Save Order', function() {
 
   it('should flash notification when save fails', function() {
 
-    // --------------------------------------------------------------------
+    // ------------------------------------------------------------------------
     // When the "Save" button is clicked and the request fails, a failure
     // notification should be displayed.
-    // --------------------------------------------------------------------
+    // ------------------------------------------------------------------------
 
     spyOn(toastr, 'error');
 
@@ -112,10 +112,10 @@ describe('Editor | Save Order', function() {
 
   it('should refresh the exhibit when save succeeds', function() {
 
-    // --------------------------------------------------------------------
-    // When the "Save" button is clicked and the request succeeds, the
-    // exhibit should be refreshed to manifest the new ordering.
-    // --------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // When the "Save" button is clicked and the request succeeds, the exhibit
+    // should be refreshed to manifest the new ordering.
+    // ------------------------------------------------------------------------
 
     spyOn(Neatline.vent, 'trigger').andCallThrough();
 

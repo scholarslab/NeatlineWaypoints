@@ -1,5 +1,5 @@
 
-/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=80; */
 
 /**
  * @package     omeka
@@ -36,10 +36,10 @@ describe('Neatline | Publications', function() {
 
     it('should publish `highlight` on record hover', function() {
 
-      // ------------------------------------------------------------------
-      // When the cursor enters a record listing, the `highlight` event
-      // should be published with the corresponding model.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
+      // When the cursor enters a waypoint, the `highlight` event should be
+      // published with the corresponding model.
+      // ----------------------------------------------------------------------
 
       row1.trigger('mouseenter')
 
@@ -57,10 +57,10 @@ describe('Neatline | Publications', function() {
 
     it('should publish `unhighlight` on record hover', function() {
 
-      // --------------------------------------------------------------------
-      // When the cursor leaves a record listing, the `unhighlight` event
-      // should be published with the corresponding model.
-      // --------------------------------------------------------------------
+      // ----------------------------------------------------------------------
+      // When the cursor leaves a waypoint, the `unhighlight` event should be
+      // published with the corresponding model.
+      // ----------------------------------------------------------------------
 
       row1.trigger('mouseleave')
 
@@ -78,10 +78,10 @@ describe('Neatline | Publications', function() {
 
     it('should publish `select` on record click', function() {
 
-      // --------------------------------------------------------------------
-      // When a record listing is clicked, the `select` event should be
-      // published with the corresponding model.
-      // --------------------------------------------------------------------
+      // ----------------------------------------------------------------------
+      // When a waypoint is clicked, the `select` event should be published
+      // with the corresponding model.
+      // ----------------------------------------------------------------------
 
       row1.trigger('click')
 
@@ -94,9 +94,9 @@ describe('Neatline | Publications', function() {
 
     it('should unselect currently-selected model', function() {
 
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
       // If another model is currently selected, it should be unselected.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
 
       row1.trigger('click');
       row2.trigger('click');
@@ -110,11 +110,11 @@ describe('Neatline | Publications', function() {
 
     it('should unselect (not re-select) on click-off', function() {
 
-      // ------------------------------------------------------------------
-      // When a listing is clicked off - clicked again when it is already
-      // selected - the listing should _just_ be unselected, as opposed to
-      // being immediately re-selected as the new selection.
-      // ------------------------------------------------------------------
+      // ----------------------------------------------------------------------
+      // When a waypoint is clicked off (clicked again when it is already
+      // selected) the listing should just be unselected, as opposed to being
+      // immediately re-selected as the new selection.
+      // ----------------------------------------------------------------------
 
       row1.trigger('click');
       vent.reset();
