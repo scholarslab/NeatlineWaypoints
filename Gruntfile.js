@@ -21,9 +21,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-symbolic-link');
   grunt.loadNpmTasks('grunt-shell');
 
-  var pkg     = grunt.file.readJSON('./package.json');
+  var pkg     = grunt.file.readJSON('package.json');
   var nlPaths = grunt.file.readJSON('../Neatline/paths.json');
-  var paths   = grunt.file.readJSON('./paths.json');
+  var paths   = grunt.file.readJSON('paths.json');
 
   grunt.initConfig({
 
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
         command: 'phpunit --color',
         options: {
           execOptions: {
-            cwd: './tests/phpunit'
+            cwd: 'tests/phpunit'
           }
         }
       }
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 
     symlink: {
       neatline: {
-        link: './Neatline',
+        link: 'Neatline',
         target: '../Neatline',
         options: {
           overwrite: true
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
         paths.jasmine+'/fixtures/*.json',
         paths.jasmine+'/fixtures/*.html'
       ],
-      pkg: './pkg'
+      pkg: 'pkg'
     },
 
     concat: {
@@ -114,9 +114,9 @@ module.exports = function(grunt) {
     stylus: {
       compile: {
         files: {
-          './views/shared/css/payloads/waypoints-public.css':
+          'views/shared/css/payloads/waypoints-public.css':
             paths.stylus.shared+'/public/*.styl',
-          './views/shared/css/payloads/waypoints-editor.css':
+          'views/shared/css/payloads/waypoints-editor.css':
             paths.stylus.shared+'/editor/*.styl'
         }
       }
@@ -136,18 +136,19 @@ module.exports = function(grunt) {
     jasmine: {
 
       options: {
+        template: 'Neatline/'+nlPaths.jasmine+'/runner.tmpl',
         helpers: [
-          './Neatline/'+nlPaths.vendor.js.jasmine_jquery,
-          './Neatline/'+nlPaths.vendor.js.sinon,
-          './Neatline/'+nlPaths.jasmine+'/helpers/*.js',
-          './Neatline/'+nlPaths.jasmine+'/assertions/*.js',
+          'Neatline/'+nlPaths.vendor.js.jasmine_jquery,
+          'Neatline/'+nlPaths.vendor.js.sinon,
+          'Neatline/'+nlPaths.jasmine+'/helpers/*.js',
+          'Neatline/'+nlPaths.jasmine+'/assertions/*.js',
           paths.jasmine+'/helpers/*.js'
         ]
       },
 
       neatline: {
         src: [
-          './Neatline/'+nlPaths.payloads.shared.js+'/neatline-public.js',
+          'Neatline/'+nlPaths.payloads.shared.js+'/neatline-public.js',
           paths.payloads.shared.js+'/waypoints-public.js'
         ],
         options: {
@@ -157,7 +158,7 @@ module.exports = function(grunt) {
 
       editor: {
         src: [
-          './Neatline/'+nlPaths.payloads.shared.js+'/neatline-editor.js',
+          'Neatline/'+nlPaths.payloads.shared.js+'/neatline-editor.js',
           paths.payloads.shared.js+'/waypoints-editor.js'
         ],
         options: {
@@ -175,7 +176,9 @@ module.exports = function(grunt) {
         },
         dest: 'NeatlineWaypoints/',
         src: [
+
           '**',
+
           '!.git/**',
           '!package.json',
           '!node_modules/**',
@@ -185,6 +188,7 @@ module.exports = function(grunt) {
           '!Neatline/**',
           '!pkg/**',
           '!tests/**'
+
         ]
       }
     }
@@ -241,8 +245,8 @@ module.exports = function(grunt) {
 
   // Spawn release package.
   grunt.registerTask('package', [
-    'compile:min',
     'clean:pkg',
+    'compile:min',
     'compress'
   ]);
 
