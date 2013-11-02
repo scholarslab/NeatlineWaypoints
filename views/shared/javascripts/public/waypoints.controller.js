@@ -31,7 +31,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      * Create the view, load starting records.
      */
     init: function() {
-      this.collection = new Neatline.Shared.Record.Collection();
+      //this.collection = new Neatline.Shared.Record.Collection();
       this.view = new Waypoints.View({ slug: this.slug });
       this.load();
     },
@@ -41,15 +41,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      * Load waypoint records, ordered by weight.
      */
     load: function() {
-
-      var params = {
-        widget: 'Waypoints', order: 'weight'
-      };
-
-      this.collection.update(params, _.bind(function(records) {
-        this.ingest(records);
-      }, this));
-
+      this.view.load();
     },
 
 
@@ -58,9 +50,9 @@ Neatline.module('Waypoints', function(Waypoints) {
      *
      * @param {Object} records: The collection of records.
      */
-    ingest: function(records) {
-      this.view.ingest(records);
-    },
+    //ingest: function(records) {
+      //this.view.ingest(records);
+    //},
 
 
     /**

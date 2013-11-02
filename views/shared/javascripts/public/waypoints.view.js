@@ -28,25 +28,45 @@ Neatline.module('Waypoints', function(Waypoints) {
 
 
     /**
-     * Compile the records template, initialize state.
+     * Compile the list template and initialize state.
      *
      * @param {Object} options
      */
     init: function(options) {
 
-      this.template = _.template(
-        $('#waypoints-public-list-template').html()
-      );
-
       this.slug = options.slug;
-      this.filters = {};
-      this.model = null;
+
+      this.model = null; // The currently-selected model.
+      this.filters = {}; // The active filters.
+
+      // Compile the list template.
+      this.template = _.template($('#waypoints-public-list-template').html());
+
+      // Create the list collection.
+      this.records = new Neatline.Shared.Record.Collection();
 
     },
 
 
     /**
-     * Render a list of records.
+     * Load waypoint records, ordered by weight.
+     */
+    load: function() {
+
+      var params = {
+        widget: 'Waypoints', order: 'weight'
+      };
+
+      // Query for records.
+      this.records.update(params, _.bind(function(records) {
+        this.ingest(records);
+      }, this));
+
+    },
+
+
+    /**
+     * Render a list of records and apply filters.
      *
      * @param {Object} records: The records collection.
      */
@@ -94,9 +114,9 @@ Neatline.module('Waypoints', function(Waypoints) {
 
       if (oldModel) {
 
-        // First unselect the currently-selected model. If the model for
-        // the newly-clicked listing is the same as the old model - when a
-        // listing is being "clicked off," break out and don't reselect.
+        // First unselect the currently-selected model. If the model for the
+        // newly-clicked listing is the same as the old model - when a listing
+        // is being "clicked off," break out and don't reselect.
 
         this.publish('unselect', oldModel);
         if (oldModel.id == newModel.id) return;
@@ -205,7 +225,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      */
     filter: function() {
 
-      Waypoints.__controller.collection.each(_.bind(function(record) {
+      this.records.each(_.bind(function(record) {
 
         var visible = true;
 
@@ -231,8 +251,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      * @param {Object} e: The DOM event.
      */
     getModelByEvent: function(e) {
-      return Waypoints.__controller.collection.get(
-        parseInt($(e.currentTarget).attr('data-id'), 10)
+      return this.records.get(Number($(e.currentTarget).attr('data-id'))
       );
     },
 
@@ -254,9 +273,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      * @param {Object} model: A record model.
      */
     publish: function(event, model) {
-      Neatline.vent.trigger(event, {
-        model: model, source: this.slug
-      });
+      Neatline.vent.trigger(event, { model: model, source: this.slug });
     }
 
 

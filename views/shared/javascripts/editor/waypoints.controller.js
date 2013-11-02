@@ -24,7 +24,6 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
      */
     init: function() {
       this.router = new Waypoints.Router();
-      this.collection = new Neatline.Shared.Record.Collection();
       this.view = new Waypoints.View({ slug: this.slug });
     },
 
@@ -35,17 +34,8 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
      * @param {Object} container: The container element.
      */
     display: function(container) {
-
       this.view.showIn(container);
-
-      var params = {
-        widget: 'waypoints', order: 'weight'
-      };
-
-      this.collection.update(params, _.bind(function(records) {
-        this.view.ingest(records);
-      }, this));
-
+      this.view.load()
     }
 
 

@@ -38,12 +38,30 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
       this.slug = options.slug;
 
       // Compile list template.
-      this.template = _.template(
-        $('#waypoints-editor-list-template').html()
-      );
+      this.template = _.template($('#waypoints-editor-list-template').html());
+
+      // Create the list collection.
+      this.records = new Neatline.Shared.Record.Collection();
 
       // Make list sortable.
       this.__ui.list.sortable();
+
+    },
+
+
+    /**
+     * Load waypoint records, ordered by weight.
+     */
+    load: function() {
+
+      var params = {
+        widget: 'Waypoints', order: 'weight'
+      };
+
+      // Query for records.
+      this.records.update(params, _.bind(function(records) {
+        this.ingest(records);
+      }, this));
 
     },
 
@@ -61,9 +79,6 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
       // (En/dis)able Sortable, "Save" button.
       if (records.length > 0) this.enableSorting();
       else this.disableSorting();
-
-      // Store collection.
-      this.records = records;
 
     },
 
