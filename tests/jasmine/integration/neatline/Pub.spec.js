@@ -11,7 +11,7 @@
 describe('Neatline | Publications', function() {
 
 
-  var vent, model1, model2, row1, row2, fx = {
+  var vent, model1, model2, row1, row2, fixtures = {
     records: readFixtures('NeatlinePubSub.json')
   };
 
@@ -19,7 +19,7 @@ describe('Neatline | Publications', function() {
   beforeEach(function() {
 
     WP.loadNeatline();
-    WP.respondWaypoints200(fx.records);
+    WP.respondWaypoints200(fixtures.records);
 
     model1 = WP.getWidgetModelByTitle('title1');
     model2 = WP.getWidgetModelByTitle('title2');

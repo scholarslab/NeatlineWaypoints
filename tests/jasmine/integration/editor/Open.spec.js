@@ -11,7 +11,7 @@
 describe('Editor | Open Form', function() {
 
 
-  var rows, fx = {
+  var rows, fixtures = {
     regular:  readFixtures('EditorForm.regular.json'),
     empty:    readFixtures('EditorForm.empty.json')
   };
@@ -25,7 +25,7 @@ describe('Editor | Open Form', function() {
   describe('when waypoints exist', function() {
 
     beforeEach(function() {
-      WP.showForm(fx.regular);
+      WP.showForm(fixtures.regular);
       rows = WP.getEditorRows();
     });
 
@@ -51,9 +51,9 @@ describe('Editor | Open Form', function() {
       // added to the widget since the last form open.
       // ----------------------------------------------------------------------
 
-      WP.showForm(fx.empty);
-      WP.showForm(fx.regular);
-      expect(WP.vw.EDITOR.__ui.save).not.toHaveClass('disabled');
+      WP.showForm(fixtures.empty);
+      WP.showForm(fixtures.regular);
+      expect(WP.v.editor.__ui.save).not.toHaveClass('disabled');
 
     });
 
@@ -64,7 +64,7 @@ describe('Editor | Open Form', function() {
       // ----------------------------------------------------------------------
 
       expect(
-        WP.vw.EDITOR.__ui.list.sortable('option', 'disabled')
+        WP.v.editor.__ui.list.sortable('option', 'disabled')
       ).toBeFalsy();
 
     });
@@ -74,7 +74,7 @@ describe('Editor | Open Form', function() {
   describe('when waypoints do not exist', function() {
 
     beforeEach(function() {
-      WP.showForm(fx.empty);
+      WP.showForm(fixtures.empty);
       rows = WP.getEditorRows();
     });
 
@@ -96,7 +96,7 @@ describe('Editor | Open Form', function() {
       // The "Save" button should be disabled.
       // ----------------------------------------------------------------------
 
-      expect(WP.vw.EDITOR.__ui.save).toHaveClass('disabled');
+      expect(WP.v.editor.__ui.save).toHaveClass('disabled');
 
     });
 
@@ -107,7 +107,7 @@ describe('Editor | Open Form', function() {
       // ----------------------------------------------------------------------
 
       expect(
-        WP.vw.EDITOR.__ui.list.sortable('option', 'disabled')
+        WP.v.editor.__ui.list.sortable('option', 'disabled')
       ).toBeTruthy();
 
     });

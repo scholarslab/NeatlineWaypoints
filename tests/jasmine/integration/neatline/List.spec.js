@@ -11,7 +11,7 @@
 describe('Neatline | Record Listing', function() {
 
 
-  var fx = {
+  var fixtures = {
     regular:  readFixtures('NeatlineList.regular.json'),
     changed:  readFixtures('NeatlineList.changed.json'),
     empty:    readFixtures('NeatlineList.empty.json')
@@ -20,7 +20,7 @@ describe('Neatline | Record Listing', function() {
 
   beforeEach(function() {
     WP.loadNeatline();
-    WP.respondWaypoints200(fx.regular);
+    WP.respondWaypoints200(fixtures.regular);
   });
 
 
@@ -49,7 +49,7 @@ describe('Neatline | Record Listing', function() {
     // ------------------------------------------------------------------------
 
     Neatline.vent.trigger('refresh');
-    WP.respondWaypoints200(fx.changed);
+    WP.respondWaypoints200(fixtures.changed);
     var rows = WP.getWidgetRows();
 
     // Show list updated titles.
@@ -68,12 +68,12 @@ describe('Neatline | Record Listing', function() {
     // ------------------------------------------------------------------------
 
     // Should add empty class.
-    WP.refreshWidget(fx.empty);
-    expect(WP.vw.PUBLIC.$el).toHaveClass('empty');
+    WP.refreshWidget(fixtures.empty);
+    expect(WP.v.neatline.$el).toHaveClass('empty');
 
     // Should remove empty class.
-    WP.refreshWidget(fx.regular);
-    expect(WP.vw.PUBLIC.$el).not.toHaveClass('empty');
+    WP.refreshWidget(fixtures.regular);
+    expect(WP.v.neatline.$el).not.toHaveClass('empty');
 
   });
 

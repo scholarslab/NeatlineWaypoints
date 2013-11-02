@@ -11,7 +11,7 @@
 describe('Editor | Save Order', function() {
 
 
-  var fx = {
+  var fixtures = {
     regular:  readFixtures('EditorForm.regular.json'),
     empty:    readFixtures('EditorForm.empty.json')
   };
@@ -19,7 +19,7 @@ describe('Editor | Save Order', function() {
 
   beforeEach(function() {
     WP.loadEditor();
-    WP.showForm(fx.regular);
+    WP.showForm(fixtures.regular);
   });
 
 
@@ -31,7 +31,7 @@ describe('Editor | Save Order', function() {
     // ------------------------------------------------------------------------
 
     // Click on "Save".
-    WP.vw.EDITOR.__ui.save.trigger('click');
+    WP.v.editor.__ui.save.trigger('click');
 
     // Route should be waypoints API, method POST.
     NL.assertLastRequestRoute(Neatline.g.waypoints.order_api);
@@ -55,11 +55,11 @@ describe('Editor | Save Order', function() {
     // button is clicked, a request should not be issued.
     // ------------------------------------------------------------------------
 
-    WP.showForm(fx.empty);
+    WP.showForm(fixtures.empty);
 
     // Click on "Save".
     var c1 = NL.server.requests.length;
-    WP.vw.EDITOR.__ui.save.trigger('click');
+    WP.v.editor.__ui.save.trigger('click');
     var c2 = NL.server.requests.length;
 
     // No POST request.
@@ -78,7 +78,7 @@ describe('Editor | Save Order', function() {
     spyOn(toastr, 'info');
 
     // Click on "Save".
-    WP.vw.EDITOR.__ui.save.trigger('click');
+    WP.v.editor.__ui.save.trigger('click');
     NL.respondLast200('[]');
 
     // Should flash success.
@@ -99,7 +99,7 @@ describe('Editor | Save Order', function() {
     spyOn(toastr, 'error');
 
     // Click on "Save".
-    WP.vw.EDITOR.__ui.save.trigger('click');
+    WP.v.editor.__ui.save.trigger('click');
     NL.respondLast500();
 
     // Should flash error.
@@ -120,7 +120,7 @@ describe('Editor | Save Order', function() {
     spyOn(Neatline.vent, 'trigger').andCallThrough();
 
     // Click on "Save".
-    WP.vw.EDITOR.__ui.save.trigger('click');
+    WP.v.editor.__ui.save.trigger('click');
     NL.respondLast200('[]');
 
     // Should refresh the exhibit.

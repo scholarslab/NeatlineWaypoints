@@ -11,7 +11,7 @@
 describe('Neatline | Subscriptions', function() {
 
 
-  var model1, model2, row1, row2, fx = {
+  var model1, model2, row1, row2, fixtures = {
     records: readFixtures('NeatlinePubSub.json')
   };
 
@@ -19,7 +19,7 @@ describe('Neatline | Subscriptions', function() {
   beforeEach(function() {
 
     WP.loadNeatline();
-    WP.respondWaypoints200(fx.records);
+    WP.respondWaypoints200(fixtures.records);
 
     model1 = WP.getWidgetModelByTitle('title1');
     model2 = WP.getWidgetModelByTitle('title2');
@@ -224,7 +224,7 @@ describe('Neatline | Subscriptions', function() {
 
       // Trigger a record refresh.
       Neatline.vent.trigger('refresh');
-      WP.respondWaypoints200(fx.records);
+      WP.respondWaypoints200(fixtures.records);
 
       // Record 1 should be hidden.
       expect(WP.getWidgetRowByTitle('title1')).not.toBeVisible();

@@ -16,8 +16,8 @@ var WP = (function(WP) {
    * Shortcut public views.
    */
   WP.aliasNeatline = function() {
-    this.vw = {
-      PUBLIC: Neatline.Waypoints.__controller.view
+    this.v = {
+      neatline: Neatline.Waypoints.__controller.view
     };
   };
 
@@ -26,9 +26,9 @@ var WP = (function(WP) {
    * Shortcut editor views.
    */
   WP.aliasEditor = function() {
-    this.vw = {
-      PUBLIC: Neatline.Waypoints.__controller.view,
-      EDITOR: Neatline.Editor.Exhibit.Waypoints.__controller.view
+    this.v = {
+      neatline: Neatline.Waypoints.__controller.view,
+      editor:   Neatline.Editor.Exhibit.Waypoints.__controller.view
     };
   };
 
