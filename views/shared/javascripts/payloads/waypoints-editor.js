@@ -8,8 +8,7 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('Waypoints', function(
-  Waypoints, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Waypoints', function(Waypoints) {
 
 
   Waypoints.ID = 'WAYPOINTS';
@@ -34,8 +33,7 @@ Neatline.module('Waypoints', function(
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('Waypoints', function(
-  Waypoints, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Waypoints', function(Waypoints) {
 
 
   /**
@@ -154,8 +152,7 @@ Neatline.module('Waypoints', function(
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('Waypoints', function(
-  Waypoints, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Waypoints', function(Waypoints) {
 
 
   Waypoints.View = Neatline.Shared.Widget.View.extend({
@@ -419,8 +416,7 @@ Neatline.module('Waypoints', function(
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('Editor.Exhibit.Waypoints', function(
-  Waypoints, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
 
   Waypoints.ID = 'EDITOR:WAYPOINTS';
@@ -445,8 +441,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('Editor.Exhibit.Waypoints', function(
-  Waypoints, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
 
   /**
@@ -482,8 +477,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('Editor.Exhibit.Waypoints', function(
-  Waypoints, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
 
   Waypoints.Router = Neatline.Editor.Router.extend({
@@ -526,8 +520,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('Editor.Exhibit.Waypoints', function(
-  Waypoints, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
 
   Waypoints.View = Backbone.Neatline.View.extend({

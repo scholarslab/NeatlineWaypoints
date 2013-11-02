@@ -8,8 +8,7 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-Neatline.module('Waypoints', function(
-  Waypoints, Neatline, Backbone, Marionette, $, _) {
+Neatline.module('Waypoints', function(Waypoints) {
 
 
   Waypoints.ID = 'WAYPOINTS';
