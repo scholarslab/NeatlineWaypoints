@@ -11,13 +11,8 @@
 Neatline.module('Waypoints', function(Waypoints) {
 
 
-  Waypoints.ID = 'WAYPOINTS';
-
-
   Waypoints.addInitializer(function() {
-    Waypoints.__collection = new Neatline.Shared.Record.Collection();
-    Waypoints.__view = new Waypoints.View();
-    Neatline.execute(Waypoints.ID+':load');
+    Waypoints.__controller = new Waypoints.Controller();
   });
 
 

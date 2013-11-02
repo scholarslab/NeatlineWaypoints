@@ -21,11 +21,11 @@ describe('Neatline | Subscriptions', function() {
     WP.loadNeatline();
     WP.respondWaypoints200(fx.records);
 
-    model1  = WP.getWidgetModelByTitle('title1');
-    model2  = WP.getWidgetModelByTitle('title2');
+    model1 = WP.getWidgetModelByTitle('title1');
+    model2 = WP.getWidgetModelByTitle('title2');
 
-    row1    = WP.getWidgetRowByTitle('title1');
-    row2    = WP.getWidgetRowByTitle('title2');
+    row1 = WP.getWidgetRowByTitle('title1');
+    row2 = WP.getWidgetRowByTitle('title2');
 
   });
 

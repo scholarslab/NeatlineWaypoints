@@ -19,7 +19,7 @@ describe('Editor | Router', function() {
     WP.loadEditor();
 
     el = {
-      waypoints: NL.vw.EXHIBIT.$('li[data-slug="waypoints"]')
+      waypoints: NL.v.exhibit.$('li[data-slug="waypoints"]')
     };
 
   });
@@ -30,8 +30,8 @@ describe('Editor | Router', function() {
     NL.navigate('waypoints');
 
     // Tabs and waypoints form should be visible.
-    expect(NL.vw.EDITOR.__ui.editor).toContain(NL.vw.EXHIBIT.$el);
-    expect(NL.vw.EDITOR.__ui.editor).toContain(WP.vw.EDITOR.$el);
+    expect(NL.v.editor.__ui.editor).toContain(NL.v.exhibit.$el);
+    expect(NL.v.editor.__ui.editor).toContain(WP.vw.EDITOR.$el);
 
     // "Waypoints" tab should be active.
     expect(el.waypoints).toHaveClass('active');

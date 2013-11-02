@@ -11,13 +11,121 @@
 Neatline.module('Waypoints', function(Waypoints) {
 
 
-  Waypoints.ID = 'WAYPOINTS';
+  Waypoints.Controller = Neatline.Shared.Controller.extend({
 
 
-  Waypoints.addInitializer(function() {
-    Waypoints.__collection = new Neatline.Shared.Record.Collection();
-    Waypoints.__view = new Waypoints.View();
-    Neatline.execute(Waypoints.ID+':load');
+    slug: 'WAYPOINTS',
+
+    events: [
+      { 'refresh': 'load' },
+      'highlight',
+      'unhighlight',
+      'select',
+      'unselect',
+      'setFilter',
+      'removeFilter'
+    ],
+
+
+    /**
+     * Create the view, load starting records.
+     */
+    init: function() {
+      this.collection = new Neatline.Shared.Record.Collection();
+      this.view = new Waypoints.View({ slug: this.slug });
+      this.load();
+    },
+
+
+    /**
+     * Load waypoint records, ordered by weight.
+     */
+    load: function() {
+
+      var params = {
+        widget: 'Waypoints', order: 'weight'
+      };
+
+      this.collection.update(params, _.bind(function(records) {
+        this.ingest(records);
+      }, this));
+
+    },
+
+
+    /**
+     * Render a records collection in the list.
+     *
+     * @param {Object} records: The collection of records.
+     */
+    ingest: function(records) {
+      this.view.ingest(records);
+    },
+
+
+    /**
+     * Highlight a listing.
+     *
+     * @param {Object} args: Event arguments.
+     */
+    highlight: function(args) {
+      this.view.renderHighlight(args.model);
+    },
+
+
+    /**
+     * Unhighlight a listing.
+     *
+     * @param {Object} args: Event arguments.
+     */
+    unhighlight: function(args) {
+      this.view.renderUnhighlight(args.model);
+    },
+
+
+    /**
+     * Select tagged a listing.
+     *
+     * @param {Object} args: Event arguments.
+     */
+    select: function(args) {
+      this.view.renderSelect(args.model);
+      this.view.scrollTo(args.model);
+      this.unhighlight(args);
+    },
+
+
+    /**
+     * Unselect a listing.
+     *
+     * @param {Object} args: Event arguments.
+     */
+    unselect: function(args) {
+      this.view.renderUnselect(args.model);
+      this.unhighlight(args);
+    },
+
+
+    /**
+     * Set a record filter.
+     *
+     * @param {Object} args: Event arguments.
+     */
+    setFilter: function(args) {
+      this.view.setFilter(args.key, args.evaluator);
+    },
+
+
+    /**
+     * Remove a record filter.
+     *
+     * @param {Object} args: Event arguments.
+     */
+    removeFilter: function(args) {
+      this.view.removeFilter(args.key);
+    }
+
+
   });
 
 
@@ -36,108 +144,9 @@ Neatline.module('Waypoints', function(Waypoints) {
 Neatline.module('Waypoints', function(Waypoints) {
 
 
-  /**
-   * Load waypoint records, ordered by weight.
-   */
-  var load = function() {
-
-    var params = {
-      widget: 'Waypoints', order: 'weight'
-    };
-
-    Waypoints.__collection.update(params, function(records) {
-      ingest(records);
-    });
-
-  };
-  Neatline.commands.setHandler(Waypoints.ID+':load', load);
-  Neatline.vent.on('refresh', load);
-
-
-  /**
-   * Render a records collection in the list.
-   *
-   * @param {Object} records: The collection of records.
-   */
-  var ingest = function(records) {
-    Waypoints.__view.ingest(records);
-  };
-  Neatline.commands.setHandler(Waypoints.ID+':ingest', ingest);
-
-
-  /**
-   * Highlight a listing.
-   *
-   * @param {Object} args: Event arguments.
-   */
-  var highlight = function(args) {
-    Waypoints.__view.renderHighlight(args.model);
-  };
-  Neatline.commands.setHandler(Waypoints.ID+':highlight', highlight);
-  Neatline.vent.on('highlight', highlight);
-
-
-  /**
-   * Unhighlight a listing.
-   *
-   * @param {Object} args: Event arguments.
-   */
-  var unhighlight = function(args) {
-    Waypoints.__view.renderUnhighlight(args.model);
-  };
-  Neatline.commands.setHandler(Waypoints.ID+':unhighlight', unhighlight);
-  Neatline.vent.on('unhighlight', unhighlight);
-
-
-  /**
-   * Select tagged a listing.
-   *
-   * @param {Object} args: Event arguments.
-   */
-  var select = function(args) {
-    Waypoints.__view.renderSelect(args.model);
-    Waypoints.__view.scrollTo(args.model);
-    unhighlight(args);
-  };
-  Neatline.commands.setHandler(Waypoints.ID+':select', select);
-  Neatline.vent.on('select', select);
-
-
-  /**
-   * Unselect a listing.
-   *
-   * @param {Object} args: Event arguments.
-   */
-  var unselect = function(args) {
-    Waypoints.__view.renderUnselect(args.model);
-    unhighlight(args);
-  };
-  Neatline.commands.setHandler(Waypoints.ID+':unselect', unselect);
-  Neatline.vent.on('unselect', unselect);
-
-
-  /**
-   * Set a record filter.
-   *
-   * @param {Object} args: Event arguments.
-   */
-  var sFilter = function(args) {
-    Waypoints.__view.setFilter(args.key, args.evaluator);
-  };
-  Neatline.commands.setHandler(Waypoints.ID+':setFilter', sFilter);
-  Neatline.vent.on('setFilter', sFilter);
-
-
-  /**
-   * Remove a record filter.
-   *
-   * @param {Object} args: Event arguments.
-   */
-  var rFilter = function(args) {
-    Waypoints.__view.removeFilter(args.key);
-  };
-  Neatline.commands.setHandler(Waypoints.ID+':removeFilter', rFilter);
-  Neatline.vent.on('removeFilter', rFilter);
+  Waypoints.addInitializer(function() {
+    Waypoints.__controller = new Waypoints.Controller();
+  });
 
 
 });
@@ -173,13 +182,16 @@ Neatline.module('Waypoints', function(Waypoints) {
 
     /**
      * Compile the records template, initialize state.
+     *
+     * @param {Object} options
      */
-    init: function() {
+    init: function(options) {
 
       this.template = _.template(
         $('#waypoints-public-list-template').html()
       );
 
+      this.slug = options.slug;
       this.filters = {};
       this.model = null;
 
@@ -346,7 +358,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      */
     filter: function() {
 
-      Waypoints.__collection.each(_.bind(function(record) {
+      Waypoints.__controller.collection.each(_.bind(function(record) {
 
         var visible = true;
 
@@ -372,7 +384,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      * @param {Object} e: The DOM event.
      */
     getModelByEvent: function(e) {
-      return Waypoints.__collection.get(
+      return Waypoints.__controller.collection.get(
         parseInt($(e.currentTarget).attr('data-id'), 10)
       );
     },
@@ -396,7 +408,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      */
     publish: function(event, model) {
       Neatline.vent.trigger(event, {
-        source: Waypoints.ID, model: model
+        model: model, source: this.slug
       });
     }
 
@@ -419,13 +431,44 @@ Neatline.module('Waypoints', function(Waypoints) {
 Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
 
-  Waypoints.ID = 'EDITOR:WAYPOINTS';
+  Waypoints.Controller = Neatline.Shared.Controller.extend({
 
 
-  Waypoints.addInitializer(function() {
-    Waypoints.__collection  = new Neatline.Shared.Record.Collection();
-    Waypoints.__router      = new Waypoints.Router();
-    Waypoints.__view        = new Waypoints.View();
+    slug: 'EDITOR:WAYPOINTS',
+
+    commands: ['display'],
+
+
+    /**
+     * Create the router and view.
+     */
+    init: function() {
+      this.router = new Waypoints.Router();
+      this.collection = new Neatline.Shared.Record.Collection();
+      this.view = new Waypoints.View({ slug: this.slug });
+    },
+
+
+    /**
+     * Display the form and update the sorting list.
+     *
+     * @param {Object} container: The container element.
+     */
+    display: function(container) {
+
+      this.view.showIn(container);
+
+      var params = {
+        widget: 'waypoints', order: 'weight'
+      };
+
+      this.collection.update(params, _.bind(function(records) {
+        this.view.ingest(records);
+      }, this));
+
+    }
+
+
   });
 
 
@@ -444,25 +487,9 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
 
-  /**
-   * Display the form and update the sorting list.
-   *
-   * @param {Object} container: The container element.
-   */
-  var display = function(container) {
-
-    Waypoints.__view.showIn(container);
-
-    var params = {
-      widget: 'waypoints', order: 'weight'
-    };
-
-    Waypoints.__collection.update(params, function(records) {
-      Waypoints.__view.ingest(records);
-    });
-
-  };
-  Neatline.commands.setHandler(Waypoints.ID+':display', display);
+  Waypoints.addInitializer(function() {
+    Waypoints.__controller = new Waypoints.Controller();
+  });
 
 
 });
@@ -480,7 +507,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
 
-  Waypoints.Router = Neatline.Editor.Router.extend({
+  Waypoints.Router = Neatline.Shared.Router.extend({
 
 
     routes: {
@@ -523,7 +550,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
 
-  Waypoints.View = Backbone.Neatline.View.extend({
+  Waypoints.View = Neatline.Shared.View.extend({
 
 
     template:   '#waypoints-form-template',
@@ -542,12 +569,21 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
     /**
      * Instantiate Sortable, compile the records template.
+     *
+     * @param {Object} options
      */
-    init: function() {
-      this.__ui.list.sortable();
+    init: function(options) {
+
+      this.slug = options.slug;
+
+      // Compile list template.
       this.template = _.template(
         $('#waypoints-editor-list-template').html()
       );
+
+      // Make list sortable.
+      this.__ui.list.sortable();
+
     },
 
 
@@ -625,7 +661,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
       // Refresh the exhibit.
       Neatline.vent.trigger('refresh', {
-        source: Waypoints.ID
+        source: this.slug
       })
 
       // Flash success message.

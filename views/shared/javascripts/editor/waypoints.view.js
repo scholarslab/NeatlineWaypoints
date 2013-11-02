@@ -11,7 +11,7 @@
 Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
 
-  Waypoints.View = Backbone.Neatline.View.extend({
+  Waypoints.View = Neatline.Shared.View.extend({
 
 
     template:   '#waypoints-form-template',
@@ -30,12 +30,21 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
     /**
      * Instantiate Sortable, compile the records template.
+     *
+     * @param {Object} options
      */
-    init: function() {
-      this.__ui.list.sortable();
+    init: function(options) {
+
+      this.slug = options.slug;
+
+      // Compile list template.
       this.template = _.template(
         $('#waypoints-editor-list-template').html()
       );
+
+      // Make list sortable.
+      this.__ui.list.sortable();
+
     },
 
 
@@ -113,7 +122,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
       // Refresh the exhibit.
       Neatline.vent.trigger('refresh', {
-        source: Waypoints.ID
+        source: this.slug
       })
 
       // Flash success message.

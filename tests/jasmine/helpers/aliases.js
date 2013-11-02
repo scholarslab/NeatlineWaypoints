@@ -17,7 +17,7 @@ var WP = (function(WP) {
    */
   WP.aliasNeatline = function() {
     this.vw = {
-      PUBLIC: Neatline.Waypoints.__view
+      PUBLIC: Neatline.Waypoints.__controller.view
     };
   };
 
@@ -27,8 +27,8 @@ var WP = (function(WP) {
    */
   WP.aliasEditor = function() {
     this.vw = {
-      PUBLIC: Neatline.Waypoints.__view,
-      EDITOR: Neatline.Editor.Exhibit.Waypoints.__view
+      PUBLIC: Neatline.Waypoints.__controller.view,
+      EDITOR: Neatline.Editor.Exhibit.Waypoints.__controller.view
     };
   };
 

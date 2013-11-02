@@ -40,7 +40,7 @@ var WP = (function(WP) {
    * @return {Array}: The models.
    */
   WP.getWidgetModels = function() {
-    return Neatline.Waypoints.__collection.models;
+    return Neatline.Waypoints.__controller.collection.models;
   };
 
 
@@ -51,7 +51,9 @@ var WP = (function(WP) {
    * @return {Array}: The DOM element.
    */
   WP.getWidgetModelByTitle = function(title) {
-    return Neatline.Waypoints.__collection.findWhere({ title: title });
+    return Neatline.Waypoints.__controller.collection.findWhere({
+      title: title
+    });
   };
 
 

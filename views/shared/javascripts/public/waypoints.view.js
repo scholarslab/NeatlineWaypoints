@@ -29,13 +29,16 @@ Neatline.module('Waypoints', function(Waypoints) {
 
     /**
      * Compile the records template, initialize state.
+     *
+     * @param {Object} options
      */
-    init: function() {
+    init: function(options) {
 
       this.template = _.template(
         $('#waypoints-public-list-template').html()
       );
 
+      this.slug = options.slug;
       this.filters = {};
       this.model = null;
 
@@ -202,7 +205,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      */
     filter: function() {
 
-      Waypoints.__collection.each(_.bind(function(record) {
+      Waypoints.__controller.collection.each(_.bind(function(record) {
 
         var visible = true;
 
@@ -228,7 +231,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      * @param {Object} e: The DOM event.
      */
     getModelByEvent: function(e) {
-      return Waypoints.__collection.get(
+      return Waypoints.__controller.collection.get(
         parseInt($(e.currentTarget).attr('data-id'), 10)
       );
     },
@@ -252,7 +255,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      */
     publish: function(event, model) {
       Neatline.vent.trigger(event, {
-        source: Waypoints.ID, model: model
+        model: model, source: this.slug
       });
     }
 

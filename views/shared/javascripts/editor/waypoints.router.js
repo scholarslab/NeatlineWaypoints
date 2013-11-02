@@ -11,7 +11,7 @@
 Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
 
-  Waypoints.Router = Neatline.Editor.Router.extend({
+  Waypoints.Router = Neatline.Shared.Router.extend({
 
 
     routes: {

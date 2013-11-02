@@ -21,13 +21,13 @@ describe('Neatline | Publications', function() {
     WP.loadNeatline();
     WP.respondWaypoints200(fx.records);
 
-    vent    = spyOn(Neatline.vent, 'trigger').andCallThrough();
+    model1 = WP.getWidgetModelByTitle('title1');
+    model2 = WP.getWidgetModelByTitle('title2');
 
-    model1  = WP.getWidgetModelByTitle('title1');
-    model2  = WP.getWidgetModelByTitle('title2');
+    row1 = WP.getWidgetRowByTitle('title1');
+    row2 = WP.getWidgetRowByTitle('title2');
 
-    row1    = WP.getWidgetRowByTitle('title1');
-    row2    = WP.getWidgetRowByTitle('title2');
+    vent = spyOn(Neatline.vent, 'trigger').andCallThrough();
 
   });
 
@@ -44,8 +44,7 @@ describe('Neatline | Publications', function() {
       row1.trigger('mouseenter')
 
       expect(vent).toHaveBeenCalledWith('highlight', {
-        model:  model1,
-        source: Neatline.Waypoints.ID
+        model: model1, source: Neatline.Waypoints.__controller.slug
       });
 
     });
@@ -65,8 +64,7 @@ describe('Neatline | Publications', function() {
       row1.trigger('mouseleave')
 
       expect(vent).toHaveBeenCalledWith('unhighlight', {
-        model:  model1,
-        source: Neatline.Waypoints.ID
+        model: model1, source: Neatline.Waypoints.__controller.slug
       });
 
     });
@@ -86,8 +84,7 @@ describe('Neatline | Publications', function() {
       row1.trigger('click')
 
       expect(vent).toHaveBeenCalledWith('select', {
-        model:  model1,
-        source: Neatline.Waypoints.ID
+        model: model1, source: Neatline.Waypoints.__controller.slug
       });
 
     });
@@ -102,8 +99,7 @@ describe('Neatline | Publications', function() {
       row2.trigger('click');
 
       expect(vent).toHaveBeenCalledWith('unselect', {
-        model:  model1,
-        source: Neatline.Waypoints.ID
+        model: model1, source: Neatline.Waypoints.__controller.slug
       });
 
     });
@@ -122,14 +118,12 @@ describe('Neatline | Publications', function() {
 
       // Should unselect.
       expect(vent).toHaveBeenCalledWith('unselect', {
-        model:  model1,
-        source: Neatline.Waypoints.ID
+        model: model1, source: Neatline.Waypoints.__controller.slug
       });
 
       // Should not re-select.
       expect(vent).not.toHaveBeenCalledWith('select', {
-        model:  model1,
-        source: Neatline.Waypoints.ID
+        model: model1, source: Neatline.Waypoints.__controller.slug
       });
 
     });
