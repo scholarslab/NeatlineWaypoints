@@ -52,27 +52,17 @@ Neatline.module('Waypoints', function(Waypoints) {
      * Load waypoint records, ordered by weight.
      */
     load: function() {
-
-      var params = {
-        widget: 'Waypoints', order: 'weight'
-      };
-
-      // Query for records.
-      this.records.update(params, _.bind(function(records) {
-        this.ingest(records);
-      }, this));
-
+      var params = { widget: 'Waypoints', order: 'weight' };
+      this.records.update(params, _.bind(this.ingest, this));
     },
 
 
     /**
-     * Render a list of records and apply filters.
-     *
-     * @param {Object} records: The records collection.
+     * Render the list of records and apply filters.
      */
-    ingest: function(records) {
-      this.$el.toggleClass('empty', records.length == 0);
-      this.$el.html(this.template({ records: records }));
+    ingest: function() {
+      this.$el.toggleClass('empty', this.records.length == 0);
+      this.$el.html(this.template({ records: this.records }));
       this.filter();
     },
 

@@ -31,7 +31,6 @@ Neatline.module('Waypoints', function(Waypoints) {
      * Create the view, load starting records.
      */
     init: function() {
-      //this.collection = new Neatline.Shared.Record.Collection();
       this.view = new Waypoints.View({ slug: this.slug });
       this.load();
     },
@@ -43,16 +42,6 @@ Neatline.module('Waypoints', function(Waypoints) {
     load: function() {
       this.view.load();
     },
-
-
-    /**
-     * Render a records collection in the list.
-     *
-     * @param {Object} records: The collection of records.
-     */
-    //ingest: function(records) {
-      //this.view.ingest(records);
-    //},
 
 
     /**
