@@ -22,14 +22,8 @@ class NeatlineWaypoints_Case_Default extends Neatline_Case_Abstract
 
         parent::setUp();
 
-        // Authenticate and set the current user.
-        $this->user = $this->db->getTable('User')->find(1);
-        $this->_authenticateUser($this->user);
-
-        // Install Neatline and NeatlineWaypoints.
-        $pluginHelper = new Omeka_Test_Helper_Plugin;
-        $pluginHelper->setUp('Neatline');
-        $pluginHelper->setUp('NeatlineWaypoints');
+        // Install NeatlineWaypoints.
+        $this->helper->setUp('NeatlineWaypoints');
 
         // Register script paths.
         get_view()->setScriptPath(NL_WAYPOINTS_DIR.'/views/shared');
