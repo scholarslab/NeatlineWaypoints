@@ -9,11 +9,8 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-class FixturesTest_SharedHtml extends NeatlineWaypoints_Case_Default
+class FixturesTest_SharedHtml extends NeatlineWaypoints_Case_Fixture
 {
-
-
-    protected $_isAdminTest = false;
 
 
     /**
@@ -24,9 +21,8 @@ class FixturesTest_SharedHtml extends NeatlineWaypoints_Case_Default
 
         parent::setUp();
 
-        $this->exhibit = $this->_exhibit();
-        $this->exhibit->spatial_layer = 'OpenStreetMap';
         $this->exhibit->widgets = 'Waypoints';
+        $this->exhibit->spatial_layer = 'OpenStreetMap';
         $this->exhibit->save();
 
     }

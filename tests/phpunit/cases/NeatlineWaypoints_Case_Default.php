@@ -10,7 +10,7 @@
  */
 
 
-class NeatlineWaypoints_Case_Default extends Neatline_Case_Abstract
+class NeatlineWaypoints_Case_Default extends Neatline_Case_Default
 {
 
 
@@ -29,17 +29,6 @@ class NeatlineWaypoints_Case_Default extends Neatline_Case_Abstract
         get_view()->setScriptPath(NL_WAYPOINTS_DIR.'/views/shared');
         get_view()->addScriptPath(NL_DIR.'/views/shared');
 
-    }
-
-
-    /**
-     * Get the Jasmine fixtures directory.
-     *
-     * @return string The directory.
-     */
-    protected function _getFixturesPath()
-    {
-        return NL_WAYPOINTS_DIR.'/tests/jasmine/fixtures/';
     }
 
 

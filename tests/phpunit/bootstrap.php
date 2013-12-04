@@ -10,18 +10,12 @@
  */
 
 
-// Define path variables.
-define('NL_WAYPOINTS_DIR', dirname(dirname(dirname(__FILE__))));
-define('OMEKA_DIR', dirname(dirname(NL_WAYPOINTS_DIR)));
-define('NL_DIR', dirname((NL_WAYPOINTS_DIR)) . '/Neatline');
-define('NL_TEST_DIR', NL_DIR . '/tests/phpunit');
+// Load Neatline testing bootstrap.
+require_once '../../Neatline/tests/phpunit/bootstrap.php';
 
-// Bootstrap Omeka, load plugin managers.
-require_once OMEKA_DIR . '/application/tests/bootstrap.php';
-require_once NL_WAYPOINTS_DIR . '/NeatlineWaypointsPlugin.php';
-require_once NL_DIR . '/NeatlinePlugin.php';
+// Set plugin path.
+define('NL_WAYPOINTS_DIR', PLUGIN_DIR.'/NeatlineWaypoints');
 
-// Load abstract test cases.
-require_once NL_TEST_DIR . '/cases/Neatline_Case_Abstract.php';
+// Load test cases.
 require_once 'cases/NeatlineWaypoints_Case_Default.php';
 require_once 'cases/NeatlineWaypoints_Case_Fixture.php';

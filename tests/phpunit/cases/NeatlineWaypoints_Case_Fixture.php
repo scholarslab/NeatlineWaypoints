@@ -37,4 +37,15 @@ class NeatlineWaypoints_Case_Fixture extends NeatlineWaypoints_Case_Default
     }
 
 
+    /**
+     * Get the Jasmine fixtures directory.
+     *
+     * @return string The directory.
+     */
+    protected function _getFixturesPath()
+    {
+        return NL_WAYPOINTS_DIR.'/tests/jasmine/fixtures/';
+    }
+
+
 }
