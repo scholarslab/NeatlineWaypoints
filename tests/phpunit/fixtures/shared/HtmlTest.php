@@ -34,16 +34,16 @@ class FixturesTest_SharedHtml extends NeatlineWaypoints_Case_Default
 
     public function testNeatlinePartial()
     {
-        $this->_writeExhibitMarkupFixture(
-            $this->exhibit, 'SharedHtml.exhibit.html'
+        $this->_writeExhibitMarkupFixture($this->exhibit,
+            'SharedHtml.exhibit.html'
         );
     }
 
 
     public function testEditorPartial()
     {
-        $this->_writeEditorMarkupFixture(
-            $this->exhibit, 'SharedHtml.editor.html'
+        $this->_writeEditorMarkupFixture($this->exhibit,
+            'SharedHtml.editor.html'
         );
     }
 

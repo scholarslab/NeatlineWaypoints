@@ -24,11 +24,14 @@ class NeatlineWaypoints_Case_Fixture extends NeatlineWaypoints_Case_Default
     {
 
         parent::setUp();
+
+        // Create a mock exhibit.
         $this->exhibit = $this->_exhibit();
 
+        // Set default parameters.
         $this->request->setQuery(array(
-            'exhibit_id' => $this->exhibit->id,
-            'order' => 'weight'
+            'exhibit_id'    => $this->exhibit->id,
+            'order'         => 'weight'
         ));
 
     }

@@ -31,7 +31,7 @@ class FixturesTest_EditorForm extends NeatlineWaypoints_Case_Fixture
         $record2->save();
         $record3->save();
 
-        $this->_writeFixtureFromRoute('neatline/records',
+        $this->_writeRecordsApiFixture($this->exhibit,
             'EditorForm.regular.json'
         );
 
@@ -40,7 +40,7 @@ class FixturesTest_EditorForm extends NeatlineWaypoints_Case_Fixture
 
     public function testEmpty()
     {
-        $this->_writeFixtureFromRoute('neatline/records',
+        $this->_writeRecordsApiFixture($this->exhibit,
             'EditorForm.empty.json'
         );
     }
