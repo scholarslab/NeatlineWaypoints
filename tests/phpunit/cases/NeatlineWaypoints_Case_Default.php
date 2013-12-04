@@ -15,20 +15,12 @@ class NeatlineWaypoints_Case_Default extends Neatline_Case_Default
 
 
     /**
-     * Bootstrap the plugin.
+     * Install Neatline Waypoints.
      */
     public function setUp()
     {
-
         parent::setUp();
-
-        // Install NeatlineWaypoints.
         $this->helper->setUp('NeatlineWaypoints');
-
-        // Register script paths.
-        get_view()->setScriptPath(NL_WAYPOINTS_DIR.'/views/shared');
-        get_view()->addScriptPath(NL_DIR.'/views/shared');
-
     }
 
 
