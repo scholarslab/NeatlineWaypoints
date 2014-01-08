@@ -15,7 +15,7 @@
 
   <!-- Placeholder. -->
   <% if (records.length == 0) { %>
-    <div class="alert alert-error">
+    <div class="alert alert-info">
       <%= WP_STRINGS.order.placeholders.empty %>
     </div>
   <% } %>

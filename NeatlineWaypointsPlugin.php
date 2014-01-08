@@ -28,10 +28,10 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
 
 
     protected $_filters = array(
-        'neatline_exhibit_tabs',
         'neatline_exhibit_widgets',
         'neatline_record_widgets',
-        'neatline_globals'
+        'neatline_globals',
+        'neatline_exhibit_tabs'
     );
 
 
@@ -105,21 +105,6 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
 
 
     /**
-     * Register the exhibit widget tab.
-     *
-     * @param array $tabs Tabs, <LABEL> => <ID>.
-     * @return array The modified array.
-     */
-    public function filterNeatlineExhibitTabs($tabs, $args)
-    {
-        if ($args['exhibit']->hasWidget(self::ID)) {
-            $tabs[self::NAME] = 'waypoints';
-        }
-        return $tabs;
-    }
-
-
-    /**
      * Register the exhibit widget.
      *
      * @param array $widgets Widgets, <NAME> => <ID>.
@@ -159,6 +144,21 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
         return array_merge($globals, array('waypoints' => array(
             'order_api' => url('neatline-waypoints')
         )));
+    }
+
+
+    /**
+     * Register the exhibit widget tab.
+     *
+     * @param array $tabs Tabs, <LABEL> => <ID>.
+     * @return array The modified array.
+     */
+    public function filterNeatlineExhibitTabs($tabs, $args)
+    {
+        if ($args['exhibit']->hasWidget(self::ID)) {
+            $tabs[self::NAME] = 'waypoints';
+        }
+        return $tabs;
     }
 
 
