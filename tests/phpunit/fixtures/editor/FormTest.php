@@ -31,6 +31,8 @@ class FixturesTest_EditorForm extends NeatlineWaypoints_Case_Fixture
         $record2->save();
         $record3->save();
 
+        $this->request->setQuery(array('order' => 'weight'));
+
         $this->_writeRecordsApiFixture($this->exhibit,
             'EditorForm.regular.json'
         );

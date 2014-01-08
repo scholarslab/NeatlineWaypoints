@@ -31,6 +31,8 @@ class FixturesTest_NeatlineList extends NeatlineWaypoints_Case_Fixture
         $record2->save();
         $record3->save();
 
+        $this->request->setQuery(array('order' => 'weight'));
+
         $this->_writeRecordsApiFixture($this->exhibit,
             'NeatlineList.regular.json'
         );
@@ -42,6 +44,8 @@ class FixturesTest_NeatlineList extends NeatlineWaypoints_Case_Fixture
         $record1->save();
         $record2->save();
         $record3->save();
+
+        $this->request->setQuery(array('order' => 'weight'));
 
         $this->_writeRecordsApiFixture($this->exhibit,
             'NeatlineList.changed.json'
