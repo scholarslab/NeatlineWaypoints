@@ -142,7 +142,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
       // Flash success message.
       Neatline.execute('EDITOR:notifySuccess',
-        WP_STRINGS.order.save.success
+        Neatline.g.waypoints.strings.order.save.success
       );
 
     },
@@ -155,7 +155,7 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
 
       // Flash error message.
       Neatline.execute('EDITOR:notifyError',
-        WP_STRINGS.order.save.error
+        Neatline.g.waypoints.strings.order.save.error
       );
 
     }

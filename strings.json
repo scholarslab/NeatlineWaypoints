@@ -1,0 +1,16 @@
+{
+
+  "order": {
+
+    "save": {
+      "success": "The waypoint order was saved successfully!",
+      "error": "There was an error - the waypoint order was not saved."
+    },
+
+    "placeholders": {
+      "empty": "No waypoints have been added yet!"
+    }
+
+  }
+
+}

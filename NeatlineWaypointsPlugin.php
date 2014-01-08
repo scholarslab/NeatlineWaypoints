@@ -69,7 +69,6 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookNeatlineEditorTemplates($args)
     {
         if ($args['exhibit']->hasWidget(self::ID)) {
-            echo get_view()->partial('waypoints/editor/strings.php');
             echo get_view()->partial('waypoints/editor/form.php');
             echo get_view()->partial('waypoints/editor/list.php');
         }
@@ -112,9 +111,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function filterNeatlineExhibitWidgets($widgets)
     {
-        return array_merge($widgets, array(
-            self::NAME => self::ID
-        ));
+        return array_merge($widgets, array(self::NAME => self::ID));
     }
 
 
@@ -126,24 +123,7 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function filterNeatlineRecordWidgets($widgets)
     {
-        return array_merge($widgets, array(
-            self::NAME => self::ID
-        ));
-    }
-
-
-    /**
-     * Register ordering API endpoint on `Neatline.g`.
-     *
-     * @param array $globals The array of global properties.
-     * @param array $args Array of arguments, with `exhibit`.
-     * @return array The modified array.
-     */
-    public function filterNeatlineGlobals($globals, $args)
-    {
-        return array_merge($globals, array('waypoints' => array(
-            'order_api' => url('neatline-waypoints')
-        )));
+        return array_merge($widgets, array(self::NAME => self::ID));
     }
 
 
@@ -159,6 +139,22 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
             $tabs[self::NAME] = 'waypoints';
         }
         return $tabs;
+    }
+
+
+    /**
+     * Register ordering API endpoint on `Neatline.g`.
+     *
+     * @param array $globals The array of global properties.
+     * @param array $args Array of arguments, with `exhibit`.
+     * @return array The modified array.
+     */
+    public function filterNeatlineGlobals($globals, $args)
+    {
+        return array_merge($globals, array('waypoints' => array(
+            'strings' => nl_getStrings(NL_WAYPOINTS_DIR.'/strings.json'),
+            'order_api' => url('neatline-waypoints')
+        )));
     }
 
 

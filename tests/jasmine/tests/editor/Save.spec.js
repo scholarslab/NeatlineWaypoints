@@ -83,7 +83,7 @@ describe('Editor | Save Order', function() {
 
     // Should flash success.
     expect(toastr.info).toHaveBeenCalledWith(
-      WP_STRINGS.order.save.success
+      Neatline.g.waypoints.strings.order.save.success
     );
 
   });
@@ -104,7 +104,7 @@ describe('Editor | Save Order', function() {
 
     // Should flash error.
     expect(toastr.error).toHaveBeenCalledWith(
-      WP_STRINGS.order.save.error
+      Neatline.g.waypoints.strings.order.save.error
     );
 
   });

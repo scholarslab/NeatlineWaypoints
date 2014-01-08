@@ -85,7 +85,11 @@ describe('Editor | Open Form', function() {
       // be displayed under "Edit Waypoint Order."
       // ----------------------------------------------------------------------
 
-      expect($(rows[0])).toHaveText(WP_STRINGS.order.placeholders.empty);
+      // Placeholder text.
+      var empty = Neatline.g.waypoints.strings.order.placeholders.empty;
+      expect($(rows[0])).toHaveText(empty);
+
+      // No waypoints listed.
       expect(rows.length).toEqual(1);
 
     });
@@ -106,9 +110,8 @@ describe('Editor | Open Form', function() {
       // The row with the placeholder message should not be sortable.
       // ----------------------------------------------------------------------
 
-      expect(
-        WP.v.editor.__ui.list.sortable('option', 'disabled')
-      ).toBeTruthy();
+      var cantSort = WP.v.editor.__ui.list.sortable('option', 'disabled');
+      expect(cantSort).toBeTruthy();
 
     });
 

@@ -16,7 +16,7 @@
   <!-- Placeholder. -->
   <% if (records.length == 0) { %>
     <div class="alert alert-info">
-      <%= WP_STRINGS.order.placeholders.empty %>
+      <%= Neatline.g.waypoints.strings.order.placeholders.empty %>
     </div>
   <% } %>
 
