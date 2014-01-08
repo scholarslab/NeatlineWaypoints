@@ -111,12 +111,12 @@ module.exports = function(grunt) {
     uglify: {
 
       waypoints_public: {
-        src: '<%= concat.waypoints_public.src %>',
+        src: '<%= concat.waypoints_public.dest %>',
         dest: paths.payloads.shared.js+'/waypoints-public.js'
       },
 
       waypoints_editor: {
-        src: '<%= concat.waypoints_editor.src %>',
+        src: '<%= concat.waypoints_editor.dest %>',
         dest: paths.payloads.shared.js+'/waypoints-editor.js'
       }
 
@@ -236,18 +236,14 @@ module.exports = function(grunt) {
 
   // Assemble static assets.
   grunt.registerTask('compile', [
-    'concat:waypoints_public',
-    'concat:waypoints_editor',
     'stylus',
-    'concat:waypoints_editor_css'
+    'concat'
   ]);
 
   // Assemble/min static assets.
   grunt.registerTask('compile:min', [
-    'uglify:waypoints_public',
-    'uglify:waypoints_editor',
-    'stylus',
-    'concat:waypoints_editor_css'
+    'compile',
+    'uglify',
   ]);
 
   // Run all tests.
