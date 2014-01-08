@@ -28,9 +28,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     shell: {
+
       options: {
         stdout: true
       },
+
       phpunit: {
         command: 'phpunit --color',
         options: {
@@ -39,9 +41,11 @@ module.exports = function(grunt) {
           }
         }
       }
+
     },
 
     symlink: {
+
       neatline: {
         link: 'Neatline',
         target: '../Neatline',
@@ -49,27 +53,34 @@ module.exports = function(grunt) {
           overwrite: true
         }
       }
+
     },
 
     connect: {
+
       server: {
         options: {
           keepalive: true,
           port: 1337
         }
       }
+
     },
 
     clean: {
+
       payloads: [
         paths.payloads.shared.js,
         paths.payloads.shared.css
       ],
+
       fixtures: [
         paths.jasmine+'/fixtures/*.json',
         paths.jasmine+'/fixtures/*.html'
       ],
+
       pkg: 'pkg'
+
     },
 
     concat: {
@@ -112,14 +123,17 @@ module.exports = function(grunt) {
     },
 
     stylus: {
-      compile: {
-        files: {
-          'views/shared/css/payloads/waypoints-public.css':
-            paths.stylus.shared+'/public/*.styl',
-          'views/shared/css/payloads/waypoints-editor.css':
-            paths.stylus.shared+'/editor/*.styl'
-        }
+
+      waypoints_public: {
+        src: paths.stylus.shared+'/public/*.styl',
+        dest: paths.payloads.shared.css+'/waypoints-public.css'
+      },
+
+      waypoints_editor: {
+        src: paths.stylus.shared+'/editor/*.styl',
+        dest: paths.payloads.shared.css+'/waypoints-editor.css'
       }
+
     },
 
     watch: {
@@ -179,14 +193,29 @@ module.exports = function(grunt) {
 
           '**',
 
+          // GIT
           '!.git/**',
+
+          // BOWER
+          '!bower.json',
+          '!bower_components/**',
+
+          // NPM
           '!package.json',
           '!node_modules/**',
+
+          // GRUNT
           '!.grunt/**',
           '!Gruntfile.js',
           '!paths.json',
+
+          // SYMLINK
           '!Neatline/**',
+
+          // DIST
           '!pkg/**',
+
+          // TESTS
           '!tests/**'
 
         ]
