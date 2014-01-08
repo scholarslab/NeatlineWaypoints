@@ -8,7 +8,7 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-describe('Editor | Router', function() {
+describe('Editor | Apply Routes', function() {
 
 
   var elements;

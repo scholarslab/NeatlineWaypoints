@@ -3,7 +3,7 @@
          convertWarningsToExceptions="true"
          verbose="true">
     <testsuite name="Neatline Waypoints Tests">
-        <directory>integration</directory>
-        <directory>fixtures</directory>
+        <directory>tests/integration</directory>
+        <directory>tests/fixtures</directory>
     </testsuite>
 </phpunit>
