@@ -166,7 +166,7 @@ module.exports = function(grunt) {
           paths.payloads.shared.js+'/waypoints-public.js'
         ],
         options: {
-          specs: paths.jasmine+'/integration/neatline/**/*.spec.js'
+          specs: paths.jasmine+'/tests/neatline/**/*.spec.js'
         }
       },
 
@@ -176,7 +176,7 @@ module.exports = function(grunt) {
           paths.payloads.shared.js+'/waypoints-editor.js'
         ],
         options: {
-          specs: paths.jasmine+'/integration/editor/**/*.spec.js'
+          specs: paths.jasmine+'/tests/editor/**/*.spec.js'
         }
       }
 
