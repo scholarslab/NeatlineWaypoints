@@ -1,9 +1,12 @@
 <phpunit bootstrap="bootstrap.php"
          convertErrorsToExceptions="true"
          convertWarningsToExceptions="true"
+         colors="true"
          verbose="true">
+
     <testsuite name="Neatline Waypoints Tests">
         <directory>tests/integration</directory>
         <directory>tests/fixtures</directory>
     </testsuite>
+
 </phpunit>
