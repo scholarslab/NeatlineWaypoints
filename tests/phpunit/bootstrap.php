@@ -10,11 +10,10 @@
  */
 
 
-// Load Neatline testing bootstrap.
-require_once '../../Neatline/tests/phpunit/bootstrap.php';
+define('NL_WAYPOINTS_DIR', dirname(dirname(dirname(__FILE__))));
 
-// Set plugin path.
-define('NL_WAYPOINTS_DIR', PLUGIN_DIR.'/NeatlineWaypoints');
+// Load Neatline testing bootstrap.
+require_once NL_WAYPOINTS_DIR.'/Neatline/tests/phpunit/bootstrap.php';
 
 // Load test cases.
 require_once 'cases/NeatlineWaypoints_Case_Default.php';

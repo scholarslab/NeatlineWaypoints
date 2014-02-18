@@ -10,39 +10,22 @@
 
 module.exports = function(grunt) {
 
+  grunt.loadNpmTasks('grunt-symbolic-link');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-phpunit');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-symbolic-link');
-  grunt.loadNpmTasks('grunt-shell');
 
   var pkg     = grunt.file.readJSON('package.json');
   var nlPaths = grunt.file.readJSON('../Neatline/paths.json');
   var paths   = grunt.file.readJSON('paths.json');
 
   grunt.initConfig({
-
-    shell: {
-
-      options: {
-        stdout: true
-      },
-
-      phpunit: {
-        command: 'phpunit --color',
-        options: {
-          execOptions: {
-            cwd: 'tests/phpunit'
-          }
-        }
-      }
-
-    },
 
     symlink: {
 
@@ -145,6 +128,21 @@ module.exports = function(grunt) {
         ],
         tasks: ['compile']
       }
+    },
+
+    phpunit: {
+
+      options: {
+        bin: 'Neatline/vendor/bin/phpunit',
+        bootstrap: 'tests/phpunit/bootstrap.php',
+        followOutput: true,
+        colors: true
+      },
+
+      application: {
+        dir: 'tests/phpunit'
+      }
+
     },
 
     jasmine: {
@@ -250,9 +248,6 @@ module.exports = function(grunt) {
     'phpunit',
     'jasmine'
   ]);
-
-  // Run PHPUnit.
-  grunt.registerTask('phpunit', 'shell:phpunit');
 
   // Mount public Jasmine suite.
   grunt.registerTask('jasmine:neatline:server', [
