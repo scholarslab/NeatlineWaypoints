@@ -117,7 +117,7 @@ describe('Editor | Save Order', function() {
     // should be refreshed to manifest the new ordering.
     // ------------------------------------------------------------------------
 
-    spyOn(Neatline.vent, 'trigger').andCallThrough();
+    spyOn(Neatline.vent, 'trigger').and.callThrough();
 
     // Click on "Save".
     WP.v.editor.__ui.save.trigger('click');

@@ -30,8 +30,8 @@ describe('Editor | Apply Routes', function() {
     NL.navigate('waypoints');
 
     // Tabs and waypoints form should be visible.
-    expect(NL.v.editor.__ui.editor).toContain(NL.v.exhibit.$el);
-    expect(NL.v.editor.__ui.editor).toContain(WP.v.editor.$el);
+    expect(NL.v.editor.__ui.editor).toContainHtml(NL.v.exhibit.$el);
+    expect(NL.v.editor.__ui.editor).toContainHtml(WP.v.editor.$el);
 
     // "Waypoints" tab should be active.
     expect(elements.waypoints).toHaveClass('active');
