@@ -53,8 +53,8 @@ module.exports = function(grunt) {
     clean: {
 
       payloads: [
-        paths.payloads.shared.js,
-        paths.payloads.shared.css
+        paths.payloads.js.shared,
+        paths.payloads.css.shared
       ],
 
       fixtures: [
@@ -69,24 +69,24 @@ module.exports = function(grunt) {
     concat: {
 
       waypoints_public: {
-        src: paths.src.shared+'/public/*.js',
-        dest: paths.payloads.shared.js+'/waypoints-public.js'
+        src: paths.src.js.shared+'/public/*.js',
+        dest: paths.payloads.js.shared+'/waypoints-public.js'
       },
 
       waypoints_editor: {
         src: [
           '<%= concat.waypoints_public.src %>',
-          paths.src.shared+'/editor/*.js'
+          paths.src.js.shared+'/editor/*.js'
         ],
-        dest: paths.payloads.shared.js+'/waypoints-editor.js'
+        dest: paths.payloads.js.shared+'/waypoints-editor.js'
       },
 
       waypoints_editor_css: {
         src: [
-          paths.payloads.shared.css+'/waypoints-public.css',
-          paths.payloads.shared.css+'/waypoints-editor.css',
+          paths.payloads.css.shared+'/waypoints-public.css',
+          paths.payloads.css.shared+'/waypoints-editor.css',
         ],
-        dest: paths.payloads.shared.css+'/waypoints-editor.css'
+        dest: paths.payloads.css.shared+'/waypoints-editor.css'
       }
 
     },
@@ -95,12 +95,12 @@ module.exports = function(grunt) {
 
       waypoints_public: {
         src: '<%= concat.waypoints_public.dest %>',
-        dest: paths.payloads.shared.js+'/waypoints-public.js'
+        dest: paths.payloads.js.shared+'/waypoints-public.js'
       },
 
       waypoints_editor: {
         src: '<%= concat.waypoints_editor.dest %>',
-        dest: paths.payloads.shared.js+'/waypoints-editor.js'
+        dest: paths.payloads.js.shared+'/waypoints-editor.js'
       }
 
     },
@@ -108,13 +108,13 @@ module.exports = function(grunt) {
     stylus: {
 
       waypoints_public: {
-        src: paths.stylus.shared+'/public/*.styl',
-        dest: paths.payloads.shared.css+'/waypoints-public.css'
+        src: paths.src.styl.shared+'/public/*.styl',
+        dest: paths.payloads.css.shared+'/waypoints-public.css'
       },
 
       waypoints_editor: {
-        src: paths.stylus.shared+'/editor/*.styl',
-        dest: paths.payloads.shared.css+'/waypoints-editor.css'
+        src: paths.src.styl.shared+'/editor/*.styl',
+        dest: paths.payloads.css.shared+'/waypoints-editor.css'
       }
 
     },
@@ -124,7 +124,7 @@ module.exports = function(grunt) {
         files: [
           '<%= concat.waypoints_public.src %>',
           '<%= concat.waypoints_editor.src %>',
-          paths.stylus.shared+'/**/*.styl'
+          paths.src.styl.shared+'/**/*.styl'
         ],
         tasks: ['compile']
       }
@@ -157,8 +157,8 @@ module.exports = function(grunt) {
 
       neatline: {
         src: [
-          'Neatline/'+nlPaths.payloads.shared.js+'/neatline-public.js',
-          paths.payloads.shared.js+'/waypoints-public.js'
+          'Neatline/'+nlPaths.payloads.js.shared+'/neatline-public.js',
+          paths.payloads.js.shared+'/waypoints-public.js'
         ],
         options: {
           specs: paths.jasmine+'/tests/neatline/**/*.spec.js'
@@ -167,8 +167,8 @@ module.exports = function(grunt) {
 
       editor: {
         src: [
-          'Neatline/'+nlPaths.payloads.shared.js+'/neatline-editor.js',
-          paths.payloads.shared.js+'/waypoints-editor.js'
+          'Neatline/'+nlPaths.payloads.js.shared+'/neatline-editor.js',
+          paths.payloads.js.shared+'/waypoints-editor.js'
         ],
         options: {
           specs: paths.jasmine+'/tests/editor/**/*.spec.js'

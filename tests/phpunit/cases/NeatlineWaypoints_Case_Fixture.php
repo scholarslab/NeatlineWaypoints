@@ -25,11 +25,11 @@ class NeatlineWaypoints_Case_Fixture extends NeatlineWaypoints_Case_Default
 
         parent::setUp();
 
-        // Create a mock exhibit.
-        $this->exhibit = $this->_exhibit();
-
         // Register script paths.
         get_view()->addScriptPath(NL_WAYPOINTS_DIR.'/views/shared');
+
+        // Create a mock exhibit.
+        $this->exhibit = $this->_exhibit();
 
     }
 
