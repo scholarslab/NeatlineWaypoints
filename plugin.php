@@ -15,5 +15,5 @@ if (!defined('NL_WAYPOINTS_DIR')) {
 }
 
 require_once NL_WAYPOINTS_DIR . '/NeatlineWaypointsPlugin.php';
-$simile = new NeatlineWaypointsPlugin();
-$simile->setUp();
+$waypoints = new NeatlineWaypointsPlugin();
+$waypoints->setUp();
