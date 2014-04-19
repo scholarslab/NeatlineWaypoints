@@ -83,8 +83,8 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookNeatlinePublicStatic($args)
     {
         if ($args['exhibit']->hasWidget(self::ID)) {
-            queue_css_file('dist/waypoints-public');
-            queue_js_file('dist/waypoints-public');
+            queue_css_file('payloads/waypoints-public');
+            queue_js_file('payloads/waypoints-public');
         }
     }
 
@@ -97,8 +97,8 @@ class NeatlineWaypointsPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookNeatlineEditorStatic($args)
     {
         if ($args['exhibit']->hasWidget(self::ID)) {
-            queue_css_file('dist/waypoints-editor');
-            queue_js_file('dist/waypoints-editor');
+            queue_css_file('payloads/waypoints-editor');
+            queue_js_file('payloads/waypoints-editor');
         }
     }
 
