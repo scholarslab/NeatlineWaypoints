@@ -38,7 +38,9 @@ Neatline.module('Waypoints', function(Waypoints) {
       this.filters = {}; // The active filters.
 
       // Compile the list template.
-      this.template = _.template($('#waypoints-public-list-template').html());
+      this.template = _.template(
+        $('#waypoints-public-list-template').html()
+      );
 
       // Create the list collection.
       this.records = new Neatline.Shared.Record.Collection();
