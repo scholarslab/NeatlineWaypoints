@@ -36,7 +36,9 @@ Neatline.module('Editor.Exhibit.Waypoints', function(Waypoints) {
       this.slug = options.slug;
 
       // Compile list template.
-      this.template = _.template($('#waypoints-editor-list-template').html());
+      this.template = _.template(
+        $('#waypoints-editor-list-template').html()
+      );
 
       // Create the list collection.
       this.records = new Neatline.Shared.Record.Collection();
