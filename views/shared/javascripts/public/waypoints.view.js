@@ -252,7 +252,7 @@ Neatline.module('Waypoints', function(Waypoints) {
      * @param {Number} id: The record id.
      */
     getElementById: function(id) {
-      return this.$('a[data-id='+id+']');
+      return this.$('a[data-id="'+id+'"]');
     },
 
 

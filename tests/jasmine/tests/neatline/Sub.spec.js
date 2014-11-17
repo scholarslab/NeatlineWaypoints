@@ -145,8 +145,6 @@ describe('Neatline | Subscriptions', function() {
 
     });
 
-    it('should handle missing model');
-
   });
 
 
