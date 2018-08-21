@@ -8,7 +8,7 @@ NeatlineWaypoints makes it possible to add an list of clickable "waypoints" to a
 
   1. Uncompress the `.zip` archive.
 
-  2. Move the `NeatlineSimile` into the `/plugins` folder in you Omeka installation.
+  2. Move the `NeatlineWaypoints` into the `/plugins` folder in you Omeka installation.
 
   3. In the Omeka administrative interface, click on **Plugins** in the top navigation bar and find the listing for "Neatline Widget ~ Waypoints". Click on "Install."
 
